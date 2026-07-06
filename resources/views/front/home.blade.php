@@ -52,7 +52,7 @@
                                  <div class="statistic-block">
                                      <div class="statistic-digit">
                                          <h2 class="s-30 w-700 mb-10 color--green-500">
-                                             <span class="count-element">3.5</span>Cr+
+                                             <span class="count-element">4</span>Cr+
                                          </h2>
                                      </div>
                                      <div class="statistic-txt">
