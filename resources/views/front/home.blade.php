@@ -823,7 +823,7 @@
                              <div class="address-text ms-3">
                                  <h6 class="color--green-500 mb-1 s-16">Address:</h6>
                                  <p class="address-txt mt-0">
-                                     {{ config('constants.COMPANY_ADDRESS'); }}</p>
+                                     {{ config('constant.COMPANY_ADDRESS'); }}</p>
                              </div>
                          </div>
                      </div>
@@ -841,7 +841,7 @@
                                  <p class="address-txt mt-0"><a
                                          href="tel:{{ str_ireplace(" ","",env('COMPANY_MOBILE')) }}">
 
-                                         {{ config('constants.COMPANY_MOBILE'); }}</a>
+                                         {{ config('constant.COMPANY_MOBILE'); }}</a>
                                  </p>
                              </div>
                          </div>
@@ -859,7 +859,7 @@
                                  <h6 class="color--green-500 mb-1 s-16"> Mail Us:</h6>
                                  <p class="address-txt mt-0"><a
                                          href="mailto:{{ str_ireplace(" ","",env('COMPANY_SUPPORT_MAIL')) }}">
-                                         {{ config('constants.COMPANY_SUPPORT_MAIL'); }}</a>
+                                         {{ config('constant.COMPANY_SUPPORT_MAIL'); }}</a>
                                  </p>
                              </div>
                          </div>

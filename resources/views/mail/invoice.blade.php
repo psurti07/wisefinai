@@ -2677,7 +2677,7 @@
                         <div class="tm_grid_row tm_col_12">
                             <div class="tm_f14">
                                 <b>{{ env('COMPANY_NAME') }}</b><br />
-                                {{ config('constants.COMPANY_ADDRESS'); }}
+                                {{ config('constant.COMPANY_ADDRESS'); }}
                             </div>
                         </div>
                     </div>
@@ -2702,7 +2702,7 @@
                     <div>
                         <div class="tm_f14">
                             <p class="tm_mb0">
-                                <b class="tm_primary_color">Mobile: </b> {{ config('constants.COMPANY_MOBILE'); }}<br />
+                                <b class="tm_primary_color">Mobile: </b> {{ config('constant.COMPANY_MOBILE'); }}<br />
                                 <b class="tm_primary_color">Email: </b> {{ env('INFO_EMAIL') }}
                             </p>
                         </div>
