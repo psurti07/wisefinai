@@ -140,36 +140,31 @@ if (!function_exists('raiseRequestFaqs')) {
                     <div class="accordion-panel">
                         <div class="accordion-panel-item">
                             <div class="faqs-2-answer">
-                                <p>
-                               This may happen if your amount is held by the payment gateway and yet to be credited to the company account. Do not worry; once the funds are credited to the company account, your account will be created and you will be notified via email. Otherwise, the payment gateway will refund your funds in accordance with their policies. </p>
+                                <p>This may happen if your amount is held by the payment gateway and yet to be credited to the company’s account. Do not worry; once the funds are credited to the company account, your account will be created and you will be notified via email. Otherwise, the payment gateway will refund your funds in accordance with their policies.</p>
                             </div>
                         </div>
                     </div>
                 </li>
                 <li class="accordion-item mb-0">
                     <div class="accordion-thumb bg--green-100">
-                        <h6 class="s-15 w-500 mb-0">Even after so many days, I have not received my refund. What should I do?</h6>
+                        <h6 class="s-15 w-500 mb-0">Even after so many days, I have not received my refund. What should I do? </h6>
                     </div>
                     <div class="accordion-panel">
                         <div class="accordion-panel-item">
                             <div class="faqs-2-answer">
-                                <p>
-                                   This could happen if your money is held by the bank or payment gateway. It will be refunded as per the bank/payment gateway’s rules and regulations.
-                                </p>
+                                <p>This could happen if your money is held by the bank or payment gateway. It will be refunded as per the bank/payment gateway’s rules and regulations.</p>
                             </div>
                         </div>
                     </div>
                 </li>
                 <li class="accordion-item mb-0">
                     <div class="accordion-thumb bg--green-100">
-                        <h6 class="s-15 w-500 mb-0">I misunderstood the company’s service/made payment by mistake. Can I get a refund?</h6>
+                        <h6 class="s-15 w-500 mb-0">I misunderstood the company’s service/made payment by mistake. Can I get a refund? </h6>
                     </div>
                     <div class="accordion-panel">
                         <div class="accordion-panel-item">
                             <div class="faqs-2-answer">
-                                <p>
-                                    The subscription plan payment is only refundable under the company cancellation and refund policy. Click here to know more. 
-                                </p>
+                                <p>The subscription plan payment is only refundable under the company cancellation and refund policy.</p>
                             </div>
                         </div>
                     </div>
@@ -182,7 +177,7 @@ if (!function_exists('raiseRequestFaqs')) {
                         <div class="accordion-panel-item">
                             <div class="faqs-2-answer">
                                 <p>
-                                    Please read the terms and conditions to get a clear understanding of what a pre-approval loan offer is. Click here
+                                    Please read the terms and conditions to get a clear understanding of what a pre-approval loan offer is.
                                 </p>
                             </div>
                         </div>
@@ -190,7 +185,7 @@ if (!function_exists('raiseRequestFaqs')) {
                 </li>
                 <li class="accordion-item mb-0">
                     <div class="accordion-thumb bg--green-100">
-                        <h6 class="s-15 w-500 mb-0">Who can get a GST return? </h6>
+                        <h6 class="s-15 w-500 mb-0">Who can get a GST return?</h6>
                     </div>
                     <div class="accordion-panel">
                         <div class="accordion-panel-item">
@@ -204,27 +199,13 @@ if (!function_exists('raiseRequestFaqs')) {
                 </li>
                 <li class="accordion-item mb-0">
                     <div class="accordion-thumb bg--green-100">
-                        <h6 class="s-15 w-500 mb-0">I have changed my mind and do not want to use the company services. Can I get the refund? </h6>
+                        <h6 class="s-15 w-500 mb-0">I have changed my mind and do not want to use the company services. Can I get the refund?</h6>
                     </div>
                     <div class="accordion-panel">
                         <div class="accordion-panel-item">
                             <div class="faqs-2-answer">
                                 <p>
-                                    The subscription plan payment is only refundable under the company cancellation and refund policy. 
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="accordion-item mb-0">
-                    <div class="accordion-thumb bg--green-100">
-                        <h6 class="s-15 w-500 mb-0">I am not happy with the company service. What should I do? </h6>
-                    </div>
-                    <div class="accordion-panel">
-                        <div class="accordion-panel-item">
-                            <div class="faqs-2-answer">
-                                <p>
-                                    We request you to kindly call the company on +91-{#VAR#} between 10 AM to 5 PM- Monday to Saturday (only business days). Allow us to discuss your concerns, and we will ensure that you receive the best solutions possible. 
+                                    The subscription plan payment is only refundable under the company cancellation and refund policy.
                                 </p>
                             </div>
                         </div>
@@ -246,13 +227,13 @@ if (!function_exists('raiseRequestFaqs')) {
                 </li>
                 <li class="accordion-item mb-0">
                     <div class="accordion-thumb bg--green-100">
-                        <h6 class="s-15 w-500 mb-0">Can I get a refund if I purchase subscriptions/memberships from multiple companies in your group of companies? </h6>
+                        <h6 class="s-15 w-500 mb-0">Can I get a refund if I purchase subscriptions/memberships from multiple companies in your group of companies?</h6>
                     </div>
                     <div class="accordion-panel">
                         <div class="accordion-panel-item">
                             <div class="faqs-2-answer">
                                 <p>
-                                  If a customer purchased Subscriptions/Memberships from multiple companies in our group of companies, the customer is eligible for a refund. You can request a refund within 48 hours of payment through the Raising A Request section of the website or by calling the company registered contact number.
+                                    If a customer purchased subscriptions/memberships from multiple companies in our group of companies, the customer is eligible for a refund. You can request a refund within 48 hours of payment through the Raising A Request section of the website or by calling the company registered contact number.
                                 </p>
                             </div>
                         </div>
