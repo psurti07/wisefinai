@@ -95,21 +95,38 @@
  </section>
 
 
- <section class="py-80 ct-02 content-section division" id="company">
-     <div class="container">
-         <div class="row">
-             <div class="col-md-12">
-                 <div class="txt-block right-column text-center">
-                     <p><span class="section-id s-16"><span class="color--green-500">Making Financial Decisions Simple and Stress-Free</span></p>
-                     <h2 class="s-28 w-700">At WiseFinAI, we believe financial support should be simple, accessible, and reliable. Through strong partnerships with leading NBFCs, we provide expert consultation and tailored loan assistance to help individuals make informed financial decisions. Our innovative digital platform brings convenience, speed, and transparency to every step of the loan process.</h2>
-                     <p><strong>Helping You Achieve Financial Confidence !</strong></p>
-                     <p>We understand that every financial journey is unique. That's why we take the time to understand your specific needs and provide personalized guidance that supports you at every step.</p>
-                     <p>We maintain complete transparency throughout the process, making every step simple and easy to understand so you can make informed decisions with confidence.</p>
-                 </div>
-             </div>
-         </div>
-     </div>
- </section>
+<section class="py-80 ct-02 content-section division " id="company">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-9">
+                <div class="section-title mb-40">
+                    <h2 class="s-28 mb-5">About <span class="color--green-500">Us!</span></h2>
+                    <p class="s-16 color--grey mt-0">Making Financial Decisions Simple and Stress-Free</p>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="txt-block right-column bg-white p-4 r-12">
+                    <p class="">At WiseFinAI, we believe financial support should be simple, accessible, and reliable. Through strong partnerships with leading NBFCs, we provide expert consultation and tailored loan assistance to help individuals make informed financial decisions. Our innovative digital platform brings convenience, speed, and transparency to every step of the loan process.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="txt-block right-column bg--green-100 p-4 r-12 h-100">
+                    <p class="w-700">Helping You Achieve Financial Confidence !</p>
+                    <ul class="simple-list">
+                        <li class="list-item">
+                            <p>We understand that every financial journey is unique. That's why we take the time to understand your specific needs and provide personalized guidance that supports you at every step. </p>
+                        </li>
+                        <li class="list-item">
+                            <p class="mb-0">We maintain complete transparency throughout the process, making every step simple and easy to understand so you can make informed decisions with confidence.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
  <!-- why wisefinai section starts -->
  <section id="features-6" class="pt-0 pb-80  features-section division">
