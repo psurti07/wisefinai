@@ -140,7 +140,6 @@
                     <p class="s-16">Get instant pre-approved offers.</p>
 
                     <form method="post" action="{{ route('loan.agent.send.otp') }}" class="request-form save-form-1 needs-validation" novalidate>
-                        @csrf
                         <div class="row g-2">
                             <div class="col-md-12">
                                 <div class="form-check ps-0">
