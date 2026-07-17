@@ -140,6 +140,7 @@
                     <h4 class="s-20 w-700 mb-2">Apply in <span class="color--green-500">5 Minutes</span></h4>
                     <p class="s-16">Get instant pre-approved offers.</p>
                     <form method="post" action="{{ route('self.apply.send.otp') }}" class="request-form save-form-1 needs-validation" novalidate>
+                        @csrf
                         <div class="row g-2">
                             <div class="col-md-12">
                                 <div class="form-check ps-0">
