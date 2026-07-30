@@ -30,7 +30,7 @@ if(!function_exists('sendSingleSMS')){
 
         // Submit the request to the server
         $response = Http::get($api_url);
-
+        log::info("sendSingleSMS response : " . $response);
         // Return the response
         return [
             'status_code' => $response->status(),
