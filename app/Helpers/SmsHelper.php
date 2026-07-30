@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 
 if(!function_exists('sendSingleSMS')){
     function sendSingleSMS($mobile, $otp, $panel = 'self'){
-        $message = "Hello, the WiseFinAI OTP for your mobile number registration is ".$otp.". Kindly do not share it with anyone. Thanks, WiseFinAI";
+        $message = "Hello, the https://wisefinai.com OTP for your mobile number registration is ".$otp.". Kindly do not share it with anyone. Thanks, WiseFinAI";
         // URL encode the message
        // URL encode the message
         $sms_text = urlencode($message);
