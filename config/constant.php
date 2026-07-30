@@ -34,4 +34,10 @@ return [
     'SM_TWITTER'       => env('SM_TWITTER'),
     'SM_YOUTUBE'       => env('SM_YOUTUBE'),
     'SM_PINTEREST'     => env('SM_PINTEREST'),
+
+    "PAYU_TEST_URL" => 'https://test.payu.in/_payment',
+    "PAYU_PROD_URL" => 'https://secure.payu.in/_payment',
+    'PAYU_MODE' => env('PAYU_MODE'),
+    'PAYU_MERCHANT_KEY' => env('PAYU_MERCHANT_KEY'),
+    'PAYU_MERCHANT_SALT' => env('PAYU_MERCHANT_SALT'),
 ];

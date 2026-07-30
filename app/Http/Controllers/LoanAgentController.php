@@ -37,6 +37,7 @@ use App\Utilities\Authuntication;
 use Illuminate\Support\Facades\Cache;
 use Carbon\Carbon;
 use App\Http\Controllers\CipherPayController as CipherPay;
+use App\Models\PayuLogEntry;
 use Illuminate\Validation\Rule;
 use Razorpay\Api\Api;
 
@@ -526,7 +527,7 @@ class LoanAgentController extends Controller
     }
 
     /* checkout the data */
-    public function checkout(Request $request)
+    public function checkout_razorpay(Request $request)
     {
         try {
             $inputs = $request->all();
@@ -587,6 +588,103 @@ class LoanAgentController extends Controller
             Log::error('loan agent checkout method error occured: ' . $e->getMessage());
             return redirect('/error')->with('error', 'Oops! Something went wrong.');
         }
+    }
+
+    public function checkout(Request $request)
+    {
+        try {
+            $inputs = $request->all();
+            $loanAppUpdates = array(
+                'rec_date' => date('Y-m-d H:i:s'),
+                'status' => 1,
+                'isDelete' => 0
+            );
+            $res1 = LoanApplications::where('id', Cookie::get('applyid'))->update($loanAppUpdates);
+            $productslug = 'hire-loan-agent';
+            $entryfor = 12;
+            $productData = Product::where('productslug', $productslug)->first();
+            $amount = ($productData->inOffer == 1) ? $productData->offeramount : $productData->amount;
+            $grandAmount = $amount + ($amount * 0.18);
+            $roundAmount  = floor($grandAmount);
+
+            $uatNumbers = explode(',', env('UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
+
+            foreach ($uatNumbers as $uatNum) {
+                if ($uatNum == Cookie::get('user_mobile')) {
+                    $roundAmount = 1;
+                    break; // Exit the loop once a match is found
+                }
+            }
+
+            $userId = Cookie::get('userid');
+
+            $userDetail = UserRegistration::where('id', $userId)->first();
+
+            $orderId = 'hire_' . time() . rand(100, 999);
+
+            $returnUrl = $inputs['plan'] == 2 ? route('api.loan.agent.buy.digital.agent.plan') : route('api.self.apply.buy.digital.plan');
+
+            $hashData = $this->generateHash($userDetail, $orderId, $roundAmount);
+            $postData = $this->generatePostData($userDetail, $orderId, $roundAmount, $hashData['hash'],$returnUrl);
+
+            $taxNote = strtolower($userDetail->state) === 'gujarat'
+                ? 'CGST 9% + SGST 9% applied'
+                : 'IGST 18% applied';
+
+            PayuLogEntry::create([
+                'rec_date' => now(),
+                'orderid' => $orderId,
+                'orderamount' => $roundAmount,
+                'ordernote' => $taxNote ?? "",
+                'entryfor' => $entryfor,
+                'userid' => $userDetail->id,
+            ]);
+
+            return view('pg.payu-checkout', ['data' => $postData])->render();
+        } catch (\Exception $e) {
+            Log::error('loan agent checkout method error occured: ' . $e->getMessage());
+            return redirect('/error')->with('error', 'Oops! Something went wrong.');
+        }
+    }
+
+    public function generateHash($userDetail, $orderId, $grand_total)
+    {
+        $hashString = config('constant.PAYU_MERCHANT_KEY') . '|' .
+            $orderId . '|' . $grand_total . '|' .
+            $userDetail->product?->productname . '|' .
+            $userDetail->first_name . ' ' . $userDetail->last_name . '|' .
+            $userDetail->email . '|' .
+            $userDetail->id . '||||||||||' .
+            config('constant.PAYU_MERCHANT_SALT');
+
+        return [
+            'hash' => strtolower(hash('sha512', $hashString)),
+            'tid' => $orderId,
+            'amount' => $grand_total
+        ];
+    }
+
+    public function generatePostData($userDetail, $orderId, $grand_total, $hash,$returnUrl)
+    {
+        $url = config('constant.PAYU_MODE') === 'PROD'
+            ? config('constant.PAYU_PROD_URL')
+            : config('constant.PAYU_TEST_URL');
+
+        return [
+            'mkey'        => config('constant.PAYU_MERCHANT_KEY'),
+            'tid'         => $orderId,
+            'hash'        => $hash,
+            'address'     => '',
+            'amount'      => $grand_total,
+            'name'        => $userDetail->first_name . ' ' . $userDetail->last_name,
+            'lname'       => $userDetail->last_name,
+            'productinfo' => $userDetail->product?->productname,
+            'mailid'      => $userDetail->email,
+            'phoneno'     => $userDetail->mobile_no,
+            'udf1'        => $userDetail->id,
+            'action'      => $url,
+            'returnUrl'   => $returnUrl,
+        ];
     }
 
     /* callback url ofd loan agent */
@@ -856,18 +954,28 @@ class LoanAgentController extends Controller
             Session::put('responsecode', $responseCode);
 
             $orderAmount = $request->input('amount') / 100;
-            $txnId = $request->razorpay_payment_id;
-            $paymentMode = 'razorpay';
+            $txnId = $request->txnid;
+            // $paymentMode = 'razorpay';
 
-            $paymentData = Razorpayentry::where('orderid', $orderId)->first();
+            // $paymentData = Razorpayentry::where('orderid', $orderId)->first();
 
-            Razorpayentry::where('id', $paymentData->id)->update([
-                'rec_date' => now(),
-                'orderamount' => $orderAmount,
-                'txstatus' => $responseCode,
-                'referenceid' => $txnId,
-                'paymentmode' => $paymentMode
+            // Razorpayentry::where('id', $paymentData->id)->update([
+            //     'rec_date' => now(),
+            //     'orderamount' => $orderAmount,
+            //     'txstatus' => $responseCode,
+            //     'referenceid' => $txnId,
+            //     'paymentmode' => $paymentMode
+            // ]);
+
+            $paymentData = PayuLogEntry::where('order_id', $request->txnid)->firstOrFail();
+
+            $paymentData->update([
+                'reference_id' => $request->mihpayid,
+                'tx_status' => $request->status,
+                'payment_mode' => $request->PG_TYPE,
+                'rec_date' => now()
             ]);
+
 
             $userData = $query = LoanApplications::select(
                 'user_registrations.id as userid',
@@ -1191,7 +1299,7 @@ class LoanAgentController extends Controller
                         $fbdata['fbclid'] = '';
                     }
 
-                    $fbresponse = fbconversioncurl($fbdata, 11);
+                    $fbresponse = fbconversioncurl($fbdata, 16);
                     $dataleads = array(
                         'rec_date' => now(),
                         'send_data' => json_encode($fbdata),
