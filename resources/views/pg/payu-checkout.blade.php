@@ -25,7 +25,6 @@
         <input type="hidden" name="surl" value="{{ $data['returnUrl'] }}" />
         <input type="hidden" name="furl" value="{{ $data['returnUrl'] }}" />
         <input type="hidden" name="curl" value="{{ $data['returnUrl'] }}" />
-        <input type="hidden" name="service_provider" value="64" />
     </form>
 </body>
 

@@ -678,7 +678,7 @@ class LoanAgentController extends Controller
             'amount'      => $grand_total,
             'name'        => $userDetail->first_name . ' ' . $userDetail->last_name,
             'lname'       => $userDetail->last_name,
-            'productinfo' => $userDetail->product?->productname,
+            'productinfo' => 'loan agent',
             'mailid'      => $userDetail->email,
             'phoneno'     => $userDetail->mobile_no,
             'udf1'        => $userDetail->id,
