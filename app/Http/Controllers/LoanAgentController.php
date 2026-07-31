@@ -956,9 +956,6 @@ class LoanAgentController extends Controller
             $password = trim(random_code(6));
             Session::put('user_password', $password);
 
-            $orderId = $request->razorpay_order_id;
-            Session::put('orderid', $orderId);
-
             $responseCode = $request->input('responseCode');
             Session::put('responsecode', $responseCode);
 
