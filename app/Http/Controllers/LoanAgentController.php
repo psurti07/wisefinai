@@ -651,11 +651,13 @@ class LoanAgentController extends Controller
 
     public function generateHash($userDetail, $orderId, $grand_total)
     {
+        $productInfo = 'loan agent';
+
         $hashString = config('constant.PAYU_MERCHANT_KEY') . '|' .
-            $orderId . '|' . $grand_total . '|' .
-            $userDetail->product?->productname . '|' .
-            $userDetail->first_name . ' ' . $userDetail->last_name . '|' .
-            $userDetail->email . '|' .
+            $orderId . '|' . number_format($grand_total, 2, '.', '') . '|' .
+            $productInfo . '|' .
+            trim($userDetail->first_name) . '|' .
+            trim($userDetail->email) . '|' .
             $userDetail->id . '||||||||||' .
             config('constant.PAYU_MERCHANT_SALT');
 
@@ -664,7 +666,7 @@ class LoanAgentController extends Controller
         return [
             'hash' => strtolower(hash('sha512', $hashString)),
             'tid' => $orderId,
-            'amount' => $grand_total
+            'amount' => number_format($grand_total, 2, '.', '')
         ];
     }
 
@@ -674,25 +676,23 @@ class LoanAgentController extends Controller
             ? config('constant.PAYU_PROD_URL')
             : config('constant.PAYU_TEST_URL');
 
-        $postData = [
-            'mkey'        => config('constant.PAYU_MERCHANT_KEY'),
-            'tid'         => $orderId,
+        $amount = number_format($grand_total, 2, '.', '');
+
+        return [
+            'key'         => config('constant.PAYU_MERCHANT_KEY'),
+            'txnid'       => $orderId,
             'hash'        => $hash,
-            'address'     => '',
-            'amount'      => $grand_total,
-            'name'        => trim($userDetail->first_name),
-            'lname'       => trim($userDetail->last_name),
+            'amount'      => $amount,
+            'firstname'   => trim($userDetail->first_name),
+            'email'       => trim($userDetail->email),
+            'phone'       => trim($userDetail->mobile),
             'productinfo' => 'loan agent',
-            'mailid'      => trim($userDetail->email),
-            'phoneno'     => trim($userDetail->mobile),
             'udf1'        => $userDetail->id,
+            'surl'        => $returnUrl,
+            'furl'        => $returnUrl,
+            'service_provider' => 'payu_paisa',
             'action'      => $url,
-            'returnUrl'   => $returnUrl,
         ];
-
-        Log::info('PayU Post Data Generated', $postData);
-
-        return $postData;
     }
 
     /* callback url ofd loan agent */
