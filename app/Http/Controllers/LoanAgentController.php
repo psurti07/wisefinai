@@ -956,7 +956,7 @@ class LoanAgentController extends Controller
             $password = trim(random_code(6));
             Session::put('user_password', $password);
 
-            $responseCode = $request->input('responseCode');
+            $responseCode = $request->status;
             Session::put('responsecode', $responseCode);
 
             $orderAmount = $request->input('amount') / 100;
@@ -995,7 +995,7 @@ class LoanAgentController extends Controller
                 ->first();
             Cookie::queue('applyid', $userData->id, $this->lifetime, '/', null, false, true, false, 'lax');
 
-            if ($responseCode == 100) {
+            if ($responseCode == 'success') {
                 $cardno = random_code_num(16);
                 $membershipData = array(
                     'rec_date' => now(),
