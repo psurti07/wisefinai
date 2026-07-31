@@ -625,7 +625,9 @@ class LoanAgentController extends Controller
             $returnUrl = $inputs['plan'] == 2 ? route('api.loan.agent.buy.digital.agent.plan') : route('api.self.apply.buy.digital.plan');
 
             $hashData = $this->generateHash($userDetail, $orderId, $roundAmount);
-            $postData = $this->generatePostData($userDetail, $orderId, $roundAmount, $hashData['hash'],$returnUrl);
+            $postData = $this->generatePostData($userDetail, $orderId, $roundAmount, $hashData['hash'], $returnUrl);
+
+            Log::info('PayU Final Post Data', $postData);
 
             $taxNote = strtolower($userDetail->state) === 'gujarat'
                 ? 'CGST 9% + SGST 9% applied'
@@ -657,6 +659,8 @@ class LoanAgentController extends Controller
             $userDetail->id . '||||||||||' .
             config('constant.PAYU_MERCHANT_SALT');
 
+        Log::info('PayU Hash String', ['hash_string' => $hashString]);
+
         return [
             'hash' => strtolower(hash('sha512', $hashString)),
             'tid' => $orderId,
@@ -664,27 +668,31 @@ class LoanAgentController extends Controller
         ];
     }
 
-    public function generatePostData($userDetail, $orderId, $grand_total, $hash,$returnUrl)
+    public function generatePostData($userDetail, $orderId, $grand_total, $hash, $returnUrl)
     {
         $url = config('constant.PAYU_MODE') === 'PROD'
             ? config('constant.PAYU_PROD_URL')
             : config('constant.PAYU_TEST_URL');
 
-        return [
+        $postData = [
             'mkey'        => config('constant.PAYU_MERCHANT_KEY'),
             'tid'         => $orderId,
             'hash'        => $hash,
             'address'     => '',
             'amount'      => $grand_total,
-            'name'        => $userDetail->first_name,
-            'lname'       => $userDetail->last_name,
+            'name'        => trim($userDetail->first_name),
+            'lname'       => trim($userDetail->last_name),
             'productinfo' => 'loan agent',
-            'mailid'      => $userDetail->email,
-            'phoneno'     => $userDetail->mobile,
+            'mailid'      => trim($userDetail->email),
+            'phoneno'     => trim($userDetail->mobile),
             'udf1'        => $userDetail->id,
             'action'      => $url,
             'returnUrl'   => $returnUrl,
         ];
+
+        Log::info('PayU Post Data Generated', $postData);
+
+        return $postData;
     }
 
     /* callback url ofd loan agent */
