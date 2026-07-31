@@ -948,6 +948,7 @@ class LoanAgentController extends Controller
     /* buyDigitalPlan function handle */
     public function buyDigitalPlan(Request $request)
     {
+        Log::info('PayU buyDigitalPlan Request Data', $request->all());
         try {
             $grandtotal = $netamount = $cgstamount = $sgstamount = $igstamount = 0;
             $meta = selfApplyMeta();
@@ -963,19 +964,8 @@ class LoanAgentController extends Controller
 
             $orderAmount = $request->input('amount') / 100;
             $txnId = $request->txnid;
-            // $paymentMode = 'razorpay';
-
-            // $paymentData = Razorpayentry::where('orderid', $orderId)->first();
-
-            // Razorpayentry::where('id', $paymentData->id)->update([
-            //     'rec_date' => now(),
-            //     'orderamount' => $orderAmount,
-            //     'txstatus' => $responseCode,
-            //     'referenceid' => $txnId,
-            //     'paymentmode' => $paymentMode
-            // ]);
-
-            $paymentData = PayuLogEntry::where('order_id', $request->txnid)->firstOrFail();
+     
+            $paymentData = PayuLogEntry::where('orderid', $request->txnid)->firstOrFail();
 
             $paymentData->update([
                 'reference_id' => $request->mihpayid,
