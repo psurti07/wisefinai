@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Log;
 
 class Kernel extends ConsoleKernel
 {
@@ -27,8 +28,11 @@ class Kernel extends ConsoleKernel
         $schedule->command('whatsapp:sa-lead-cycle')->everyFifteenMinutes();
         // $schedule->command('whatsapp:blog-remarketing-cycle')->everyFifteenMinutes();
         
-        $schedule->command('sms:sa-customer-service-closed-cycle')->everyFifteenMinutes();
-        $schedule->command('app:customers-plan-expire')->dailyAt('11:00');
+        // $schedule->command('sms:sa-customer-service-closed-cycle')->everyFifteenMinutes();
+        // $schedule->command('app:customers-plan-expire')->dailyAt('11:00');
+        $schedule->call(function () {
+                Log::info('CRON TEST RUNNING: ' . now());
+            })->everyMinute();
     }
 
     /**
