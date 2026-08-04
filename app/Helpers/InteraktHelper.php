@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Log;
+
     if(!function_exists('user_track')){
         function user_track($postData){
             $curl = curl_init();
@@ -32,6 +34,13 @@
 
             $response = curl_exec($curl);
             $err = curl_error($curl);
+
+            Log::info('Interakt User_track Request', $postData);
+            Log::info('Interakt User_track Response', ['response' => $response]);
+
+            if ($err) {
+                Log::error('Interakt cURL Error', ['error' => $err]);
+            }
             curl_close($curl);
 
             $result = json_decode($response, true);
@@ -74,6 +83,14 @@
 
             $response = curl_exec($curl);
             $err = curl_error($curl);
+
+            Log::info('Interakt Event_track Request', $postData);
+            Log::info('Interakt Event_track Response', ['response' => $response]);
+
+            if ($err) {
+                Log::error('Interakt cURL Error', ['error' => $err]);
+            }
+
             curl_close($curl);
 
             $result = json_decode($response, true);
