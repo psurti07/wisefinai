@@ -5,7 +5,7 @@
             <p class="p-md"><i>"The entire process was smooth and hassle-free. The team guided me at every step and helped me find the right loan offer."</i></p>
             <div class="author-data clearfix">
                 <div class="review-avatar">
-                    <img src="{{ asset('front/images/review/review-6.jpg') }}" alt="review-avatar" width="auto">
+                    <img src="{{ asset('front/images/review/review-4.jpg') }}" alt="review-avatar" width="auto">
                 </div>
                 <div class="review-author">
                     <h4 class="s-16 w-600">Priya Patel</h4>
@@ -85,7 +85,7 @@
             <p class="p-md"><i>"Highly recommended! The loan consultation was professional, and I received multiple options from trusted lenders."</i></p>
             <div class="author-data clearfix">
                 <div class="review-avatar">
-                    <img src="{{ asset('front/images/review/review-2.jpg') }}" alt="review-avatar" width="auto">
+                    <img src="{{ asset('front/images/review/review-5.jpg') }}" alt="review-avatar" width="auto">
                 </div>
                 <div class="review-author">
                     <h4 class="s-16 w-600">Sneha Joshi</h4>
