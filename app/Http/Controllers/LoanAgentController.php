@@ -1238,7 +1238,6 @@ class LoanAgentController extends Controller
 
                 $staff = Administrations::where('id', $userData->staff_id)->first();
 
-                if (isset($responsecode) && $responsecode == 100) {
                     UserRegistration::where('id', $userData->userid)->update(['process_step' => 5]);
 
                     /* application remarks entry start */
@@ -1329,7 +1328,6 @@ class LoanAgentController extends Controller
                     $restrack2 = event_track($data3);
 
                     /* interakt code ends here */
-                }
             }
             return view('loanAgent.paymentSuccess', compact('data', 'orderData', 'meta'));
         } catch (\Exception $e) {
