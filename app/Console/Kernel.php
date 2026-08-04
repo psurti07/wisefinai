@@ -30,9 +30,10 @@ class Kernel extends ConsoleKernel
         
         // $schedule->command('sms:sa-customer-service-closed-cycle')->everyFifteenMinutes();
         // $schedule->command('app:customers-plan-expire')->dailyAt('11:00');
-        $schedule->call(function () {
-                Log::info('CRON TEST RUNNING: ' . now());
-            })->everyMinute();
+      
+        // $schedule->call(function () {
+        //         Log::info('CRON TEST RUNNING: ' . now());
+        //     })->everyMinute();
     }
 
     /**
