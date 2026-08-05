@@ -41,6 +41,7 @@ Route::group([
     Route::get('/sitemap', [HomeController::class, 'sitemap'])->name('sitemap');
     Route::get('/generate-sitemap', [HomeController::class, 'generateSitemap']);
     Route::get('/testdata', [HomeController::class, 'testdata']);
+    Route::get('/testevent', [HomeController::class, 'testevent']);
     /* Legal controller functions */
     Route::get('/raise-request', [LegalController::class, 'raiseRequest'])->name('raise.request');
     Route::post('/request-raised', [LegalController::class, 'requestRaisedPost'])->name('request.raised.post');
