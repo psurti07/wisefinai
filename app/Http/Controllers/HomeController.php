@@ -281,6 +281,7 @@ class HomeController extends Controller
     }
 
     public function testevent(){
+        die;
         $data3 = array(
             'phoneNumber' => '9408881214',
             'countryCode' => '+91',
