@@ -247,7 +247,7 @@
             </div>
         </div>
         <div class="fbox-wrapper text-center mt-40">
-            <div class="row gx-lg-3 gy-lg-2 g-5 row-cols-1 row-cols-md-2 row-cols-lg-4">
+            <div class="row gx-lg-3 gy-lg-2 g-5 row-cols-1 row-cols-md-2 row-cols-lg-3">
                 <div class="col">
                     <div class="fbox-8 feature-image fbox--hover fb-1 r-12 border h-100">
                         <div class="fbox-ico ico-30">
@@ -276,7 +276,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                {{-- <div class="col">
                     <div class="fbox-8 fbox--hover feature-image fb-2 r-12 border h-100">
                         <div class="fbox-ico ico-30">
                             <div class="shape-ico">
@@ -289,7 +289,7 @@
                             <p>Take control of your finances while enjoying the benefits of excellent provisions.</p>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="col">
                     <div class="fbox-8 fbox--hover feature-image fb-3 r-12 border h-100">
                         <div class="fbox-ico ico-30">
@@ -441,9 +441,6 @@
     });
 </script>
 
-<script>
-    const sendOtpUrl = @json(route('self.apply.send.otp'));
-</script>
 <!-- write or link your script file and script tag here -->
 <script src="{{ asset('front/js/loanAgent.js') }}"></script>
 <script>

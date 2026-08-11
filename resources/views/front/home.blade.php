@@ -21,9 +21,9 @@
                  <div class="hero-7-txt">
                      <h1 class="s-40 w-700">Your Partner for Better <span class="color--green-500">Financial Decisions</span></h1>
                      <p class="mb-20">Get the right guidance and loan solutions to achieve your goals with confidence</p>
-                     <a href="{{ route('self.apply.main') }}"
+                     {{-- <a href="{{ route('self.apply.main') }}"
                          class="btn r-04 btn--theme hover--tra-black last-link me-2 mb-md-0 mb-0">Self
-                         Apply</a>
+                         Apply</a> --}}
                      <a href="{{ route('loan.agent.main') }}"
                          class="btn r-04 btn--theme hover--tra-black last-link">Hire
                          an Agent</a>
@@ -140,7 +140,7 @@
              </div>
          </div>
          <div class="fbox-wrapper text-center mt-40">
-             <div class="row gx-lg-3 gy-lg-2 g-5 row-cols-1 row-cols-md-2 row-cols-lg-4">
+             <div class="row gx-lg-3 gy-lg-2 g-5 row-cols-1 row-cols-md-2 row-cols-lg-3">
                  <div class="col">
                      <div class="fbox-8 feature-image fbox--hover fb-1 r-12 border shadow h-100">
                          <div class="fbox-ico ico-30">
@@ -169,7 +169,7 @@
                          </div>
                      </div>
                  </div>
-                 <div class="col">
+                 {{-- <div class="col">
                      <div class="fbox-8 fbox--hover feature-image fb-2 r-12 border shadow h-100">
                          <div class="fbox-ico ico-30">
                              <div class="shape-ico text-white">
@@ -182,7 +182,7 @@
                              <p>Take the next step toward financial freedom with trusted support and personalized solutions.</p>
                          </div>
                      </div>
-                 </div>
+                 </div> --}}
                  <div class="col">
                      <div class="fbox-8 fbox--hover feature-image fb-3 r-12 border shadow h-100">
                          <div class="fbox-ico ico-30">
@@ -213,7 +213,7 @@
                  </div>
              </div>
          </div>
-         <div class="row position-relative mb-3">
+         {{-- <div class="row position-relative mb-3">
              <figure class="rounded position-absolute d-none d-lg-block text-end"
                  style="top: 50%; right:0; width: 45%; height: auto; transform: translateY(-50%); z-index:2;"><img
                      src="{{ asset('front/images/Quick-Self-Apply.png') }}"></figure>
@@ -239,7 +239,7 @@
                      </div>
                  </div>
              </div>
-         </div>
+         </div> --}}
          <div class="row position-relative justify-content-end">
              <figure class="rounded position-absolute d-none d-lg-block"
                  style="top: 50%; left:0; width: 45%; height: auto; transform: translateY(-50%); z-index:2"><img
@@ -970,7 +970,6 @@ $(document).ready(function() {
 
  <script>
 const routes = {
-    'selfapply': "{{ route('self.apply.send.otp') }}",
     'loan-agent': "{{ route('loan.agent.send.otp') }}"
 };
 
