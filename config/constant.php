@@ -34,6 +34,8 @@ return [
     'SM_TWITTER'       => env('SM_TWITTER'),
     'SM_YOUTUBE'       => env('SM_YOUTUBE'),
     'SM_PINTEREST'     => env('SM_PINTEREST'),
+    'SM_QUORA'         => env('SM_QUORA'),
+    'SM_REDDIT'        => env('SM_REDDIT'),
 
     "PAYU_TEST_URL" => 'https://test.payu.in/_payment',
     "PAYU_PROD_URL" => 'https://secure.payu.in/_payment',
