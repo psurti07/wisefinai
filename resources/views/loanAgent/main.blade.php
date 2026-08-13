@@ -115,7 +115,7 @@
                                 </div>
                                 <div class="fbox-txt">
                                     <h4 class="s-16 w-700">Low Interest Rate</h4>
-                                    <p class="mb-0">Starting at 10.5%</p>
+                                    <p class="mb-0">Starting at 11.5%</p>
                                 </div>
                             </div>
                         </div>
