@@ -27,7 +27,7 @@ if(!function_exists('sendSingleSMS')){
     	}
 	    // Construct the API URL
         $api_url = "http://m.onlinebusinessbazaar.in/sendsms.jsp?user={$username}&password={$password}&senderid={$sender_id}&mobiles={$mobile}&sms={$sms_text}";
-
+        Log::info('sendSingleSMS : ' . $api_url);
         // Submit the request to the server
         $response = Http::get($api_url);
         log::info("sendSingleSMS response : " . $response);
