@@ -156,7 +156,7 @@ class LayerApi {
             }
         }
 
-        if (env('OPENMONEY_MODE') == "PROD") {
+        if (config('constant.OPENMONEY_MODE') == "PROD") {
             $url = self::BASE_URL_UAT."/".$route;
         } else {
             $url = self::BASE_URL_SANDBOX."/".$route;
@@ -198,7 +198,7 @@ class LayerApi {
     }
 
     private function http_get($route) {
-        if (env('OPENMONEY_MODE') == "PROD") {
+        if (config('constant.OPENMONEY_MODE') == "PROD") {
             $url = self::BASE_URL_UAT."/".$route;
         } else {
             $url = self::BASE_URL_SANDBOX."/".$route;

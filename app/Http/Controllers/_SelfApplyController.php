@@ -465,7 +465,7 @@ dwIDAQAB
             $amount = ($productData->inOffer == 1) ? $productData->offeramount : $productData->amount;
             $grandAmount = $amount + ($amount * 0.18);
 
-            $uatNumbers = explode(',', env('UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
+            $uatNumbers = explode(',', config('constant.UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
 
             foreach ($uatNumbers as $uatNum) {
                 if ($uatNum == Cookie::get('user_mobile')) {
@@ -483,7 +483,7 @@ dwIDAQAB
             $returnUrl = $inputs['plan'] == 2 ? route('api.loan.agent.buy.digital.agent.plan') : route('api.self.apply.buy.digital.plan');
             $callbackUrl = $inputs['plan'] == 2 ? route('loan.agent.callbackUrl') : route('self.apply.callbackUrl');
 
-            if (env('PHONEPE_ENV') == "PRODUCTION") {
+            if (config('constant.PHONEPE_ENV') == "PRODUCTION") {
                 $curlurl = 'https://api.phonepe.com/apis/hermes/pg/v1/pay';
             } else {
                 $curlurl = 'https://api-preprod.phonepe.com/apis/hermes/pg/v1/pay';
@@ -500,7 +500,7 @@ dwIDAQAB
             //Log::info('PhonePe Insert data - '. json_encode($phonePeData));
             $res2 = PhonrPeEntry::create($phonePeData);
             $dataRes = array(
-                "merchantId" => env('PHONEPE_MERCHANT_ID'),
+                "merchantId" => config('constant.PHONEPE_MERCHANT_ID'),
                 "merchantTransactionId" => strval($orderid),
                 "merchantUserId" => strval(Cookie::get('userid')),
                 "amount" => $grandAmount * 100,
@@ -513,7 +513,7 @@ dwIDAQAB
                 )
             );
             //Log::info('Data Response - '. json_encode($dataRes));
-            $payUrl = getPhonePePaymentUrl($curlurl, env('PHONEPE_SALT_KEY'), env('PHONEPE_SALT_INDEX'), $dataRes);
+            $payUrl = getPhonePePaymentUrl($curlurl, config('constant.PHONEPE_SALT_KEY'), config('constant.PHONEPE_SALT_INDEX'), $dataRes);
             //Log::info(json_encode($payUrl));
             if ($payUrl) {
                 if ($payUrl->data->instrumentResponse->redirectInfo->url) {
@@ -619,7 +619,7 @@ dwIDAQAB
                         'rec_date' => date('Y-m-d H:i:s'),
                         'userid' => $userData->userid,
                         'registration_date' => date('Y-m-d'),
-                        'expiry_date' => date('Y-m-d', strtotime(env('SUBSCRIPTION_EXPIRY'))),
+                        'expiry_date' => date('Y-m-d', strtotime(config('constant.SUBSCRIPTION_EXPIRY'))),
                         'card_number' => $cardno,
                         'amount' => $grandtotal,
                         'paymentid' => $referenceId,
@@ -677,7 +677,7 @@ dwIDAQAB
                     $updateInvoiceNo = SiteOption::where('option_key', 'newinvoiceno')->update($invNoData);
                     $data4 = array(
                         'payout' => 0,
-                        'payout_amount' => $netamount * env('CU_PAYOUT_RATIO'),
+                        'payout_amount' => $netamount * config('constant.CU_PAYOUT_RATIO'),
                         'order_amount' => $netamount
                     );
                     $response4 = 'self-apply/paymentFailed';
@@ -771,7 +771,7 @@ dwIDAQAB
     public function offer1()
     {
         $meta = selfApplyMeta();
-        $products = Product::where('productslug',env('SA_OFFER_1'))->first();
+        $products = Product::where('productslug',config('constant.SA_OFFER_1'))->first();
         if ($products->inOffer == 1) {
             $productData = array(
                 'inOffer' => $products->inOffer,
@@ -806,7 +806,7 @@ dwIDAQAB
         Log::info(json_encode($inputs));
         try{
             /* product Data */
-            $products = Product::where('productslug',env('SA_OFFER_1'))->first();
+            $products = Product::where('productslug',config('constant.SA_OFFER_1'))->first();
             Log::info('products - '.json_encode($products));
             /* set amount of offer */
             $amount = ($products->inOffer == 1) ? $products->offeramount : $products->amount;
@@ -817,7 +817,7 @@ dwIDAQAB
             $mobile = $inputs['mobile'];
             $email = $inputs['email'];
 
-            $uatNumbers = explode(',', env('UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
+            $uatNumbers = explode(',', config('constant.UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
 
             foreach ($uatNumbers as $uatNum) {
                 if ($uatNum == $mobile) {
@@ -850,7 +850,7 @@ dwIDAQAB
             $orderId = number_format(microtime(true) * 1000, 0, '.', '');
             $returnUrl = 'api/self-apply/offer-1-response';
 
-            if (env('LYRA_MODE') == "PROD") {
+            if (config('constant.LYRA_MODE') == "PROD") {
                 $curlurl = "https://api.in.lyra.com/pg/rest/v1/charge";
             } else {
                 $curlurl = "https://api.in.lyra.com/pg/rest/v1/charge";
@@ -962,7 +962,7 @@ dwIDAQAB
     public function offer2()
     {
         $meta = selfApplyMeta();
-        $products = Product::where('productslug',env('SA_OFFER_2'))->first();
+        $products = Product::where('productslug',config('constant.SA_OFFER_2'))->first();
         if ($products->inOffer == 1) {
             $productData = array(
                 'inOffer' => $products->inOffer,
@@ -997,7 +997,7 @@ dwIDAQAB
         Log::info(json_encode($inputs));
         try{
             /* product Data */
-            $products = Product::where('productslug',env('SA_OFFER_2'))->first();
+            $products = Product::where('productslug',config('constant.SA_OFFER_2'))->first();
             Log::info('products - '.json_encode($products));
             /* set amount of offer */
             $amount = ($products->inOffer == 1) ? $products->offeramount : $products->amount;
@@ -1008,7 +1008,7 @@ dwIDAQAB
             $mobile = $inputs['mobile'];
             $email = $inputs['email'];
 
-            $uatNumbers = explode(',', env('UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
+            $uatNumbers = explode(',', config('constant.UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
 
             foreach ($uatNumbers as $uatNum) {
                 if ($uatNum == $mobile) {
@@ -1042,23 +1042,23 @@ dwIDAQAB
             $encData = null;
             $returnUrl = 'api/self-apply/offer-2-response';
 
-            if (env('SABPAISA_MODE') == "PROD") {
+            if (config('constant.SABPAISA_MODE') == "PROD") {
                 $curlurl = "https://securepay.sabpaisa.in/SabPaisa/sabPaisaInit?v=1";
             } else {
                 $curlurl = "https://stage-securepay.sabpaisa.in/SabPaisa/sabPaisaInit?v=1";
             }
             $fullname = trim($first_name)." ".trim($last_name);
             /* subpaisa encrypt data */
-            $encData = "?clientCode=".env('SABPAISA_CLIENT_CODE')."&transUserName=".env('SABPAISA_USERNAME')."&transUserPassword=".env('SABPAISA_PASSWORD')."&amount=".round($grandAmount).
+            $encData = "?clientCode=".config('constant.SABPAISA_CLIENT_CODE')."&transUserName=".config('constant.SABPAISA_USERNAME')."&transUserPassword=".config('constant.SABPAISA_PASSWORD')."&amount=".round($grandAmount).
             "&amountType=INR&clientTxnId=".$orderId."&payerName=".$fullname."&payerMobile=".$mobile."&payerEmail=".trim(strtolower($email))."&mcc=5137&channelId=#&callbackUrl=".$returnUrl;
             Log::info('subpaisa entry - '. $encData);
 
             /* generate subpaisa paymenturl */
             $AesCipher = new Authuntication();
-            $encryptData = $AesCipher->encrypt(env('SABPAISA_AUTH_KEY'), env('SABPAISA_AUTH_IV'), $encData);
+            $encryptData = $AesCipher->encrypt(config('constant.SABPAISA_AUTH_KEY'), config('constant.SABPAISA_AUTH_IV'), $encData);
 
             /*$postData = array(
-                'clientCode' => env('SABPAISA_CLIENT_CODE'),
+                'clientCode' => config('constant.SABPAISA_CLIENT_CODE'),
                 'encryptData' => $encryptData,
                 'action' => $curlurl
             );*/
@@ -1076,7 +1076,7 @@ dwIDAQAB
             $response = SubpaisaEntry::insert($subpaisaData);
             return view('pg.pay', [
                 'data' => $encryptData,
-                'clientCode' => env('SABPAISA_CLIENT_CODE'),
+                'clientCode' => config('constant.SABPAISA_CLIENT_CODE'),
                 'action' => $curlurl
             ]);
         } catch(\Exception $e){
@@ -1089,8 +1089,8 @@ dwIDAQAB
         try{
             $meta = selfApplyMeta();
             $query = $request->input('encResponse');
-            $authKey = env('SABPAISA_AUTH_KEY');
-            $authIV = env('SABPAISA_AUTH_IV');
+            $authKey = config('constant.SABPAISA_AUTH_KEY');
+            $authIV = config('constant.SABPAISA_AUTH_IV');
 
             $AesCipher = new Authuntication();
             $decText = $AesCipher->decrypt($authKey, $authIV, $query);
@@ -1230,7 +1230,7 @@ dwIDAQAB
     public function offer3()
     {
         $meta = selfApplyMeta();
-        $products = Product::where('productslug',env('SA_OFFER_3'))->first();
+        $products = Product::where('productslug',config('constant.SA_OFFER_3'))->first();
         if ($products->inOffer == 1) {
             $productData = array(
                 'inOffer' => $products->inOffer,
@@ -1265,7 +1265,7 @@ dwIDAQAB
         //Log::info(json_encode($inputs));
         try{
             /* product Data */
-            $products = Product::where('productslug',env('SA_OFFER_3'))->first();
+            $products = Product::where('productslug',config('constant.SA_OFFER_3'))->first();
             //Log::info('products - '.json_encode($products));
             /* set amount of offer */
             $amount = ($products->inOffer == 1) ? $products->offeramount : $products->amount;
@@ -1276,7 +1276,7 @@ dwIDAQAB
             $mobile = $inputs['mobile'];
             $email = $inputs['email'];
 
-            $uatNumbers = explode(',', env('UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
+            $uatNumbers = explode(',', config('constant.UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
 
             foreach ($uatNumbers as $uatNum) {
                 if ($uatNum == $mobile) {

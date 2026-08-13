@@ -49,7 +49,7 @@
                 </div>
                 <!-- Content on the right -->
                 <div class="header-content">
-                    <h5 class="mb-0">{{ env('COMPANY_NAME') }}</h5>
+                    <h5 class="mb-0">{{ config('constant.COMPANY_NAME') }}</h5>
                     <p class="mb-0">#{{ $response['data']['txnid'] }}</p>
                     <p class="mb-0 fw-bold">&#8377;{{ $response['data']['amount'] }}</p>    
                 </div>
@@ -74,7 +74,7 @@
                         <!--<button id="reload-btn" style="display: none;">Reload QR</button>-->
                         <!-- Powered by UPI -->
                         <div class="powered-upi">
-                            <p>Powered by <strong>{{ env('APP_NAME') }}</strong></p>
+                            <p>Powered by <strong>{{ config('constant.APP_NAME') }}</strong></p>
                         </div>
                     </div>
                 </div>

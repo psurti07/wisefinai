@@ -348,7 +348,7 @@
                             <strong>Disclaimer:</strong> wisefinai is a loan service aggregator and is authorised to provide services on behalf of its Lending Partners. The amount paid is only for the service charge. We are not lenders and do not guarantee any loan approval.
                         </p>
                         <p class="s-14">
-                            <strong>Registered Office Address:</strong> {{ config('constant.COMPANY_ADDRESS'); }} <br /> Mobile: {{ config('constant.COMPANY_MOBILE'); }} | Email: {{ env('INFO_EMAIL') }}
+                            <strong>Registered Office Address:</strong> {{ config('constant.COMPANY_ADDRESS'); }} <br /> Mobile: {{ config('constant.COMPANY_MOBILE'); }} | Email: {{ config('constant.INFO_EMAIL') }}
                         </p>
                     </div>
                 </div>

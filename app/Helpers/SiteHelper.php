@@ -511,7 +511,7 @@ if (!function_exists('handleFileUpload')) {
 if (!function_exists('sendBrevoHtmlMail')) {
     function sendBrevoHtmlMail($maildata, $subject = '', $message = '', $sendmail = '', $attachmentPath = '')
     {
-        $data['sender']['name'] = env('APP_NAME');
+        $data['sender']['name'] = config('constant.APP_NAME');
         $data["sender"]["email"] = 'info@wisefinai.com';
 
         $user_res["name"] = $maildata["fullname"];
@@ -552,7 +552,7 @@ if (!function_exists('sendBrevoHtmlMail')) {
                 CURLOPT_HTTPHEADER => [
                     "Accept: application/json",
                     "Content-Type: application/json",
-                    "api-key: " . env('BREVO_API_KEY')
+                    "api-key: " . config('constant.BREVO_API_KEY')
                 ],
             )
         );
@@ -571,7 +571,7 @@ if (!function_exists('sendBrevoHtmlMail')) {
 if (!function_exists('sendBrevoHtmlMail2')) {
     function sendBrevoHtmlMail2($maildata, $subject = '', $message = '', $sendmail = '', $attachments = [])
     {
-        $data['sender']['name'] = env('APP_NAME');
+        $data['sender']['name'] = config('constant.APP_NAME');
         $data["sender"]["email"] = 'info@wisefinai.com';
 
         $user_res["name"] = $maildata["fullname"];
@@ -614,7 +614,7 @@ if (!function_exists('sendBrevoHtmlMail2')) {
                 CURLOPT_HTTPHEADER => [
                     "Accept: application/json",
                     "Content-Type: application/json",
-                    "api-key: " . env('BREVO_API_KEY')
+                    "api-key: " . config('constant.BREVO_API_KEY')
                 ],
             )
         );

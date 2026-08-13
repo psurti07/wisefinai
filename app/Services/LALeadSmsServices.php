@@ -79,8 +79,8 @@ class LALeadSmsServices
                                     $personalizedMsg = str_ireplace('{#varamount#}', $eligibilityAmt, $msgTemplate);
     
                                     $dataset .= "<sms>
-                                        <user>" . env('SMS_OBB_LA_USERNAME') . "</user>
-                                        <password>" . env('SMS_OBB_LA_PASSWORD') . "</password>
+                                        <user>" . config('constant.SMS_OBB_LA_USERNAME') . "</user>
+                                        <password>" . config('constant.SMS_OBB_LA_PASSWORD') . "</password>
                                         <mobiles>{$user->mobile}</mobiles>
                                         <message>{$personalizedMsg}</message>
                                         <accusage>1</accusage>
@@ -95,8 +95,8 @@ class LALeadSmsServices
                             $trackingMsg = str_ireplace('{#varamount#}', '500000', $msgTemplate);
                             $dataset .= "
                             <sms>
-                                <user>" . env('SMS_OBB_LA_USERNAME') . "</user>
-                                <password>" . env('SMS_OBB_LA_PASSWORD') . "</password>
+                                <user>" . config('constant.SMS_OBB_LA_USERNAME') . "</user>
+                                <password>" . config('constant.SMS_OBB_LA_PASSWORD') . "</password>
                                 <mobiles>9274436342</mobiles>
                                 <message>{$trackingMsg}</message>
                                 <accusage>1</accusage>

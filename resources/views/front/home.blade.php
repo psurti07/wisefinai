@@ -821,7 +821,7 @@
                              <div class="address-text ms-3">
                                  <h6 class="color--green-500 mb-1 s-16"> Customer Support :</h6>
                                  <p class="address-txt mt-0"><a
-                                         href="tel:{{ str_ireplace(" ","",env('COMPANY_MOBILE')) }}">
+                                         href="tel:{{ str_ireplace(" ","",config('constant.COMPANY_MOBILE')) }}">
 
                                          {{ config('constant.COMPANY_MOBILE'); }}</a>
                                  </p>
@@ -840,7 +840,7 @@
                              <div class="address-text ms-3">
                                  <h6 class="color--green-500 mb-1 s-16"> Mail Us:</h6>
                                  <p class="address-txt mt-0"><a
-                                         href="mailto:{{ str_ireplace(" ","",env('COMPANY_SUPPORT_MAIL')) }}">
+                                         href="mailto:{{ str_ireplace(" ","",config('constant.COMPANY_SUPPORT_MAIL')) }}">
                                          {{ config('constant.COMPANY_SUPPORT_MAIL'); }}</a>
                                  </p>
                              </div>

@@ -26,10 +26,10 @@ class BilldeskServices
     
     public function __construct()
     {
-        $this->encryptionKey = env('ENC_PASS');
-        $this->signingKey = env('SIGN_PASS');
-        $this->keyId = env('KEY_ID');
-        $this->clientId = env('CLIENT_ID');
+        $this->encryptionKey = config('constant.ENC_PASS');
+        $this->signingKey = config('constant.SIGN_PASS');
+        $this->keyId = config('constant.KEY_ID');
+        $this->clientId = config('constant.CLIENT_ID');
     }
     
     public function createPayload(array $data): string

@@ -544,7 +544,7 @@ class LoanAgentController extends Controller
             $grandAmount = $amount + ($amount * 0.18);
             $roundAmount  = floor($grandAmount);
 
-            $uatNumbers = explode(',', env('UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
+            $uatNumbers = explode(',', config('constant.UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
 
             foreach ($uatNumbers as $uatNum) {
                 if ($uatNum == Cookie::get('user_mobile')) {
@@ -556,7 +556,7 @@ class LoanAgentController extends Controller
             Log::info($roundAmount);
             $returnUrl = $inputs['plan'] == 2 ? route('api.loan.agent.buy.digital.agent.plan') : route('api.self.apply.buy.digital.plan');
 
-            $api = new Api(env('RAZOR_KEY_ID'), env('RAZOR_KEY_SECRET'));
+            $api = new Api(config('constant.RAZOR_KEY_ID'), config('constant.RAZOR_KEY_SECRET'));
 
             $order = $api->order->create([
                 'receipt' => 'RAZ_' . time(),
@@ -607,7 +607,7 @@ class LoanAgentController extends Controller
             $grandAmount = $amount + ($amount * 0.18);
             $roundAmount  = floor($grandAmount);
 
-            $uatNumbers = explode(',', env('UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
+            $uatNumbers = explode(',', config('constant.UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
 
             foreach ($uatNumbers as $uatNum) {
                 if ($uatNum == Cookie::get('user_mobile')) {
@@ -1100,7 +1100,7 @@ class LoanAgentController extends Controller
                     }
                     /*$data4 = array(
                             'payout' => 0,
-                            'payout_amount' => $netamount * env('CU_PAYOUT_RATIO'),
+                            'payout_amount' => $netamount * config('constant.CU_PAYOUT_RATIO'),
                             'order_amount' => $netamount
                         );*/
                     $response4 = 'loan-agent/paymentFailed';
@@ -1412,7 +1412,7 @@ class LoanAgentController extends Controller
     public function offer1()
     {
         $meta = selfApplyMeta();
-        $products = Product::where('productslug', env('LA_OFFER_1'))->first();
+        $products = Product::where('productslug', config('constant.LA_OFFER_1'))->first();
         if ($products->inOffer == 1) {
             $productData = array(
                 'inOffer' => $products->inOffer,
@@ -1455,13 +1455,13 @@ class LoanAgentController extends Controller
                 $email = $inputs['email'];
             }
             /* product Data */
-            $products = Product::where('productslug', env('LA_OFFER_1'))->first();
+            $products = Product::where('productslug', config('constant.LA_OFFER_1'))->first();
             //Log::info('products - '.json_encode($products));
             /* set amount of offer */
             $amount = ($products->inOffer == 1) ? $products->offeramount : $products->amount;
             $grandAmount = $amount + ($amount * 0.18);
 
-            $uatNumbers = explode(',', env('UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
+            $uatNumbers = explode(',', config('constant.UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
             foreach ($uatNumbers as $uatNum) {
                 if ($uatNum == $mobile) {
                     $grandAmount = 1;
@@ -1494,21 +1494,21 @@ class LoanAgentController extends Controller
             $orderId = number_format(microtime(true) * 1000, 0, '.', '');
             $returnUrl = 'https://wisefinai.com/api/loan-agent/great-deal-offer-response';
 
-            if (env('SABPAISA_MODE') == "PROD") {
+            if (config('constant.SABPAISA_MODE') == "PROD") {
                 $curlurl = "https://securepay.sabpaisa.in/SabPaisa/sabPaisaInit?v=1";
             } else {
                 $curlurl = "https://stage-securepay.sabpaisa.in/SabPaisa/sabPaisaInit?v=1";
             }
             $fullname = trim($first_name) . " " . trim($last_name);
             /* subpaisa encrypt data */
-            $encData = "?clientCode=" . env('SABPAISA_CLIENT_CODE') . "&transUserName=" . env('SABPAISA_USERNAME') . "&transUserPassword=" . env('SABPAISA_PASSWORD') . "&amount=" . round($grandAmount) . "&amountType=INR&clientTxnId=" . $orderId . "&payerName=" . $fullname . "&payerMobile=" . $mobile . "&payerEmail=" . trim(strtolower($email)) . "&mcc=5137&channelId=#&callbackUrl=" . $returnUrl;
+            $encData = "?clientCode=" . config('constant.SABPAISA_CLIENT_CODE') . "&transUserName=" . config('constant.SABPAISA_USERNAME') . "&transUserPassword=" . config('constant.SABPAISA_PASSWORD') . "&amount=" . round($grandAmount) . "&amountType=INR&clientTxnId=" . $orderId . "&payerName=" . $fullname . "&payerMobile=" . $mobile . "&payerEmail=" . trim(strtolower($email)) . "&mcc=5137&channelId=#&callbackUrl=" . $returnUrl;
 
             /* generate subpaisa paymenturl */
             $AesCipher = new Authuntication();
-            $encryptData = $AesCipher->encrypt(env('SABPAISA_AUTH_KEY'), env('SABPAISA_AUTH_IV'), $encData);
+            $encryptData = $AesCipher->encrypt(config('constant.SABPAISA_AUTH_KEY'), config('constant.SABPAISA_AUTH_IV'), $encData);
 
             /*$postData = array(
-                'clientCode' => env('SABPAISA_CLIENT_CODE'),
+                'clientCode' => config('constant.SABPAISA_CLIENT_CODE'),
                 'encryptData' => $encryptData,
                 'action' => $curlurl
             );*/
@@ -1525,7 +1525,7 @@ class LoanAgentController extends Controller
             $response = SubpaisaEntry::insert($subpaisaData);
             $html = view('pg.pay', [
                 'data' => $encryptData,
-                'clientCode' => env('SABPAISA_CLIENT_CODE'),
+                'clientCode' => config('constant.SABPAISA_CLIENT_CODE'),
                 'action' => $curlurl
             ])->render();
 
@@ -1545,8 +1545,8 @@ class LoanAgentController extends Controller
             //Log::info('request data - '. json_encode($request->all()));
             $meta = selfApplyMeta();
             $query = $request->input('encResponse');
-            $authKey = env('SABPAISA_AUTH_KEY');
-            $authIV = env('SABPAISA_AUTH_IV');
+            $authKey = config('constant.SABPAISA_AUTH_KEY');
+            $authIV = config('constant.SABPAISA_AUTH_IV');
 
             $AesCipher = new Authuntication();
             $decText = $AesCipher->decrypt($authKey, $authIV, $query);
@@ -1685,7 +1685,7 @@ class LoanAgentController extends Controller
     public function offer2()
     {
         $meta = selfApplyMeta();
-        $products = Product::where('productslug', env('LA_OFFER_2'))->first();
+        $products = Product::where('productslug', config('constant.LA_OFFER_2'))->first();
         if ($products->inOffer == 1) {
             $productData = array(
                 'inOffer' => $products->inOffer,
@@ -1732,7 +1732,7 @@ class LoanAgentController extends Controller
             $amount = ($products->inOffer == 1) ? $products->offeramount : $products->amount;
             $grandAmount = $amount + ($amount * 0.18);
 
-            $uatNumbers = explode(',', env('UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
+            $uatNumbers = explode(',', config('constant.UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
 
             foreach ($uatNumbers as $uatNum) {
                 if ($uatNum == $buyerPhone) {
@@ -1878,7 +1878,7 @@ class LoanAgentController extends Controller
     public function offer3_cipherpay()
     {
         $meta = selfApplyMeta();
-        $products = Product::where('productslug', env('LA_OFFER_3'))->first();
+        $products = Product::where('productslug', config('constant.LA_OFFER_3'))->first();
         if ($products->inOffer == 1) {
             $productData = array(
                 'inOffer' => $products->inOffer,
@@ -1921,13 +1921,13 @@ class LoanAgentController extends Controller
                 $email = $inputs['email'];
             }
             /* product Data */
-            $products = Product::where('productslug', env('LA_OFFER_3'))->first();
+            $products = Product::where('productslug', config('constant.LA_OFFER_3'))->first();
             //Log::info('products - '.json_encode($products));
             /* set amount of offer */
             $amount = ($products->inOffer == 1) ? $products->offeramount : $products->amount;
             $grandAmount = $amount + ($amount * 0.18);
 
-            $uatNumbers = explode(',', env('UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
+            $uatNumbers = explode(',', config('constant.UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
 
             foreach ($uatNumbers as $uatNum) {
                 if ($uatNum == $mobile) {
@@ -2063,7 +2063,7 @@ class LoanAgentController extends Controller
     public function offer3()
     {
         $meta = selfApplyMeta();
-        $products = Product::where('productslug', env('LA_OFFER_3'))->first();
+        $products = Product::where('productslug', config('constant.LA_OFFER_3'))->first();
         if ($products->inOffer == 1) {
             $productData = array(
                 'inOffer' => $products->inOffer,
@@ -2105,13 +2105,13 @@ class LoanAgentController extends Controller
                 $email = $inputs['email'];
             }
             /* product Data */
-            $products = Product::where('productslug', env('LA_OFFER_3'))->first();
+            $products = Product::where('productslug', config('constant.LA_OFFER_3'))->first();
             //Log::info('products - '.json_encode($products));
             /* set amount of offer */
             $amount = ($products->inOffer == 1) ? $products->offeramount : $products->amount;
             $grandAmount = $amount + ($amount * 0.18);
 
-            $uatNumbers = explode(',', env('UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
+            $uatNumbers = explode(',', config('constant.UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
 
             foreach ($uatNumbers as $uatNum) {
                 if ($uatNum == $mobile) {
@@ -2147,9 +2147,9 @@ class LoanAgentController extends Controller
 
             /* veegah PG starts */
 
-            $terminalId = env('VEEGAH_TERMINAL_ID');
-            $password = env('VEEGAH_TERMINAL_PASSWORD');
-            $mkey = env('VEEGAH_MERCHANT_KEY');
+            $terminalId = config('constant.VEEGAH_TERMINAL_ID');
+            $password = config('constant.VEEGAH_TERMINAL_PASSWORD');
+            $mkey = config('constant.ENC_PASS');
 
             // data sequence is - orderId|terminalId|password|merchantKey|amount|currency
             //$signdata = $orderid."|TER7990817|TER25041201011970543064|f5949cf7946afa557191b8a18504c2a847a6d9ff08c28ec2fd456322889d1451|".$roundamount."|INR";
@@ -2192,7 +2192,7 @@ class LoanAgentController extends Controller
 
             $res = VeegahEntry::insert($veegahData);
             $prodUrl = "https://test-vegaah.concertosoft.com/vegaahpayments/v2/payments/pay-request";
-            if (env('VEEGAH_PROD')) {
+            if (config('constant.VEEGAH_PROD')) {
                 $prodUrl = "https://checkout.vegaah.com/vegaahpayments/v2/payments/pay-request";
             }
             $curl = curl_init();
@@ -2250,7 +2250,7 @@ class LoanAgentController extends Controller
 
             $encryptedResponse = base64_decode($decodedData, true);
 
-            $merKey = env('VEEGAH_MERCHANT_KEY');
+            $merKey = config('constant.ENC_PASS');
             $binaryKey = hex2bin($merKey);
 
             $decryptedData = openssl_decrypt($encryptedResponse, 'AES-256-ECB', $binaryKey, OPENSSL_RAW_DATA);
@@ -2334,7 +2334,7 @@ class LoanAgentController extends Controller
     public function offer4()
     {
         $meta = selfApplyMeta();
-        $products = Product::where('productslug', env('LA_OFFER_4'))->first();
+        $products = Product::where('productslug', config('constant.LA_OFFER_4'))->first();
         if ($products->inOffer == 1) {
             $productData = array(
                 'inOffer' => $products->inOffer,
@@ -2377,14 +2377,14 @@ class LoanAgentController extends Controller
                 $buyerCountry = 'India';
             }
             /* product Data */
-            $products = Product::where('productslug', env('LA_OFFER_4'))->first();
+            $products = Product::where('productslug', config('constant.LA_OFFER_4'))->first();
             // Log::info('products - '.json_encode($products));
 
             /* set amount of offer */
             $amount = ($products->inOffer == 1) ? $products->offeramount : $products->amount;
             $grandAmount = number_format($amount + ($amount * 0.18), 2);
 
-            $uatNumbers = explode(',', env('UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
+            $uatNumbers = explode(',', config('constant.UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
 
             foreach ($uatNumbers as $uatNum) {
                 if ($uatNum == $buyerPhone) {
@@ -2405,7 +2405,7 @@ class LoanAgentController extends Controller
             ]);
 
             $postData = [
-                'mid' => env('PAYGIC_MERCHANT_ID'),
+                'mid' => config('constant.PAYGIC_MERCHANT_ID'),
                 'merchantReferenceId' => $orderid,
                 'amount' => $grandAmount,
                 'customer_mobile' => $buyerPhone,
@@ -2561,7 +2561,7 @@ class LoanAgentController extends Controller
                 }
             }
             //Log::info('checksum data - '. json_encode($checksumData));
-            $checksum = hash_hmac('sha256', $checksumData, env('ZAAKPAY_SECRET_KEY'));
+            $checksum = hash_hmac('sha256', $checksumData, config('constant.ZAAKPAY_SECRET_KEY'));
             //Log::info('generated checksum - '. $checksum);
             //Log::info('recd checksum - '. $recd_checksum);
 
@@ -2628,7 +2628,7 @@ class LoanAgentController extends Controller
     public function offer5()
     {
         $meta = selfApplyMeta();
-        $products = Product::where('productslug', env('LA_OFFER_5'))->first();
+        $products = Product::where('productslug', config('constant.LA_OFFER_5'))->first();
 
         if ($products->inOffer == 1) {
             $productData = array(
@@ -2673,14 +2673,14 @@ class LoanAgentController extends Controller
             }
             $alldata = $buyerAddress = $buyerCity = $buyerState = $amount = $buyerPinCode = $orderid = '';
             /* product Data */
-            $products = Product::where('productslug', env('LA_OFFER_5'))->first();
+            $products = Product::where('productslug', config('constant.LA_OFFER_5'))->first();
 
             /* set amount of offer */
             $amount = ($products->inOffer == 1) ? $products->offeramount : $products->amount;
             $grandAmount = $amount + ($amount * 0.18);
 
 
-            $uatNumbers = explode(',', env('UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
+            $uatNumbers = explode(',', config('constant.UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
 
             foreach ($uatNumbers as $uatNum) {
                 if ($uatNum == $buyerPhone) {
@@ -2696,10 +2696,10 @@ class LoanAgentController extends Controller
             $hiddenmod = "";
 
             $postData = array(
-                "username" => env('AIRPAY_USERNAME'),
-                "password" => env('AIRPAY_PASSWORD'),
-                "secret" => env('AIRPAY_API_KEY'),
-                "mercid" => env('AIRPAY_MERCHENT_ID'),
+                "username" => config('constant.AIRPAY_USERNAME'),
+                "password" => config('constant.AIRPAY_PASSWORD'),
+                "secret" => config('constant.AIRPAY_API_KEY'),
+                "mercid" => config('constant.AIRPAY_MERCHENT_ID'),
                 "orderid" => $orderid,
                 "url" => $url,
                 "currency" => 356,
@@ -2824,7 +2824,7 @@ class LoanAgentController extends Controller
     public function offer6()
     {
         $meta = selfApplyMeta();
-        $products = Product::where('productslug', env('LA_OFFER_6'))->first();
+        $products = Product::where('productslug', config('constant.LA_OFFER_6'))->first();
 
         if ($products->inOffer == 1) {
             $productData = array(
@@ -2867,13 +2867,13 @@ class LoanAgentController extends Controller
                 $email = $inputs['email'];
             }
             /* product Data */
-            $products = Product::where('productslug', env('LA_OFFER_6'))->first();
+            $products = Product::where('productslug', config('constant.LA_OFFER_6'))->first();
             // Log::info('products - '.json_encode($products));
             /* set amount of offer */
             $amount = ($products->inOffer == 1) ? $products->offeramount : $products->amount;
             $grandAmount = $amount + ($amount * 0.18);
 
-            $uatNumbers = explode(',', env('UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
+            $uatNumbers = explode(',', config('constant.UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
 
             foreach ($uatNumbers as $uatNum) {
                 if ($uatNum == $mobile) {
@@ -2910,7 +2910,7 @@ class LoanAgentController extends Controller
 
             $returnUrl = route('api.loan.agent.offer6Response', ['orderid' => $orderid]);
 
-            if (env('ZAAKPAY_ENV') == "PRODUCTION") {
+            if (config('constant.ZAAKPAY_ENV') == "PRODUCTION") {
                 $curlurl = "https://api.zaakpay.com/api/paymentTransact/V8";
             } else {
                 $curlurl = "https://zaakstaging.zaakpay.com/api/paymentTransact/V8";
@@ -2918,7 +2918,7 @@ class LoanAgentController extends Controller
             $firstname = ($first_name != "") ? $first_name : $email;
             //Log::info($curlurl);
             $zaakpayPostData = array(
-                "merchantIdentifier" => env('ZAAKPAY_MERCHANT_IDENTIFIER'),
+                "merchantIdentifier" => config('constant.ZAAKPAY_MERCHANT_IDENTIFIER'),
                 "orderId" => $orderid,
                 "returnUrl" => $returnUrl,
                 "currency" => 'INR',
@@ -2938,7 +2938,7 @@ class LoanAgentController extends Controller
                 $checksumData .= $key . '=' . $value . '&';
             }
 
-            $checksum = hash_hmac('sha256', $checksumData, env('ZAAKPAY_SECRET_KEY'));
+            $checksum = hash_hmac('sha256', $checksumData, config('constant.ZAAKPAY_SECRET_KEY'));
             Log::info('checksum - ' . $checksum);
 
             $zaakPayData = array(
@@ -3008,7 +3008,7 @@ class LoanAgentController extends Controller
                 }
             }
             Log::info('checksum data - ' . json_encode($checksumData));
-            $checksum = hash_hmac('sha256', $checksumData, env('ZAAKPAY_SECRET_KEY'));
+            $checksum = hash_hmac('sha256', $checksumData, config('constant.ZAAKPAY_SECRET_KEY'));
             Log::info('generated checksum - ' . $checksum);
             Log::info('recd checksum - ' . $recd_checksum);
             if ($checksum == $recd_checksum) {

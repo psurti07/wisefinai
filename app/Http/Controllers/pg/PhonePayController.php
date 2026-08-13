@@ -18,14 +18,14 @@ class PhonePayController extends Controller
         $returnUrl = route('response');
         $callbackUrl = route('response1');
         
-        if(env('PHONEPE_ENV') == "PRODUCTION") {
+        if(config('constant.PHONEPE_ENV') == "PRODUCTION") {
             $curlurl = 'https://api.phonepe.com/apis/hermes/pg/v1/pay';
         } else {
             $curlurl = 'https://api-preprod.phonepe.com/apis/hermes/pg/v1/pay';
         }
         /* post Data */
         $data_res = array(
-            "merchantId" => env('PHONEPE_MERCHANT_ID'),
+            "merchantId" => config('constant.PHONEPE_MERCHANT_ID'),
             "merchantTransactionId" => strval($orderid),
             "merchantUserId" => "Test1",
             "amount" => strval($request->amount) * 100,
@@ -38,7 +38,7 @@ class PhonePayController extends Controller
             ),
         );
         
-        $payurl = getpaymenturl($curlurl, env('PHONEPE_SALT_KEY'), env('PHONEPE_SALT_INDEX'), $data_res);
+        $payurl = getpaymenturl($curlurl, config('constant.PHONEPE_SALT_KEY'), config('constant.PHONEPE_SALT_INDEX'), $data_res);
         if($payurl) {
 			if($payurl->data->instrumentResponse->redirectInfo->url) {
 				header("location:".$payurl->data->instrumentResponse->redirectInfo->url);

@@ -15,7 +15,7 @@ class BilldeskController extends Controller
             $date = Carbon::now()->setTimezone('+05:30');
             $data = [
                 "orderid" => "BDUAT" . number_format(microtime(true) * 1000, 0, '.', ''),
-                "mercid" => env('MERCHANT_ID'),
+                "mercid" => config('constant.MERCHANT_ID'),
                 "order_date" => $date->format('Y-m-d\TH:i:sP'),
                 "amount" => "1.00",
                 "currency" => "356",

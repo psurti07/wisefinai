@@ -26,7 +26,7 @@
 
   <script>
     var options = {
-      "key": "{{ env('RAZOR_KEY_ID') }}",
+      "key": "{{ config('constant.RAZOR_KEY_ID') }}",
       "amount": "{{ $amount }}",
       "currency": "INR",
       "name": "WiseFinAI",

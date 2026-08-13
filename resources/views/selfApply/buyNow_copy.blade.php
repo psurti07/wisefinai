@@ -224,7 +224,7 @@
                                                             <div class="cbox-1-ico"><span class="flaticon-check"></span></div>
                                                         </div>
                                                         <div class="cbox-1-txt">
-                                                            <p class="s-14"> Plan Validity: {{ str_ireplace('+','',env('HIREAGENT_PLAN_VALIDITY')) }}</p>
+                                                            <p class="s-14"> Plan Validity: {{ str_ireplace('+','',config('constant.HIREAGENT_PLAN_VALIDITY')) }}</p>
                                                         </div>
                                                     </div>
                                                     <hr class="divider"/>

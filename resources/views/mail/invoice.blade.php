@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="" />
 
-    <title>{{ env('APP_NAME') }}</title>
+    <title>{{ config('constant.APP_NAME') }}</title>
     <style>
         /*--------------------------------------------------------------
 >> TABLE OF CONTENTS:
@@ -2676,7 +2676,7 @@
                     <div class="tm_invoice_right" style="width:70%;margin-left:10px;">
                         <div class="tm_grid_row tm_col_12">
                             <div class="tm_f14">
-                                <b>{{ env('COMPANY_NAME') }}</b><br />
+                                <b>{{ config('constant.COMPANY_NAME') }}</b><br />
                                 {{ config('constant.COMPANY_ADDRESS'); }}
                             </div>
                         </div>
@@ -2694,8 +2694,8 @@
                     <div class="tm_invoice_right" style="width:37%;">
                         <div class="tm_f14">
                             <p class="tm_mb0">
-                                <b class="tm_primary_color">CIN No: </b> {{ env('CIN_NO') }}<br />
-                                <b class="tm_primary_color">GST No: </b> {{ env('GST_NO') }}
+                                <b class="tm_primary_color">CIN No: </b> {{ config('constant.CIN_NO') }}<br />
+                                <b class="tm_primary_color">GST No: </b> {{ config('constant.GST_NO') }}
                             </p>
                         </div>
                     </div>
@@ -2703,7 +2703,7 @@
                         <div class="tm_f14">
                             <p class="tm_mb0">
                                 <b class="tm_primary_color">Mobile: </b> {{ config('constant.COMPANY_MOBILE'); }}<br />
-                                <b class="tm_primary_color">Email: </b> {{ env('INFO_EMAIL') }}
+                                <b class="tm_primary_color">Email: </b> {{ config('constant.INFO_EMAIL') }}
                             </p>
                         </div>
                     </div>
@@ -2808,7 +2808,7 @@
                     </div>
                     <div class="tm_right_footer cust_authorized">
                         <div class="tm_sign tm_text_center">
-                            <p class="tm_m0 tm_ternary_color">{{ env('COMPANY_NAME') }}</p>
+                            <p class="tm_m0 tm_ternary_color">{{ config('constant.COMPANY_NAME') }}</p>
                             <p class="tm_m0 tm_12 tm_primary_color">Authorized Person</p>
                         </div>
                     </div>

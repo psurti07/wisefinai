@@ -5,7 +5,7 @@
             <!-- FOOTER LOGO -->
             <div class="col-xl-4 mb-sm-20 mb-md-20">
                 <div class="footer-info">
-                    <img class="footer-logo mb-3" src="{{ asset('front/images/logo/logo-w.png') }}" alt="{{ env('APP_NAME') }}"/>
+                    <img class="footer-logo mb-3" src="{{ asset('front/images/logo/logo-w.png') }}" alt="{{ config('constant.APP_NAME') }}"/>
                     <div class="fs-6 mt-3 mb-5 text-light">
                         <p>WiseFinAI is India's thriving financial consultation and service provider that streamlines the loan process through its NBFC partners, giving you the option to apply on your own using the self-apply feature or hire a loan agent to make better borrowing decisions.</p>
                     </div>
@@ -14,7 +14,7 @@
                             <a href="{{ config('constant.SM_FACEBOOK'); }}" target="_blank"><span class="flaticon-facebook text-light"></span></a>
                         </li>
                         <li>
-                            <a href="{{env('SM_INSTAGRAM')}}" target="_blank"><span class="flaticon-instagram text-light"></span></a>
+                            <a href="{{config('constant.SM_INSTAGRAM')}}" target="_blank"><span class="flaticon-instagram text-light"></span></a>
                         </li>
                         <li>
                             <a href="{{ config('constant.SM_YOUTUBE'); }}" target="_blank"><span class="flaticon-youtube text-light"></span></a>
@@ -102,11 +102,11 @@
                     <!-- Mail Link -->
                     <h6 class="s-14 w-700 kbz-h6 text-light" style="margin-bottom:5px!important;">Email Us</h6>
                     <p class="footer-mail-link ico-25">
-                        <a href="mailto:{{ env('INFO_EMAIL') }}" class="text-light">{{ env('INFO_EMAIL') }}</a>
+                        <a href="mailto:{{ config('constant.INFO_EMAIL') }}" class="text-light">{{ config('constant.INFO_EMAIL') }}</a>
                     </p>
                     <h6 class="s-14 w-700 mt-15 kbz-h6 text-light" style="margin-bottom:5px!important;">Call Us</h6>
                     <p class="footer-mail-link ico-25">
-                        <a href="tel:{{str_ireplace(' ','',env('COMPANY_MOBILE'))}}" class="text-light">{{ config('constant.COMPANY_MOBILE'); }}</a>
+                        <a href="tel:{{str_ireplace(' ','',config('constant.COMPANY_MOBILE'))}}" class="text-light">{{ config('constant.COMPANY_MOBILE'); }}</a>
                     </p>
                     <h6 class="s-14 w-700 mt-15 kbz-h6 text-light" style="margin-bottom:5px!important;">Address</h6>
                     <p class="footer-mail-link ico-25">

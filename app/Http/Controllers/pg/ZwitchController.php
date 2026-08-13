@@ -61,7 +61,7 @@ class ZwitchController extends Controller
     
     public function index(){
         $meta = selfApplyMeta();
-        $products = Product::where('productslug', env('SA_OFFER_6'))->first();
+        $products = Product::where('productslug', config('constant.SA_OFFER_6'))->first();
 
         if ($products->inOffer == 1) {
             $productData = array(
@@ -93,11 +93,11 @@ class ZwitchController extends Controller
                 'mobile' => ['required', 'numeric', 'regex:/^[6-9]\d{9}$/']
             ]);
             /* product Data */
-            $products = Product::where('productslug', env('SA_OFFER_6'))->first();
+            $products = Product::where('productslug', config('constant.SA_OFFER_6'))->first();
             $amount = ($products->inOffer == 1) ? $products->offeramount : $products->amount;
             $grandAmount = $amount + ($amount * 0.18);
 
-            $uatNumbers = explode(',', env('UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
+            $uatNumbers = explode(',', config('constant.UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
 
             foreach ($uatNumbers as $uatNum) {
                 if ($uatNum == $request->mobile) {
