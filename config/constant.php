@@ -2,7 +2,7 @@
 
 return [
     'COMPANY_CODE' => 'WSFINAI123',
-    'uat_mobile_numbers' => array_filter(explode(',', config('constant.UAT_MOBILE_NUMBERS', ''))),
+    'uat_mobile_numbers' => array_filter(explode(',', env('UAT_MOBILE_NUMBERS', ''))),
     'LA_OFFER_1' => 'la-offer-1',
     'LA_OFFER_2' => 'la-offer-2',
     'LA_OFFER_3' => 'la-offer-3',
@@ -17,14 +17,14 @@ return [
     'SA_OFFER_6' => 'sa-offer-6',
     'SA_OFFER_7' => 'sa-offer-7',
 
-    'APP_NAME'      => config('constant.APP_NAME'),
+    'APP_NAME'      => env('APP_NAME'),
     'WEBSITE'          => env('WEBSITE', 'wisefinai.com'),
     'COMPANY_NAME'     => env('COMPANY_NAME', 'WiseFinAI'),
     'COMPANY_ADDRESS'  => env('COMPANY_ADDRESS'),
     'COMPANY_MOBILE'   => env('COMPANY_MOBILE'),
     'COMPANY_INFO_MAIL' => env('COMPANY_INFO_MAIL'),
     'COMPANY_SUPPORT_MAIL' => env('COMPANY_SUPPORT_MAIL'),
-    'INFO_EMAIL'       => config('constant.INFO_EMAIL'),
+    'INFO_EMAIL'       => env('INFO_EMAIL'),
 
     'CIN_NO'           => env('CIN_NO'),
     'GST_NO'           => env('GST_NO'),
