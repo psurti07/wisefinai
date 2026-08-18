@@ -193,13 +193,17 @@
                                 </div>
                                 @component('components.ajax-error',['field'=>'mobile'])@endcomponent
                             </div>
+                            
+                            <div class="col-md-12">
+                                <p class="mb-0 s-14 text-start text-dark"><input type="checkbox" checked="checked" id="accept_tnc" name="accept_tnc"/>&nbsp;<small>By submitting the form and proceeding, you agree to the <a href="{{ route('front.terms.conditions') }}" target="_blank" class="text-dark text-decoration-none">Terms of Use</a> and <a href="{{ route('front.privacy.policy') }}" class="text-dark text-decoration-none" target="_blank">Privacy Policy</a> of <a href="{{ route('front.home') }}" class="text-dark text-decoration-none" target="_blank">wisefinai.com.</a></p>
+                                @component('components.ajax-error',['field'=>'accept_tnc'])@endcomponent
+                            </div>
+
                             <div class="col-md-12 form-btn">
                                 <button type="submit" id="checkmodal" class="btn btn--theme hover--theme submit">Apply Now</button>
                             </div>
                             <div class="col-md-12"><span class="text-danger" id="usererrormsg"></span></div>
                         </div>
-
-                        <p class="mb-0 s-14 text-start text-dark">By submitting the form and proceeding, you agree to the <a href="{{ route('front.terms.conditions') }}" target="_blank" class="text-dark text-decoration-none">Terms of Use</a> and <a href="{{ route('front.privacy.policy') }}" class="text-dark text-decoration-none" target="_blank">Privacy Policy</a> of <a href="{{ route('front.home') }}" class="text-dark text-decoration-none" target="_blank">wisefinai.com.</a></p>
                     </form>
                 </div>
             </div>
@@ -310,8 +314,73 @@
     </div>
 </section>
 
+<section id="statistic-1" class=" ct-03 py-0 statistic-section division bg--green-100">
+    <div class="container">
+        <div class="statistic-5-wrapper r-12">
+            <div class="row row-cols-2 row-cols-md-4">
+                <div class="col sec-1 py-60">
+                    <div id="sb-5-1" class="text-center mb-0">
+                        <div class="statistic-block">
+                            <div class="statistic-digit">
+                                <h2 class="s-30 w-700 mb-10 color--green-500">
+                                    <span class="count-element">4000</span>+
+                                </h2>
+                            </div>
+                            <div class="statistic-txt">
+                                <h5 class="s-16 w-500 ">Happy Customer</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col sec-2 py-60">
+                    <div id="sb-5-3" class="text-center mb-0">
+                        <div class="statistic-block">
+                            <div class="statistic-digit">
+                                <h2 class="s-30 w-700 mb-10 color--green-500">
+                                    <span class="count-element">4</span>Cr+
+                                </h2>
+                            </div>
+                            <div class="statistic-txt">
+                                <h5 class="s-16 w-500 ">Disbursal</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col sec-3 py-60">
+                    <div id="sb-5-2" class="text-center mb-0">
+                        <div class="statistic-block">
+                            <div class="statistic-digit">
+                                <h2 class="s-30 w-700 mb-10 color--green-500">
+                                    <span class="count-element">8</span>+
+                                </h2>
+                            </div>
+                            <div class="statistic-txt">
+                                <h5 class="s-16 w-500 ">NBFC Partners</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col sec-4 py-60">
+                    <div id="sb-5-4" class="text-center mb-0">
+                        <div class="statistic-block">
+                            <div class="statistic-digit">
+                                <h2 class="s-30 w-700 mb-10 color--green-500">
+                                    <span class="count-element">100</span>%
+                                </h2>
+                            </div>
+                            <div class="statistic-txt">
+                                <h5 class="s-16 w-500 ">Digital Process</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Testimonioals section starts -->
-<section id="reviews-1" class="pt-0 pb-80 shape--06 reviews-section">
+<section id="reviews-1" class="pt-80 pb-80 shape--06 reviews-section">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-12">
@@ -331,6 +400,146 @@
     </div>
 </section>
 <!-- Testimonioals section ends -->
+
+<section id="faqs-3" class="py-80 faqs-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-12">
+                <div class="section-title mb-40">
+                    <h2 class="s-28 mb-5">Frequently Asked <span class="color--green-500">Questions</span></h2>
+                    <p class="s-16 color--grey mt-0">Find answers to common questions about personal loans, eligibility, documents, approvals, and more.</p>
+                </div>
+            </div>
+        </div>
+        <div class="faqs-3-questions">
+            <div class="row justify-content-center">
+                <div class="col-lg-12 col-xl-12">
+                    <div class="accordion-wrapper">
+                        <ul class="accordion">
+                            <li class="accordion-item mb-0">
+                                <div class="accordion-thumb">
+                                    <h6 class="s-16 w-400">1. What can you do with a personal loan?</h6>
+                                </div>
+                                <div class="accordion-panel">
+                                    <div class="accordion-panel-item">
+                                        <div class="faqs-2-answer">
+                                            <p>A personal loan can be used to meet almost any personal financial need, including medical expenses, education, home improvements, and debt consolidation.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="accordion-item mb-0">
+                                <div class="accordion-thumb">
+                                    <h6 class="s-16 w-400">2. What are the eligibility criteria for a personal loan?</h6>
+                                </div>
+                                <div class="accordion-panel">
+                                    <div class="accordion-panel-item">
+                                        <div class="faqs-2-answer">
+                                            <p>The eligibility criteria for a personal loan are:</p>
+                                            <p><strong>For Salaried Professionals:</strong></p>
+                                            <div class="ps-2">
+                                                <p>&bull; Minimum Age: 21 Years </p>
+                                                <p>&bull; Minimum Salary: Rs.15,000 Per Month (Should reflect in bank statement)</p>
+                                                <p>&bull; Minimum Job Stability: 1 Year</p>
+                                            </div>
+                                            <p><strong>For Self-Employed Individuals:</strong></p>
+                                            <div class="ps-2">
+                                                <p>&bull; Minimum Age: 21 Years</p>
+                                                <p>&bull; Income Tax Return Of Minimum 1 Year</p>
+                                                <p>&bull; Minimum Business Duration: 1 Year</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="accordion-item mb-0">
+                                <div class="accordion-thumb">
+                                    <h6 class="s-16 w-400">3. What documents do I need to apply for a personal loan?</h6>
+                                </div>
+                                <div class="accordion-panel">
+                                    <div class="accordion-panel-item">
+                                        <div class="faqs-2-answer">
+                                            <p>The following are the general documents needed to apply for a personal loan</p>
+                                            <p><strong>For Salaried:</strong></p>
+                                            <div class="ps-2">
+                                                <p>&bull; Aadhaar Card</p>
+                                                <p>&bull; PAN Card</p>
+                                                <p>&bull; Residence Proof: Rent agreement or Utility bills </p>
+                                                <p>&bull; Bank Statement </p>
+                                                <p>&bull; Income Proof: Salary Slips or Form 16</p>
+                                            </div>
+                                            <p><strong>For Self-Employed:</strong></p>
+                                            <div class="ps-2">
+                                                <p>&bull; Aadhaar Card</p>
+                                                <p>&bull; PAN Card </p>
+                                                <p>&bull; Residence Proof: Rent agreement or Utility bills</p>
+                                                <p>&bull; Bank Statement </p>
+                                                <p>&bull; Balance Sheet</p>
+                                                <p>&bull; Income Computation</p>
+                                                <p>&bull; Service Tax Registration, License, Registration Certificate</p>
+                                                <p>&bull; Income Tax Returns</p>
+                                            </div>
+                                            <p>Based on your profile and the guidelines, the lender may request additional documents.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="accordion-item mb-0">
+                                <div class="accordion-thumb">
+                                    <h6 class="s-16 w-400">4. Does credit score affect personal loan approval?</h6>
+                                </div>
+                                <div class="accordion-panel">
+                                    <div class="accordion-panel-item">
+                                        <div class="faqs-2-answer">
+                                            <p>Yes, your credit score is a critical factor in the loan application process. It is one of the most important factors that lenders use to assess your creditworthiness.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="accordion-item mb-0">
+                                <div class="accordion-thumb">
+                                    <h6 class="s-16 w-400">5. How can I increase my chances of getting a personal loan?</h6>
+                                </div>
+                                <div class="accordion-panel">
+                                    <div class="accordion-panel-item">
+                                        <div class="faqs-2-answer">
+                                            <p>To increase your chances, keep a good credit score, have consistent income, and provide accurate documentation during the application process.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="accordion-item mb-0">
+                                <div class="accordion-thumb">
+                                    <h6 class="s-16 w-400">6. Do personal loans have any tax advantages?</h6>
+                                </div>
+                                <div class="accordion-panel">
+                                    <div class="accordion-panel-item">
+                                        <div class="faqs-2-answer">
+                                            <p>Personal loans do not provide any direct tax advantages. However, if you use a personal loan to invest in your business, renovate your home, or fund your education, you may be able to deduct the interest you pay. For more information, please contact your CA or tax advisor.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="accordion-item mb-0">
+                                <div class="accordion-thumb">
+                                    <h6 class="s-16 w-400">7. Aside from credit scores, what other factors do lenders consider when approving personal loans?</h6>
+                                </div>
+                                <div class="accordion-panel">
+                                    <div class="accordion-panel-item">
+                                        <div class="faqs-2-answer">
+                                            <p>In addition to the credit score, lenders take into account the applicant's age, income, and job stability.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <section class="py-20 shape--06 gr--smoke">
     <div class="container">

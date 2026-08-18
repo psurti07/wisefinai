@@ -977,7 +977,7 @@ class SelfApplyController extends Controller
                 ];
 
                 /* send email in brevo */
-                sendBrevoHtmlMail2($mailData, 'Congratulations! Payment Successful for Kreditsathi Self-Apply Plan.', $sendGreetings, 3, $attachments);
+                sendBrevoHtmlMail2($mailData, 'Congratulations! Payment Successful for WiseFinAI Self-Apply Plan.', $sendGreetings, 3, $attachments);
 
                 $staffID = assignAgentSelf();
                 DB::table('application_remarks')->updateOrInsert(

@@ -82,9 +82,11 @@ class LoanAgentController extends Controller
 
             // Validate inputs
             $request->validate([
-                'mobile' => ['required', 'numeric', 'regex:/^[6-9]\d{9}$/']
+                'mobile' => ['required', 'numeric', 'regex:/^[6-9]\d{9}$/'],
+                'accept_tnc' => 'required',
             ], [
-                'mobile.regex' => 'Enter valid mobile number'
+                'mobile.regex' => 'Enter valid mobile number',
+                'accept_tnc.required' => 'Click checkbox to accept our terms conditions and privacy policy',
             ]);
 
             // Store mobile in cookie
@@ -1165,7 +1167,7 @@ class LoanAgentController extends Controller
                     ];
 
                     /* send email in brevo */
-                    sendBrevoHtmlMail2($mailData, 'Congratulations! Payment for Kreditsathi Hire Agent plan has been successful.', $sendGreetings, 3, $attachments);
+                    sendBrevoHtmlMail2($mailData, 'Congratulations! Payment for WiseFinAI Hire Agent plan has been successful.', $sendGreetings, 3, $attachments);
 
                     $remote_data = array(
                         'company_code' => config('constant.COMPANY_CODE'),
