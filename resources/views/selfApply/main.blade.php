@@ -548,13 +548,13 @@
                 <div class="form-holder">
                     <div class="contact-form-notice">
                         <p class="s-14">
-                            <strong>Disclosure :</strong> The Loan repayment tenure ranges from minimum of 6 months to maximum of 60 months (5 years), depending on the lender’s policies and applicant eligibility. The maximum APR (Annual Percentage Rate), inclusive of interest rate, processing fees, and applicable charges, may go up to 34% per annum depending on the applicant’s profile and the policies of the respective lending partner. the Processing fees may be charged up to 2% of the approved loan amount. Representative Example: For a loan amount of ₹1,00,000 at an interest rate of 11.5% per annum for a tenure of 60 months (5 years), with a processing fee of 2% (₹2,000): Approximate EMI: ₹2,301, Total Interest Payable: ₹38,059, Total Cost of the Loan: ₹1,38,059, Indicative APR: Approximately 14.41% per annum. *T&C Apply. All figures provided above are illustrative and indicative in nature. Actual loan terms may vary based on the applicant’s profile & lender policies.
+                            <strong>Important Note :</strong> We ask our customers to make payments ONLY on our website wisefinai.com and NOT through any other source, directly or indirectly.
                         </p>
                         <p class="s-14">
-                            <strong>Important Note : </strong> BE AWARE! We ask our customers to make payments ONLY on our website https://wisefinai.com/ and NOT through any other source, directly or indirectly. Thanks!
+                            <strong>Disclaimer : </strong>WiseFinAI Private Limited is not a lender or financial institution. We do not provide loans or make credit decisions. All loan approvals, interest rates, fees, and disbursal are handled by third-party lenders/NBFCs. We do not guarantee loan approval, disbursal, or specific loan terms. The amount paid is only for the service charge. We are not lenders and do not guarantee any loan approval. Loan approval, disbursement/sanction is entirely dependent on NBFC criteria.
                         </p>
                         <p class="s-14">
-                            <strong>Disclaimer:</strong> wisefinai is a loan service aggregator and is authorised to provide services on behalf of its Lending Partners. The amount paid is only for the service charge. We are not lenders and do not guarantee any loan approval.
+                            <strong>Pre-Application Note:</strong> Users are advised to read our terms and conditions and policies before proceeding/applying/registration.
                         </p>
                         <p class="s-14">
                             <strong>Registered Office Address:</strong> {{ config('constant.COMPANY_ADDRESS'); }} <br /> Mobile: {{ config('constant.COMPANY_MOBILE'); }} | Email: {{ config('constant.INFO_EMAIL') }}
