@@ -68,7 +68,7 @@
         <div class="row d-flex align-items-center">
             <div class="col-md-12 col-lg-6 order-md-2 order-lg-1">
                 <div class="mt-0 mb-2 text-start">
-                    <h2 class="s-40 mb-2">Start Your Loan <span class="color--green-500">Journey</span></h2>
+                    <h2 class="s-40 mb-2">Find Suitable <span class="color--green-500">Financing</span></h2>
                     <h3 class="s-24 mb-2">Explore Loan Options Up to <span class="color--green-500">₹15 Lakhs</span></h3>
                     <p class="s-16 mb-3">A Digital Platform to Explore Loan Options From Multiple Lending Partners.</p>
                 </div>
