@@ -68,54 +68,51 @@
         <div class="row d-flex align-items-center">
             <div class="col-md-12 col-lg-6 order-md-2 order-lg-1">
                 <div class="mt-0 mb-2 text-start">
-                    <h1 class="s-40 mb-2">Get Instant <span class="color--green-500">Cash</span></h1>
-                    <h3 class="s-24 mb-2">Up to <span class="color--green-500">₹15 Lakhs</span> in 24 Hours</h3>
-                    <p class="s-16 mb-3">India's fastest digital loan platform with instant pre-approval.</p>
+                    <h2 class="s-40 mb-2">Start Your Loan <span class="color--green-500">Journey</span></h2>
+                    <h3 class="s-24 mb-2">Explore Loan Options Up to <span class="color--green-500">₹15 Lakhs</span></h3>
+                    <p class="s-16 mb-3">A Digital Platform to Explore Loan Options From Multiple Lending Partners.</p>
                 </div>
 
                 <div class="d-none d-md-block d-lg-block">
                     <div class="row gx-2 gy-2 row-cols-1 row-cols-md-3 row-cols-lg-3 mb-10">
-                        <div class="col">
-                            <div class="fbox-7 fbox--hover bg--white-100 fb-1 r-12 p-3">
+                        <div class="col d-flex">
+                            <div class="fbox-7 fbox--hover bg--white-100 fb-1 r-12 p-3 h-100 w-100">
                                 <div class="fbox-ico ico-25 mb-2">
                                     <div class="shape-ico color--theme">
-                                        <img src="{{ asset('front/images/Secure-&-Safe.png') }}" alt="wisefinai"
-                        class="img-fluid p-0">
+                                        <img src="{{ asset('front/images/Secure-&-Safe.png') }}" alt="wisefinai" class="img-fluid p-0">
                                     </div>
                                 </div>
                                 <div class="fbox-txt">
                                     <h4 class="s-16 w-700">Secure & Safe</h4>
-                                    <p class="mb-0">256-bit encryption</p>
+                                    <p class="mb-0">Protected Digital Process</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col">
-                            <div class="fbox-7 fbox--hover bg--white-100 fb-1 r-12 p-3">
+                        <div class="col d-flex">
+                            <div class="fbox-7 fbox--hover bg--white-100 fb-1 r-12 p-3 h-100 w-100">
                                 <div class="fbox-ico ico-25 mb-2">
                                     <div class="shape-ico color--theme">
-                                       <img src="{{ asset('front/images/Instant-Approval.png') }}" alt="wisefinai"
-                        class="img-fluid p-0">
+                                       <img src="{{ asset('front/images/Instant-Approval.png') }}" alt="wisefinai" class="img-fluid p-0">
                                     </div>
                                 </div>
                                 <div class="fbox-txt">
-                                    <h4 class="s-16 w-700">Instant Approval</h4>
-                                    <p class="mb-0">Within 5 minutes</p>
+                                    <h4 class="s-16 w-700">Quick Application Process</h4>
+                                    <p class="mb-0">Submit Your Detail</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col">
-                            <div class="fbox-7 fbox--hover bg--white-100 fb-1 r-12 p-3">
+                        <div class="col d-flex">
+                            <div class="fbox-7 fbox--hover bg--white-100 fb-1 r-12 p-3 h-100 w-100">
                                 <div class="fbox-ico ico-25 mb-2">
                                     <div class="shape-ico color--theme">
-                             <img src="{{ asset('front/images/Low-Interest-Rate.png') }}" alt="wisefinai"
-                        class="img-fluid p-0">
+                                        <img src="{{ asset('front/images/Low-Interest-Rate.png') }}" alt="wisefinai" class="img-fluid p-0">
                                     </div>
                                 </div>
                                 <div class="fbox-txt">
-                                    <h4 class="s-16 w-700">Low Interest Rate</h4>
-                                    <p class="mb-0">Starting at 11.5%</p>
+                                    <h4 class="s-16 w-700">Flexible Rate Options</h4>
+                                    <p class="mb-0">Rates Based on Lender Terms</p>
                                 </div>
                             </div>
                         </div>
@@ -136,8 +133,8 @@
             </div>
             <div class="col-md-12 col-lg-6 align-items-center m-auto order-md-1 order-lg-2">
                 <div id="hero-8-form" class="border border-primary r-06">
-                    <h4 class="s-20 w-700 mb-2">Apply in <span class="color--green-500">5 Minutes</span></h4>
-                    <p class="s-16">Get instant pre-approved offers.</p>
+                    <h4 class="s-20 w-700 mb-2">Start Your Loan <span class="color--green-500">Search</span></h4>
+                    <p class="s-16">Share your details to view available loan options.</p>
 
                     <form method="post" action="{{ route('loan.agent.send.otp') }}" class="request-form save-form-1 needs-validation" novalidate>
                         <div class="row g-2">
@@ -304,7 +301,7 @@
                         </div>
                         <div class="fbox-txt mt-4">
                             <h4 class="s-18 w-700">Hire Loan Agent</h4>
-                            <p>Get guidance from experienced professionals to improve your loan approval possibilities.
+                            <p>Get application assistance from experienced professionals throughout your loan journey.
                             </p>
                         </div>
                     </div>
