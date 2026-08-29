@@ -118,7 +118,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col-lg-6 col-md-6 col-12">
                             <p class="btn-txt mb-2 mt-2 ico-15"><span class="flaticon-check color--theme me-1"></span> No Collateral Required</p>
                             <p class="btn-txt mb-2 mt-2 ico-15"><span class="flaticon-check color--theme me-1"></span> Flexible Repayment Options</p>
@@ -128,7 +128,7 @@
                             <p class="btn-txt mb-2 mt-2 ico-15"><span class="flaticon-check color--theme me-1"></span> Pre-Approved Offers Available</p>
                             <p class="btn-txt mb-2 mt-2 ico-15"><span class="flaticon-check color--theme me-1"></span> Minimal Documentation</p>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="col-md-12 col-lg-6 align-items-center m-auto order-md-1 order-lg-2">
