@@ -104,8 +104,8 @@ Route::group([
     Route::get('/', [LoanAgentController::class, 'main'])->name('main');
     Route::post('/send-otp', [LoanAgentController::class, 'sendOtp'])->name('send.otp');
     Route::post('/verify-otp', [LoanAgentController::class, 'verifyOtp'])->name('verify.otp');
-    Route::get('/loan-details', [LoanAgentController::class, 'loanDetails'])->name('loan.details');
-    Route::post('/loan-details-store', [LoanAgentController::class, 'loanDetailStore'])->name('loan.details.store');
+    Route::get('/income-details', [LoanAgentController::class, 'loanDetails'])->name('loan.details');
+    Route::post('/income-details-store', [LoanAgentController::class, 'loanDetailStore'])->name('loan.details.store');
     Route::get('/personal-details', [LoanAgentController::class, 'personalDetails'])->middleware('verifyApplied')->name('personal.details');
     Route::post('/postal-details', [LoanAgentController::class, 'postalDetails'])->middleware('verifyApplied')->name('postal.details');
     Route::post('/personal-details-store', [LoanAgentController::class, 'personalDetailStore'])->name('personal.details.store');
