@@ -928,22 +928,22 @@ class LoanAgentController extends Controller
                         );
                         $api_response = sendOrderData(json_encode($remote_data));
 
-                        $redRoute = 'loan-agent/paymentSuccess'; // Row was updated
+                        $redRoute = 'loan-agent/planSuccess'; // Row was updated
                     } else {
-                        $redRoute = 'loan-agent/paymentFailed'; // No rows were updated
+                        $redRoute = 'loan-agent/planFailed'; // No rows were updated
                     }
                     return redirect($redRoute);
                 } else {
-                    return redirect("loan-agent/paymentSuccess");
+                    return redirect("loan-agent/planSuccess");
                 }
             } else if ($txStatus == "PAYMENT_FAILURE") {
-                return redirect("loan-agent/paymentFailed");
+                return redirect("loan-agent/planFailed");
             } else {
-                return redirect("loan-agent/paymentFailed");
+                return redirect("loan-agent/planFailed");
             }
         } catch (\Exception $e) {
             Log::info($e->getMessage());
-            return redirect("loan-agent/paymentFailed");
+            return redirect("loan-agent/planFailed");
         }
     }
 
@@ -1105,7 +1105,7 @@ class LoanAgentController extends Controller
                             'payout_amount' => $netamount * config('constant.CU_PAYOUT_RATIO'),
                             'order_amount' => $netamount
                         );*/
-                    $response4 = 'loan-agent/paymentFailed';
+                    $response4 = 'loan-agent/planFailed';
                     /* wp campaign */
                     /*$user = UserTree::where('subuserid', $userData->userid)
                             ->orderBy('id', 'desc')
@@ -1191,20 +1191,20 @@ class LoanAgentController extends Controller
                     $api_response = sendOrderData(json_encode($remote_data));
                 }
                 if ($response2 > 0) {
-                    $redRoute = 'loan-agent/paymentSuccess'; // Row was updated
+                    $redRoute = 'loan-agent/planSuccess'; // Row was updated
                 } else {
-                    $redRoute = 'loan-agent/paymentFailed'; // No rows were updated
+                    $redRoute = 'loan-agent/planFailed'; // No rows were updated
                 }
                 return redirect($redRoute);
             } else {
-                return redirect("loan-agent/paymentFailed");
+                return redirect("loan-agent/planFailed");
             }
             /*} else {
                 Log::info('else checksum not matched');
                 //$sent = $this->Site_Digital_Model->sendPaymentFailedGreetings($userdata->mobile, $userdata->email);
                 //$key = stringCrypt($userdata->id, 'encrypt');
                 //return redirect("digital/subscriptionorder/" . $key);
-                return redirect("loan-agent/paymentFailed");
+                return redirect("loan-agent/planFailed");
             }*/
         } catch (\Exception $e) {
             Log::error('loan agent buydigital checkout method error occured: ' . $e->getMessage());
@@ -1281,7 +1281,7 @@ class LoanAgentController extends Controller
                         'zip' => $userData->pincode,
                         'orderid' => $orderId,
                         'odamount' => $orderData->orderamount,
-                        'sourceurl' => 'https://wisefinai.com/loan-agent/paymentSuccess'
+                        'sourceurl' => 'https://wisefinai.com/loan-agent/planSuccess'
                     );
 
                     if ($fbleads) {
