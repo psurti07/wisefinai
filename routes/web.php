@@ -112,8 +112,8 @@ Route::group([
     Route::get('/get-best-offers', [LoanAgentController::class, 'getOffers'])->middleware('verifyApplied')->name('get.offers');
     Route::get('/buy-now', [LoanAgentController::class, 'buyNow'])->middleware('verifyApplied')->name('buyNow');
     Route::get('/callbackUrl', [LoanAgentController::class, 'callbackUrl'])->middleware('verifyApplied')->name('callbackUrl');
-    Route::get('/paymentFailed', [LoanAgentController::class, 'paymentFailed'])->middleware('verifyApplied')->name('payment.failed');
-    Route::get('/paymentSuccess', [LoanAgentController::class, 'paymentSuccess'])/*->middleware('verifyApplied')*/->name('payment.success');
+    Route::get('/planFailed', [LoanAgentController::class, 'paymentFailed'])->middleware('verifyApplied')->name('payment.failed');
+    Route::get('/planSuccess', [LoanAgentController::class, 'paymentSuccess'])/*->middleware('verifyApplied')*/->name('payment.success');
     Route::post('/checkout', [LoanAgentController::class, 'checkout'])->name('checkout');
 
     Route::get('great-deal-offer', [LoanAgentController::class, 'offer1'])->name('offer1');
