@@ -28,7 +28,7 @@ Route::group([
     Route::get('/', [HomeController::class, 'home'])->name('home');
     Route::get('/company', [HomeController::class, 'company'])->name('company');
     // Route::get('/self-apply', [HomeController::class, 'selfApply'])->name('self.apply');
-    Route::get('/loan-agent', [HomeController::class, 'loanAgent'])->name('loan.agent');
+    Route::get('/agent', [HomeController::class, 'loanAgent'])->name('loan.agent');
     Route::get('/emi-calculator', [HomeController::class, 'emiCalculator'])->name('emi.calculator');
     Route::get('/career', [HomeController::class, 'career'])->name('career');
     Route::get('/apply-career/{code}', [HomeController::class, 'applycareer'])->name('apply-career');
