@@ -32,12 +32,12 @@ if(!function_exists('generateOtp')) {
                 'rec_date' => date('Y-m-d H:i:s'),
                 'mobile' => $mobile,
                 'email' => '',
-                'otp' => ($mobile == env('STATIC_NO')) ? 1111 : $otpCode,
+                'otp' => ($mobile == config('constant.STATIC_NO', '')) ? 1111 : $otpCode,
                 'acc_type' => (int)$acctype
             ];
             $result = OtpVerification::create($otpDetails);
             if($result){
-                if($mobile == env('STATIC_NO')){
+                if($mobile == config('constant.STATIC_NO', '')){
                     return TRUE;
                 } else {
                     event(new SendOtpOBB([
@@ -179,7 +179,7 @@ if (!function_exists('getPostalDetailsByPincode')) {
             CURLOPT_POSTFIELDS => json_encode(['pincode' => $pincode]),
             CURLOPT_HTTPHEADER => [
                 'Content-Type: application/json',
-                'Authorization: Bearer '.env('GEOLOC_KEY')
+                'Authorization: Bearer '.config('constant.GEOLOC_KEY')
             ],
         ]);
         $response = curl_exec($curl);
@@ -350,7 +350,7 @@ if(!function_exists('calEligiblity')){
 if (!function_exists('customEncrypt')) {
     function customEncrypt($value)
     {
-        $key = substr(hash('sha256', env('SECURE_SALT')), 0, 32); // AES-256 key
+        $key = substr(hash('sha256', config('constant.SECURE_SALT')), 0, 32); // AES-256 key
         $iv = random_bytes(16); // 16 bytes for AES-256-CBC
 
         $encrypted = openssl_encrypt($value, 'AES-256-CBC', $key, 0, $iv);
@@ -364,7 +364,7 @@ if (!function_exists('customEncrypt')) {
 if (!function_exists('customDecrypt')) {
     function customDecrypt($encryptedValue)
     {
-        $key = substr(hash('sha256', env('SECURE_SALT')), 0, 32); // AES-256 key
+        $key = substr(hash('sha256', config('constant.SECURE_SALT')), 0, 32); // AES-256 key
 
         // Revert URL-safe replacements
         $decoded = strtr($encryptedValue, ['-' => '+', '_' => '/', '~' => '=']);

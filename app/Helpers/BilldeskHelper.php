@@ -17,9 +17,9 @@ if(!function_exists('bdEncrypt')){
     function bdEncrypt($postData){
         try{
             // Required variables
-            $encryptionKey = env('ENC_PASS'); // 32-byte AES key
-            $keyId = env('KEY_ID');
-            $clientId = env('CLIENT_ID');
+            $encryptionKey = config('constant.ENC_PASS'); // 32-byte AES key
+            $keyId = config('constant.KEY_ID');
+            $clientId = config('constant.CLIENT_ID');
             $responseString = $postData;
             
             // Managers
@@ -69,7 +69,7 @@ if(!function_exists('bdDecrypt')){
         try{
             // Step 1: Setup variables
             $encryptedJWE = $encryptPayLoad;
-            $encryptionKey = env('ENC_PASS');
+            $encryptionKey = config('constant.ENC_PASS');
             
             // Step 2: Setup algorithms
             $keyEncryptionAlgorithmManager = new AlgorithmManager([
@@ -120,9 +120,9 @@ if(!function_exists('bdDecrypt')){
 if(!function_exists('signatureVerify')){
     function signatureVerify($postData){
         // Inputs
-        $signingKey = env('SIGN_PASS'); // Same as Java's signingKey
-        $keyId = env('KEY_ID');
-        $clientId = env('CLIENT_ID');
+        $signingKey = config('constant.SIGN_PASS'); // Same as Java's signingKey
+        $keyId = config('constant.KEY_ID');
+        $clientId = config('constant.CLIENT_ID');
         $requestPayload = $postData;
         
         // Step 1: Create the JWK (shared secret)

@@ -14,24 +14,19 @@ class SALeadWhatsappServices
     public function run()
     {
         try {
-            $aisensy = DB::table('aisensy_settings')->where('type','remarketing')->where('product','SA')->first();
-            
+            $configs = DB::table('interakt_settings')->where('product','SA')->where('type','remarketing')->first();
             $now = now();
             $nowFormatted = $now->format('H:i');
 
-            // Log::info('Current Time: ' . $nowFormatted);
-
             $schedules = config('remarketing.saLeadWhatsapp');
-            // Log::info('Loaded Schedules: ' . json_encode($schedules));
-
+           
             foreach ($schedules as $daysAgo => $times) {
-                $response = [];
-                $arrnumbers = 0;
+                $response = $wpresponse = "";
+                $arrnumbers = 1;
                 foreach ($times as $time) {
                     $scheduledTime = Carbon::createFromFormat('H:i', $time);
 
-                    // Buffer to allow 1-minute tolerance
-                    if ($now->diffInMinutes($scheduledTime) === 0) {
+                    if ($now->diffInMinutes($scheduledTime) == 0) {
                         $targetDate = $now->copy()->subDays($daysAgo)->toDateString();
                         
                         $users = DB::table('user_registrations as r')
@@ -49,7 +44,7 @@ class SALeadWhatsappServices
                                 'a.loan_amount'
                             )
                             ->whereDate('r.update_date', '=', $targetDate)
-                            ->where('r.update_date', '>=', '2025-06-09 00:00:00')
+                            //->where('r.update_date', '>=', '2025-08-06 00:00:00')
                             ->where('r.isUser', 1)
                             ->where('r.acc_type', 1)
                             ->where('r.isDnd', 0)
@@ -59,74 +54,86 @@ class SALeadWhatsappServices
                             ->orderBy('r.id', 'asc')
                             ->get();
                         
-                        $adminUsers = ['7016318366','9408881214','9998807547'];
+                        $adminUsers = ['9274436342'];
                         if($users->isNotEmpty()){
+                            $data1 = array(
+                				'rec_date' => date('Y-m-d H:i:s'),
+                				'crontype' => 'Self Apply Lead Whatsapp',
+                				'parentid' => 11, // Hire Agent
+                				'cronname' => 'Whatsapp Day - ' . $daysAgo,
+                				'msgcount' => $arrnumbers,
+                				'msgresponse' => $wpresponse
+                			);
+                			$insertId = DB::table('sms_log')->insertGetId($data1);
+                			
                             foreach ($adminUsers as $admin) {
                                 $eligibilityAmt = 500000;
+                                
+                                    /* interact code starts here */
+                        			$data1 = array(
+                            			"fullPhoneNumber" => '+91'.$admin,
+                            			"callbackData"=> "some text here",
+                            			"type"=> "Template",
+                            			"template"=> array(
+                            					"name"=> $configs->template_name,
+                            					"languageCode"=> "en",
+                            					"headerValues"=> array(
+                            						$configs->img_url
+                            					),
+                            					"bodyValues"=> array(
+                            						'$name', $eligibilityAmt
+                            					),
+                            				)
+                            		);
+                        			$response = interakt_message('self', $data1, $configs->api_key);
+                        			$wpresponse .= $admin . "-" . $response . "|";
+                        			/* interact code neds here */
                                     
-                                    /* aisensy code starts here */
-                                    $data1 = array(
-                        				"apiKey" => $aisensy->api_key,
-                        				"campaignName" => $aisensy->campaign_name,
-                        				"destination" => "+91".$admin,
-                        				"media" => array(
-                        					"url" => $aisensy->media_url,
-                        					"filename" => $aisensy->media_filename
-                        				),
-                        				"userName" => 'WiseFinAI Admin',
-                        				"tags" => array("Get Offer"),
-                        				"attributes" => array(
-                        					"EligibleAmount" => strval($eligibilityAmt)
-                        				),
-                        				"templateParams" => array('$Name', '$EligibleAmount'),
-                        			);
-                        			$response[] = aisensy_track($data1);
-                        			/* aisensy code neds here */
+                                    $data4 = array(
+                					    'msgcount' => $arrnumbers,
+                    					'msgresponse' => $wpresponse
+                				    );
+				   
+				                    $query = DB::table('sms_log')->where('id', $insertId)->update($data4);
                                     $arrnumbers++;
                             }
 
                         
                             foreach ($users as $user) {
-                                /*$loan = LoanApplications::where('userid',$user->id)->first();
-                                if($loan){*/
-                                    $eligibilityAmt = calEligiblity($user->monthly_income, $user->currentemi, (($user->loan_type == 2) ? 11.5 : 12.5), $user->loan_amount);
-                                    
-                                    /* aisensy code starts here */
-                                    $data1 = array(
-                        				"apiKey" => $aisensy->api_key,
-                        				"campaignName" => $aisensy->campaign_name,
-                        				"destination" => "+91".$user->mobile,
-                        				"media" => array(
-                        					"url" => $aisensy->media_url,
-                        					"filename" => $aisensy->media_filename
-                        				),
-                        				"userName" => $user->first_name.' '.$user->last_name,
-                        				"tags" => array("Get Offer"),
-                        				"attributes" => array(
-                        					"EligibleAmount" => strval($eligibilityAmt)
-                        				),
-                        				"templateParams" => array('$Name', '$EligibleAmount'),
-                        			);
-                        			$response[] = aisensy_track($data1);
-                        			/* aisensy code neds here */
-                                    $arrnumbers++;
-                                /*}*/
+                                $eligibilityAmt = calEligiblity($user->monthly_income, $user->currentemi, (($user->loan_type == 2) ? 11.5 : 12.5), $user->loan_amount);
+                                
+                                /* interact code starts here */
+                    			$data1 = array(
+                        			"fullPhoneNumber" => '+91'.$user->mobile,
+                        			"callbackData"=> "some text here",
+                        			"type"=> "Template",
+                        			"template"=> array(
+                        					"name"=> $configs->template_name,
+                        					"languageCode"=> "en",
+                        					"headerValues"=> array(
+                        						$configs->img_url
+                        					),
+                        					"bodyValues"=> array(
+                        						$user->first_name.' '.$user->last_name, $eligibilityAmt
+                        					),
+                        				)
+                        		);
+                    			$response = interakt_message('self', $data1, $configs->api_key);
+                    			$wpresponse .= $user->mobile . "-" . $response . "|";
+                    			/* interact code neds here */
+                    			
+                    			$data4 = array(
+            					    'msgcount' => $arrnumbers,
+                					'msgresponse' => $wpresponse
+            				    );
+				  
+				                $query = DB::table('sms_log')->where('id', $insertId)->update($data4);
+                                $arrnumbers++;
                             }    
                         }
                         
                         break;
                     }
-                }
-                if($arrnumbers > 0){
-                    $data1 = array(
-        				'rec_date' => date('Y-m-d H:i:s'),
-        				'crontype' => 'Self Apply Lead',
-        				'parentid' => 11, // self
-        				'cronname' => 'Whatsapp Day - ' . $daysAgo,
-        				'msgcount' => $arrnumbers,
-        				'msgresponse' => json_encode($response)
-        			);
-        			DB::table('sms_log')->insert($data1);
                 }
             }
         } catch (\Exception $e) {

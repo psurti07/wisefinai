@@ -496,7 +496,7 @@ dwIDAQAB
             $amount = ($productData->inOffer == 1) ? $productData->offeramount : $productData->amount;
             $grandAmount = $amount + ($amount * 0.18);
 
-            $uatNumbers = explode(',', env('UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
+            $uatNumbers = explode(',', config('constant.UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
 
             foreach ($uatNumbers as $uatNum) {
                 if ($uatNum == Cookie::get('user_mobile')) {
@@ -510,7 +510,7 @@ dwIDAQAB
             $password = Session::get('user_password');
             $returnUrl = $inputs['plan'] == 2 ? route('api.loan.agent.buy.digital.agent.plan',['orderid'=>$orderid, 'user_password'=>$password]) : route('api.self.apply.buy.digital.plan',['orderid'=>$orderid, 'user_password'=>$password]);
             
-            if (env('ZAAKPAY_ENV') == "PRODUCTION") {
+            if (config('constant.ZAAKPAY_ENV') == "PRODUCTION") {
                 $curlurl = "https://api.zaakpay.com/api/paymentTransact/V8";
             } else {
                 $curlurl = "https://zaakstaging.zaakpay.com/api/paymentTransact/V8";
@@ -520,7 +520,7 @@ dwIDAQAB
             //Log::info($curlurl);
             
             $zaakpayPostData = array(
-                "merchantIdentifier" => env('ZAAKPAY_MERCHANT_IDENTIFIER'),
+                "merchantIdentifier" => config('constant.ZAAKPAY_MERCHANT_IDENTIFIER'),
                 "orderId" => $orderid,
                 "returnUrl" => $returnUrl,
                 "currency" => 'INR',
@@ -540,7 +540,7 @@ dwIDAQAB
                 $checksumData .= $key . '=' . $value . '&';
             }
 
-            $checksum = hash_hmac('sha256', $checksumData, env('ZAAKPAY_SECRET_KEY'));
+            $checksum = hash_hmac('sha256', $checksumData, config('constant.ZAAKPAY_SECRET_KEY'));
             //Log::info('checksum - '.$checksum);
             
             $zaakPayData = array(
@@ -621,7 +621,7 @@ dwIDAQAB
     		}
     		Log::info('checksum data - '.$checksumData);
     		
-    		$checksum = hash_hmac('sha256', $checksumData, env('ZAAKPAY_SECRET_KEY'));
+    		$checksum = hash_hmac('sha256', $checksumData, config('constant.ZAAKPAY_SECRET_KEY'));
 		    
             Log::info('generated checksum - '. $checksum);
             dd('check checksum');
@@ -748,7 +748,7 @@ dwIDAQAB
                     $updateInvoiceNo = SiteOption::where('option_key', 'newinvoiceno')->update($invNoData);
                     /*$data4 = array(
                         'payout' => 0,
-                        'payout_amount' => $netamount * env('CU_PAYOUT_RATIO'),
+                        'payout_amount' => $netamount * config('constant.CU_PAYOUT_RATIO'),
                         'order_amount' => $netamount
                     );*/
                     //$response4 = 'self-apply/paymentFailed';
@@ -985,7 +985,7 @@ dwIDAQAB
     public function offer1()
     {
         $meta = selfApplyMeta();
-        $products = Product::where('productslug', env('SA_OFFER_1'))->first();
+        $products = Product::where('productslug', config('constant.SA_OFFER_1'))->first();
         if ($products->inOffer == 1) {
             $productData = array(
                 'inOffer' => $products->inOffer,
@@ -1028,13 +1028,13 @@ dwIDAQAB
                 $email = $inputs['email'];
             }
             /* product Data */
-            $products = Product::where('productslug', env('SA_OFFER_1'))->first();
+            $products = Product::where('productslug', config('constant.SA_OFFER_1'))->first();
             //Log::info('product - '.json_encode($products));
             /* set amount of offer */
             $amount = ($products->inOffer == 1) ? $products->offeramount : $products->amount;
             $grandAmount = $amount + ($amount * 0.18);
 
-            $uatNumbers = explode(',', env('UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
+            $uatNumbers = explode(',', config('constant.UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
             foreach ($uatNumbers as $uatNum) {
                 if ($uatNum == $mobile) {
                     $grandAmount = 1;
@@ -1064,7 +1064,7 @@ dwIDAQAB
             $orderId = number_format(microtime(true) * 1000, 0, '.', '');
             $returnUrl = 'https://wisefinai.com/api/self-apply/prime-offer-response';
 
-            if (env('LYRA_MODE') == "PROD") {
+            if (config('constant.LYRA_MODE') == "PROD") {
                 $curlurl = "https://api.in.lyra.com/pg/rest/v1/charge";
             } else {
                 $curlurl = "https://api.in.lyra.com/pg/rest/v1/charge";
@@ -1182,7 +1182,7 @@ dwIDAQAB
     public function offer2()
     {
         $meta = selfApplyMeta();
-        $products = Product::where('productslug', env('SA_OFFER_2'))->first();
+        $products = Product::where('productslug', config('constant.SA_OFFER_2'))->first();
         if ($products->inOffer == 1) {
             $productData = array(
                 'inOffer' => $products->inOffer,
@@ -1225,12 +1225,12 @@ dwIDAQAB
                 $email = $inputs['email'];
             }
             /* product Data */
-            $products = Product::where('productslug', env('SA_OFFER_2'))->first();
+            $products = Product::where('productslug', config('constant.SA_OFFER_2'))->first();
             /* set amount of offer */
             $amount = ($products->inOffer == 1) ? $products->offeramount : $products->amount;
             $grandAmount = $amount + ($amount * 0.18);
 
-            $uatNumbers = explode(',', env('UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
+            $uatNumbers = explode(',', config('constant.UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
 
             foreach ($uatNumbers as $uatNum) {
                 if ($uatNum == $mobile) {
@@ -1263,22 +1263,22 @@ dwIDAQAB
             $encData = null;
             $returnUrl = 'https://wisefinai.com/api/self-apply/mega-offer-response';
 
-            if (env('SABPAISA_MODE') == "PROD") {
+            if (config('constant.SABPAISA_MODE') == "PROD") {
                 $curlurl = "https://securepay.sabpaisa.in/SabPaisa/sabPaisaInit?v=1";
             } else {
                 $curlurl = "https://stage-securepay.sabpaisa.in/SabPaisa/sabPaisaInit?v=1";
             }
             $fullname = trim($first_name) . " " . trim($last_name);
             /* subpaisa encrypt data */
-            $encData = "?clientCode=" . env('SABPAISA_CLIENT_CODE') . "&transUserName=" . env('SABPAISA_USERNAME') . "&transUserPassword=" . env('SABPAISA_PASSWORD') . "&amount=" . round($grandAmount) .
+            $encData = "?clientCode=" . config('constant.SABPAISA_CLIENT_CODE') . "&transUserName=" . config('constant.SABPAISA_USERNAME') . "&transUserPassword=" . config('constant.SABPAISA_PASSWORD') . "&amount=" . round($grandAmount) .
                 "&amountType=INR&clientTxnId=" . $orderId . "&payerName=" . $fullname . "&payerMobile=" . $mobile . "&payerEmail=" . trim(strtolower($email)) . "&mcc=5137&channelId=#&callbackUrl=" . $returnUrl;
 
             /* generate subpaisa paymenturl */
             $AesCipher = new Authuntication();
-            $encryptData = $AesCipher->encrypt(env('SABPAISA_AUTH_KEY'), env('SABPAISA_AUTH_IV'), $encData);
+            $encryptData = $AesCipher->encrypt(config('constant.SABPAISA_AUTH_KEY'), config('constant.SABPAISA_AUTH_IV'), $encData);
 
             /*$postData = array(
-                'clientCode' => env('SABPAISA_CLIENT_CODE'),
+                'clientCode' => config('constant.SABPAISA_CLIENT_CODE'),
                 'encryptData' => $encryptData,
                 'action' => $curlurl
             );*/
@@ -1295,7 +1295,7 @@ dwIDAQAB
             $response = SubpaisaEntry::insert($subpaisaData);
             $html = view('pg.pay', [
                 'data' => $encryptData,
-                'clientCode' => env('SABPAISA_CLIENT_CODE'),
+                'clientCode' => config('constant.SABPAISA_CLIENT_CODE'),
                 'action' => $curlurl
             ])->render();
             return response()->json(array('type'=>'SUCCESS','message'=>'Please wait... We are redirecting to the payment page.','html'=>$html));
@@ -1313,8 +1313,8 @@ dwIDAQAB
             Log::info('request data - '. json_encode($request->all()));
             $meta = selfApplyMeta();
             $query = $request->input('encResponse');
-            $authKey = env('SABPAISA_AUTH_KEY');
-            $authIV = env('SABPAISA_AUTH_IV');
+            $authKey = config('constant.SABPAISA_AUTH_KEY');
+            $authIV = config('constant.SABPAISA_AUTH_IV');
 
             $AesCipher = new Authuntication();
             $decText = $AesCipher->decrypt($authKey, $authIV, $query);
@@ -1461,7 +1461,7 @@ dwIDAQAB
     public function offer3()
     {
         $meta = selfApplyMeta();
-        $products = Product::where('productslug', env('SA_OFFER_3'))->first();
+        $products = Product::where('productslug', config('constant.SA_OFFER_3'))->first();
         if ($products->inOffer == 1) {
             $productData = array(
                 'inOffer' => $products->inOffer,
@@ -1504,13 +1504,13 @@ dwIDAQAB
                 $email = $inputs['email'];
             }
             /* product Data */
-            $products = Product::where('productslug', env('SA_OFFER_3'))->first();
+            $products = Product::where('productslug', config('constant.SA_OFFER_3'))->first();
             //Log::info('products - '.json_encode($products));
             /* set amount of offer */
             $amount = ($products->inOffer == 1) ? $products->offeramount : $products->amount;
             $grandAmount = $amount + ($amount * 0.18);
 
-            $uatNumbers = explode(',', env('UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
+            $uatNumbers = explode(',', config('constant.UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
 
             foreach ($uatNumbers as $uatNum) {
                 if ($uatNum == $mobile) {
@@ -1645,7 +1645,7 @@ dwIDAQAB
     public function offer4()
     {
         $meta = selfApplyMeta();
-        $products = Product::where('productslug', env('SA_OFFER_4'))->first();
+        $products = Product::where('productslug', config('constant.SA_OFFER_4'))->first();
         if ($products->inOffer == 1) {
             $productData = array(
                 'inOffer' => $products->inOffer,
@@ -1687,13 +1687,13 @@ dwIDAQAB
                 $email = $inputs['email'];
             }
             /* product Data */
-            $products = Product::where('productslug', env('SA_OFFER_4'))->first();
+            $products = Product::where('productslug', config('constant.SA_OFFER_4'))->first();
            // Log::info('products - '.json_encode($products));
             /* set amount of offer */
             $amount = ($products->inOffer == 1) ? $products->offeramount : $products->amount;
             $grandAmount = $amount + ($amount * 0.18);
 
-            $uatNumbers = explode(',', env('UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
+            $uatNumbers = explode(',', config('constant.UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
 
             foreach ($uatNumbers as $uatNum) {
                 if ($uatNum == $mobile) {
@@ -1731,7 +1731,7 @@ dwIDAQAB
             $returnUrl = 'https://wisefinai.com/api/self-apply/star-offer-response';
             $callbackUrl = route('self.apply.callbackUrl');
 
-            if (env('PHONEPE_ENV') == "PRODUCTION") {
+            if (config('constant.PHONEPE_ENV') == "PRODUCTION") {
                 $curlurl = 'https://api.phonepe.com/apis/hermes/pg/v1/pay';
             } else {
                 $curlurl = 'https://api-preprod.phonepe.com/apis/hermes/pg/v1/pay';
@@ -1748,7 +1748,7 @@ dwIDAQAB
             //Log::info('PhonePe Insert data - '. json_encode($phonePeData));
             $res2 = PhonrPeEntry::create($phonePeData);
             $dataRes = array(
-                "merchantId" => env('PHONEPE_MERCHANT_ID'),
+                "merchantId" => config('constant.PHONEPE_MERCHANT_ID'),
                 "merchantTransactionId" => strval($orderid),
                 "merchantUserId" => strval($offerId),
                 "amount" => $grandAmount * 100,
@@ -1761,7 +1761,7 @@ dwIDAQAB
                 )
             );
             //Log::info('Data Response - '. json_encode($dataRes));
-            $payUrl = getPhonePePaymentUrl($curlurl, env('PHONEPE_SALT_KEY'), env('PHONEPE_SALT_INDEX'), $dataRes);
+            $payUrl = getPhonePePaymentUrl($curlurl, config('constant.PHONEPE_SALT_KEY'), config('constant.PHONEPE_SALT_INDEX'), $dataRes);
             //Log::info(json_encode($payUrl));
             if ($payUrl) {
                 if ($payUrl->data->instrumentResponse->redirectInfo->url) {
@@ -1870,7 +1870,7 @@ dwIDAQAB
     public function offer5()
     {
         $meta = selfApplyMeta();
-        $products = Product::where('productslug', env('SA_OFFER_5'))->first();
+        $products = Product::where('productslug', config('constant.SA_OFFER_5'))->first();
 
         if ($products->inOffer == 1) {
             $productData = array(
@@ -1915,13 +1915,13 @@ dwIDAQAB
             }
             $alldata = $buyerAddress = $buyerCity = $buyerState = $amount = $buyerPinCode = $orderid = '';
             /* product Data */
-            $products = Product::where('productslug', env('SA_OFFER_5'))->first();
+            $products = Product::where('productslug', config('constant.SA_OFFER_5'))->first();
 
             /* set amount of offer */
             $amount = ($products->inOffer == 1) ? $products->offeramount : $products->amount;
             $grandAmount = $amount + ($amount * 0.18);
 
-            $uatNumbers = explode(',', env('UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
+            $uatNumbers = explode(',', config('constant.UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
 
             foreach ($uatNumbers as $uatNum) {
                 if ($uatNum == $buyerPhone) {
@@ -1937,10 +1937,10 @@ dwIDAQAB
             $hiddenmod = "";
 
             $postData = array(
-                "username" => env('AIRPAY_USERNAME'),
-                "password" => env('AIRPAY_PASSWORD'),
-                "secret" => env('AIRPAY_API_KEY'),
-                "mercid" => env('AIRPAY_MERCHENT_ID'),
+                "username" => config('constant.AIRPAY_USERNAME'),
+                "password" => config('constant.AIRPAY_PASSWORD'),
+                "secret" => config('constant.AIRPAY_API_KEY'),
+                "mercid" => config('constant.AIRPAY_MERCHENT_ID'),
                 "orderid" => $orderid,
                 "url" => $url,
                 "currency" => 356,
@@ -2064,7 +2064,7 @@ dwIDAQAB
     /* Offer 6 */
     public function offer6(){
         $meta = selfApplyMeta();
-        $products = Product::where('productslug', env('SA_OFFER_6'))->first();
+        $products = Product::where('productslug', config('constant.SA_OFFER_6'))->first();
 
         if ($products->inOffer == 1) {
             $productData = array(
@@ -2108,13 +2108,13 @@ dwIDAQAB
             }
 
             /* product Data */
-            $products = Product::where('productslug', env('SA_OFFER_6'))->first();
+            $products = Product::where('productslug', config('constant.SA_OFFER_6'))->first();
             Log::info('Products - '. json_encode($products));
             /* set amount of offer */
             $amount = ($products->inOffer == 1) ? $products->offeramount : $products->amount;
             $grandAmount = $amount + ($amount * 0.18);
 
-            $uatNumbers = explode(',', env('UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
+            $uatNumbers = explode(',', config('constant.UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
 
             foreach ($uatNumbers as $uatNum) {
                 if ($uatNum == $mobile) {
@@ -2128,7 +2128,7 @@ dwIDAQAB
             //$returnUrl = base_url('pay/cardofferreturn?orderid=' . $orderid);
             $returnUrl = route('api.self.apply.offer6Response',['orderid'=>$orderid]);
             Log::info('return url - '. $returnUrl);
-            if (env('CASHFREE_MODE') == "PROD") {
+            if (config('constant.CASHFREE_MODE') == "PROD") {
                 $curlurl = 'https://api.cashfree.com/pg/orders';
                 $paymode = 'production';
             } else {
@@ -2198,7 +2198,7 @@ dwIDAQAB
             $meta = selfApplyMeta();
             $grandtotal = $netamount = $cgstamount = $sgstamount = $igstamount = 0;
             if (isset ($orderid)) {
-                if (env('CASHFREE_MODE') == "PROD") {
+                if (config('constant.CASHFREE_MODE') == "PROD") {
                     $curlurl = 'https://api.cashfree.com/pg/orders/' . $orderid . '/payments';
                 } else {
                     $curlurl = 'https://sandbox.cashfree.com/pg/orders/' . $orderid . '/payments';
@@ -2275,7 +2275,7 @@ dwIDAQAB
     /* offer 7 */
     public function offer7(){
         $meta = selfApplyMeta();
-        $products = Product::where('productslug', env('SA_OFFER_7'))->first();
+        $products = Product::where('productslug', config('constant.SA_OFFER_7'))->first();
 
         if ($products->inOffer == 1) {
             $productData = array(
@@ -2318,13 +2318,13 @@ dwIDAQAB
                 $email = $inputs['email'];
             }
             /* product Data */
-            $products = Product::where('productslug', env('SA_OFFER_7'))->first();
+            $products = Product::where('productslug', config('constant.SA_OFFER_7'))->first();
             Log::info('Products - '. json_encode($products));
             /* set amount of offer */
             $amount = ($products->inOffer == 1) ? $products->offeramount : $products->amount;
             $grandAmount = $amount + ($amount * 0.18);
 
-            $uatNumbers = explode(',', env('UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
+            $uatNumbers = explode(',', config('constant.UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
 
             foreach ($uatNumbers as $uatNum) {
                 if ($uatNum == $mobile) {

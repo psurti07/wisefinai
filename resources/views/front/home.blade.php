@@ -19,14 +19,11 @@
              </div>
              <div class="col-md-12 col-lg-7 col-12 order-1 order-md-1 order-lg-2">
                  <div class="hero-7-txt">
-                     <h1 class="s-40 w-700">Give Your Financial Dreams a <span class="color--green-500">Smart
-                             Boost!</span></h1>
-                     <p class="mb-20">Get expert guidance and discover the right loan options tailored to your
-                         financial needs, with a simple process and trusted support at every step of your journey.
-                     </p>
-                     <a href="{{ route('self.apply.main') }}"
+                     <h1 class="s-40 w-700">Your Partner for Better <span class="color--green-500">Financial Decisions</span></h1>
+                     <p class="mb-20">Get the right guidance and loan solutions to achieve your goals with confidence</p>
+                     {{-- <a href="{{ route('self.apply.main') }}"
                          class="btn r-04 btn--theme hover--tra-black last-link me-2 mb-md-0 mb-0">Self
-                         Apply</a>
+                         Apply</a> --}}
                      <a href="{{ route('loan.agent.main') }}"
                          class="btn r-04 btn--theme hover--tra-black last-link">Hire
                          an Agent</a>
@@ -52,7 +49,7 @@
                                  <div class="statistic-block">
                                      <div class="statistic-digit">
                                          <h2 class="s-30 w-700 mb-10 color--green-500">
-                                             <span class="count-element">3.5</span>Cr+
+                                             <span class="count-element">4</span>Cr+
                                          </h2>
                                      </div>
                                      <div class="statistic-txt">
@@ -98,33 +95,38 @@
  </section>
 
 
- <section class="py-80 ct-02 content-section division" id="company">
-     <div class="container">
-         <div class="row">
-             <div class="col-md-12">
-                 <div class="txt-block right-column text-center">
-                     <p><span class="section-id s-16"><span class="color--green-500">About Us!</span></p>
-                     <h2 class="s-28 w-700">Helping you find the right financial solutions with expert guidance.</h2>
-                     <p>AP Loannwala is committed to making loan services straightforward and accessible for individuals
-                         who need reliable financial support</p>
-                     <p>We understand that every financial requirement is different, which is why we focus on guiding
-                         clients with clear information and practical assistance throughout the process. Our team works
-                         closely with customers to ensure their experience remains smooth and organized.</p>
-                     <p>With strong partnerships across multiple NBFCs, we help connect individuals to suitable loan
-                         options without unnecessary delays or confusion.</p>
-                     <p>At AP Loannwala, we believe in keeping things simple, transparent, and supportive – helping
-                         people take confident steps towards their financial goals.</p>
-                 </div>
-             </div>
-             <!-- <div class="col-md-5">
-                <div class="img-block left-column">
-                    <img class="img-fluid" src="{{ asset('front/images/Compny-page-1.png') }}" alt="content-image">
+<section class="py-80 ct-02 content-section division " id="company">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-9">
+                <div class="section-title mb-40">
+                    <h2 class="s-28 mb-5">About <span class="color--green-500">Us!</span></h2>
+                    <p class="s-16 color--grey mt-0">Making Financial Decisions Simple and Stress-Free</p>
                 </div>
             </div>
-       -->
-         </div>
-     </div>
- </section>
+
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="txt-block right-column bg-white p-4 r-12">
+                    <p class="">At WiseFinAI, we believe financial support should be simple, accessible, and reliable. Through strong partnerships with leading NBFCs, we provide expert consultation and tailored loan assistance to help individuals make informed financial decisions. Our innovative digital platform brings convenience, speed, and transparency to every step of the loan process.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="txt-block right-column bg--green-100 p-4 r-12 h-100">
+                    <p class="w-700">Helping You Achieve Financial Confidence !</p>
+                    <ul class="simple-list">
+                        <li class="list-item">
+                            <p>We understand that every financial journey is unique. That's why we take the time to understand your specific needs and provide personalized guidance that supports you at every step. </p>
+                        </li>
+                        <li class="list-item">
+                            <p class="mb-0">We maintain complete transparency throughout the process, making every step simple and easy to understand so you can make informed decisions with confidence.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
  <!-- why wisefinai section starts -->
  <section id="features-6" class="pt-0 pb-80  features-section division">
@@ -133,12 +135,12 @@
              <div class="col-md-10 col-lg-9">
                  <div class="section-title mb-40">
                      <h2 class="s-28 mb-5">Why <span class="color--green-500">WiseFinAI</span></h2>
-                     <p class="s-16 color--grey mt-0">Here's What Sets Our Platform Apart</p>
+                     <p class="s-16 color--grey mt-0">Here’s What Makes Us Different</p>
                  </div>
              </div>
          </div>
          <div class="fbox-wrapper text-center mt-40">
-             <div class="row gx-lg-3 gy-lg-2 g-5 row-cols-1 row-cols-md-2 row-cols-lg-4">
+             <div class="row gx-lg-3 gy-lg-2 g-5 row-cols-1 row-cols-md-2 row-cols-lg-3">
                  <div class="col">
                      <div class="fbox-8 feature-image fbox--hover fb-1 r-12 border shadow h-100">
                          <div class="fbox-ico ico-30">
@@ -148,8 +150,8 @@
                              </div>
                          </div>
                          <div class="fbox-txt mt-4">
-                             <h4 class="s-18 w-700">Strategic Lending Network</h4>
-                             <p>Access multiple NBFC-backed lending options through a single digital interface.</p>
+                             <h4 class="s-18 w-700">Enriching Collaboration</h4>
+                             <p>Gain access to a wide range of financial services through our trusted network of leading NBFC partners.</p>
                          </div>
                      </div>
                  </div>
@@ -162,12 +164,12 @@
                              </div>
                          </div>
                          <div class="fbox-txt mt-4">
-                             <h4 class="s-18 w-700">Completely Online Process</h4>
-                             <p>From eligibility check to document submission, everything happens digitally.</p>
+                             <h4 class="s-18 w-700">100% Online Process</h4>
+                             <p>Enjoy a seamless and hassle-free experience with our fully online process, accessible anytime and anywhere from the comfort of your home.</p>
                          </div>
                      </div>
                  </div>
-                 <div class="col">
+                 {{-- <div class="col">
                      <div class="fbox-8 fbox--hover feature-image fb-2 r-12 border shadow h-100">
                          <div class="fbox-ico ico-30">
                              <div class="shape-ico text-white">
@@ -177,10 +179,10 @@
                          </div>
                          <div class="fbox-txt mt-4">
                              <h4 class="s-18 w-700">Self-Apply Feature</h4>
-                             <p>Take control of your finances while enjoying the benefits of excellent provisions.</p>
+                             <p>Take the next step toward financial freedom with trusted support and personalized solutions.</p>
                          </div>
                      </div>
-                 </div>
+                 </div> --}}
                  <div class="col">
                      <div class="fbox-8 fbox--hover feature-image fb-3 r-12 border shadow h-100">
                          <div class="fbox-ico ico-30">
@@ -191,8 +193,7 @@
                          </div>
                          <div class="fbox-txt mt-4">
                              <h4 class="s-18 w-700">Hire Loan Agent</h4>
-                             <p>Get guidance from experienced professionals to improve your loan approval possibilities.
-                             </p>
+                             <p>Benefit from expert consultation that helps improve your approval opportunities.</p>
                          </div>
                      </div>
                  </div>
@@ -207,13 +208,12 @@
          <div class="row justify-content-center">
              <div class="col-md-10 col-lg-9">
                  <div class="section-title mb-40">
-                     <h2 class="s-28 mb-5">Take Your Finances Forward with <span class="color--green-500">Smart
-                             Strategy</span></h2>
-                     <p class="s-16 color--grey mt-0">Pick the plan that works best for your requirements.</p>
+                     <h2 class="s-28 mb-5">Boost Your Finances with <span class="color--green-500">Smart Strategies</span></h2>
+                     <p class="s-16 color--grey mt-0">Find the right plan for your financial journey.</p>
                  </div>
              </div>
          </div>
-         <div class="row position-relative mb-3">
+         {{-- <div class="row position-relative mb-3">
              <figure class="rounded position-absolute d-none d-lg-block text-end"
                  style="top: 50%; right:0; width: 45%; height: auto; transform: translateY(-50%); z-index:2;"><img
                      src="{{ asset('front/images/Quick-Self-Apply.png') }}"></figure>
@@ -226,9 +226,7 @@
                                      <div class="p-3">
                                          <div class="fbox-txt mb-3">
                                              <h2 class="s-28 w-700">Quick Self-Apply</h2>
-                                             <p>Enjoy instant access to expert consultation, convenient login links, and
-                                                 personalized
-                                                 loan offers from our NBFC partners.</p>
+                                             <p>Relax While We Handle Everything! From application to approval, our loan experts guide and manage the process for you every step of the way.</p>
                                          </div>
                                          <a href="{{ route('self.apply.main') }}"
                                              class="btn r-04 btn--theme hover--tra-black">
@@ -241,7 +239,7 @@
                      </div>
                  </div>
              </div>
-         </div>
+         </div> --}}
          <div class="row position-relative justify-content-end">
              <figure class="rounded position-absolute d-none d-lg-block"
                  style="top: 50%; left:0; width: 45%; height: auto; transform: translateY(-50%); z-index:2"><img
@@ -255,9 +253,7 @@
                                      <div class="p-3">
                                          <div class="fbox-txt mb-3">
                                              <h2 class="s-28 w-700">Hire Loan Agent</h5>
-                                                 <p>Leave the loan process to our dedicated experts while you sit back
-                                                     and relax, with
-                                                     better chances of approval.</p>
+                                                 <p>Get instant access to best quality digital loan consultation, login links and exclusive personalized loan offer from our trusted NBFC partners. </p>
                                          </div>
                                          <a href="{{ route('loan.agent.main') }}"
                                              class="btn r-04 btn--theme hover--tra-black">
@@ -280,8 +276,8 @@
          <div class="row justify-content-center">
              <div class="col-md-10 col-lg-10">
                  <div class="section-title mb-40">
-                     <h2 class="s-28 mb-5">Calculate Your <span class="color--green-500">EMI Instantly</span></h2>
-                     <p class="s-16 color--grey mt-0">Make more confident financial decisions!</p>
+                     <h2 class="s-28 mb-5">Know Your EMI Before <span class="color--green-500">You Apply!</span></h2>
+                     <p class="s-16 color--grey mt-0">Stay prepared and choose a loan that fits your budget.</p>
                  </div>
              </div>
          </div>
@@ -540,8 +536,8 @@
              <div class="row justify-content-center">
                  <div class="col-md-10 col-lg-10">
                      <div class="section-title mb-40">
-                         <h2 class="s-28 mb-5">Our <span class="color--green-500">NBFC Partners</span></h2>
-                         <p class="s-16 color--grey mt-0">We collaborate with the best to bring you the best.</p>
+                         <h2 class="s-28 mb-5">Our <span class="color--green-500">Financing Partners</span></h2>
+                         <p class="s-16 color--grey mt-0">Partnering with trusted NBFCs to bring you reliable financial solutions.</p>
                      </div>
                  </div>
              </div>
@@ -571,7 +567,7 @@
              <div class="col-md-10 col-lg-9">
                  <div class="section-title mb-40">
                      <h2 class="s-28 mb-5">How it <span class="color--green-500">works!</span></h2>
-                     <p class="s-16 color--grey mt-0">6 Easy Steps To Financial Success.</p>
+                     <p class="s-16 color--grey mt-0">Get Started in 6 Simple Steps</p>
                  </div>
              </div>
          </div>
@@ -588,8 +584,7 @@
                                  </div>
                              </div>
                              <div class="fbox-txt ms-4 text-start">
-                                 <p class="mt-0">Begin your process by entering your mobile number and bank-registered
-                                     name.</p>
+                                 <p class="mt-0">Begin by entering your mobile number, bank-registered name, and the required details.</p>
                              </div>
                          </div>
                      </div>
@@ -603,10 +598,7 @@
                                  </div>
                              </div>
                              <div class="fbox-txt ms-4 text-start">
-                                 <p class="mt-0">Fill out the remaining information, and our automated system will check
-                                     your
-                                     eligibility and display any pre-approved loan offers. This is not a final offer.
-                                 </p>
+                                 <p class="mt-0">Based on your details, we will check your eligibility and display suitable pre-approved offers. This is not a final offer.</p>
                              </div>
                          </div>
                      </div>
@@ -620,9 +612,7 @@
                                  </div>
                              </div>
                              <div class="fbox-txt ms-4 text-start">
-                                 <p class="mt-0">To gain access to the pre-approved loan offers displayed, purchase one
-                                     of our
-                                     subscription plans.</p>
+                                 <p class="mt-0">Select a plan to gain access to the loan offers available for your profile.</p>
                              </div>
                          </div>
                      </div>
@@ -643,9 +633,7 @@
                                  </div>
                              </div>
                              <div class="fbox-txt ms-4 text-start">
-                                 <p class="mt-0">Our login team will contact you within 24-48 hours to verify your
-                                     information and
-                                     guide you through the process.</p>
+                                 <p class="mt-0">Within 24 to 48 hours, our team will contact you for verification and guide you with the required documents.</p>
                              </div>
                          </div>
                      </div>
@@ -659,9 +647,7 @@
                                  </div>
                              </div>
                              <div class="fbox-txt ms-4 text-start">
-                                 <p class="mt-0">The NBFC will verify your documents and profile in accordance with its
-                                     terms and
-                                     conditions.</p>
+                                 <p class="mt-0">NBFC will review your profile & documents as per their process & guidelines.</p>
                              </div>
                          </div>
                      </div>
@@ -675,9 +661,7 @@
                                  </div>
                              </div>
                              <div class="fbox-txt ms-4 text-start">
-                                 <p class="mt-0">The NBFC will make the final decision on loan sanction, approval, and
-                                     disbursement in
-                                     accordance with its rules and regulations.</p>
+                                 <p class="mt-0">The NBFC will give its final decision and disbursement as per terms and policies.</p>
                              </div>
                          </div>
                      </div>
@@ -698,8 +682,8 @@
          <div class="row justify-content-center">
              <div class="col-md-12 col-lg-12">
                  <div class="section-title mb-40">
-                     <h2 class="s-28 mb-5">Hear Straight From <span class="color--green-500">Our Customers</span></h2>
-                     <p class="s-16 color--grey mt-0">The words that inspire us to perform better.</p>
+                     <h2 class="s-28 mb-5">Hear From <span class="color--green-500">Our Customers</span></h2>
+                     <p class="s-16 color--grey mt-0">Real experiences that reflect our commitment to service and support.</p>
                  </div>
              </div>
          </div>
@@ -805,10 +789,8 @@
          <div class="row align-items-center justify-content-start">
              <div class="col-md-6 col-12 md-mb-50 order-md-1 order-2">
                  <div class="section-title mb-40 text-start">
-                     <h2 class="s-28 mb-5">We’re Here to <span class="color--green-500">Assist You</span></h2>
-                     <p class="description mt-0">Drop us a message with your basic information, and our
-                         team will get
-                         back to you shortly.</p>
+                     <h2 class="s-28 mb-5">Let's <span class="color--green-500">Connect</span></h2>
+                     <p class="description mt-0">Send us a message and we'll get back to you as soon as possible.</p>
                  </div>
                  <div class="row gy-3 gx-3 mx-md-0 mx-2">
                      <div class="col-lg-6 col-md-12 col-12">
@@ -823,7 +805,7 @@
                              <div class="address-text ms-3">
                                  <h6 class="color--green-500 mb-1 s-16">Address:</h6>
                                  <p class="address-txt mt-0">
-                                     {{ env('COMPANY_ADDRESS') }}</p>
+                                     {{ config('constant.COMPANY_ADDRESS'); }}</p>
                              </div>
                          </div>
                      </div>
@@ -839,9 +821,9 @@
                              <div class="address-text ms-3">
                                  <h6 class="color--green-500 mb-1 s-16"> Customer Support :</h6>
                                  <p class="address-txt mt-0"><a
-                                         href="tel:{{ str_ireplace(" ","",env('COMPANY_MOBILE')) }}">
+                                         href="tel:{{ str_ireplace(" ","",config('constant.COMPANY_MOBILE')) }}">
 
-                                         {{ env('COMPANY_MOBILE') }}</a>
+                                         {{ config('constant.COMPANY_MOBILE'); }}</a>
                                  </p>
                              </div>
                          </div>
@@ -858,8 +840,8 @@
                              <div class="address-text ms-3">
                                  <h6 class="color--green-500 mb-1 s-16"> Mail Us:</h6>
                                  <p class="address-txt mt-0"><a
-                                         href="mailto:{{ str_ireplace(" ","",env('COMPANY_SUPPORT_MAIL')) }}">
-                                         {{ env('COMPANY_SUPPORT_MAIL') }}</a>
+                                         href="mailto:{{ str_ireplace(" ","",config('constant.COMPANY_SUPPORT_MAIL')) }}">
+                                         {{ config('constant.COMPANY_SUPPORT_MAIL'); }}</a>
                                  </p>
                              </div>
                          </div>
@@ -988,7 +970,6 @@ $(document).ready(function() {
 
  <script>
 const routes = {
-    'selfapply': "{{ route('self.apply.send.otp') }}",
     'loan-agent': "{{ route('loan.agent.send.otp') }}"
 };
 

@@ -28,3 +28,11 @@ Homestead.json
 .env.production
 .phpactor.json
 auth.json
+
+.history
+.ionide
+/public/storage/
+/storage/*.key
+.env.local
+composer.lock
+.idea/

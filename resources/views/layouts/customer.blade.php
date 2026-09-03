@@ -101,7 +101,7 @@
             <div class="footer py-4 d-flex flex-lg-column bg-success" id="kt_footer">
                 <div class=" container-xxl">
                     <div class="text-white text-center">
-                        <span class="fw-semibold">{{ date('Y') }} &copy;</span> <a href="{{ route('front.home') }}" target="_blank" class="text-white fw-semibold fs-6">{{ env('COMPANY_NAME') }}</a>
+                        <span class="fw-semibold">{{ date('Y') }} &copy;</span> <a href="{{ route('front.home') }}" target="_blank" class="text-white fw-semibold fs-6">{{ config('constant.COMPANY_NAME') }}</a>
                         <span class="fw-semibold">All Rights Reserved.</span>
                     </div>
                 </div>

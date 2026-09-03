@@ -1,18 +1,20 @@
 <?php
 
+use Illuminate\Support\Facades\Log;
+
     if(!function_exists('user_track')){
         function user_track($postData){
             $curl = curl_init();
             $map = [
                 // Self product tags → Self key
-                'Self Get Offer'          => env('SELF_INTERAKT_KEY'),
-                'Self Payment Successful' => env('SELF_INTERAKT_KEY'),
+                'Self Get Offer'          => config('constant.SELF_INTERAKT_KEY'),
+                'Self Payment Successful' => config('constant.SELF_INTERAKT_KEY'),
             
                 // Hire product tags → Hire key
-                'Hire Get Offer'          => env('HIRE_INTERAKT_KEY'),
-                'Hire Payment Successful' => env('HIRE_INTERAKT_KEY')
+                'Hire Get Offer'          => config('constant.HIRE_INTERAKT_KEY'),
+                'Hire Payment Successful' => config('constant.HIRE_INTERAKT_KEY')
             ];
-            //$key = in_array($postData['tags'][0], $arr) ? env('SELF_INTERAKT_KEY_OLD') : env('HIRE_INTERAKT_KEY_OLD');
+            //$key = in_array($postData['tags'][0], $arr) ? config('constant.SELF_INTERAKT_KEY_OLD') : config('constant.HIRE_INTERAKT_KEY_OLD');
             $tag = $postData['tags'][0] ?? null; // safely get first tag
             $key = $map[$tag] ?? null;
             curl_setopt_array($curl, [
@@ -32,6 +34,13 @@
 
             $response = curl_exec($curl);
             $err = curl_error($curl);
+
+            Log::info('Interakt User_track Request', $postData);
+            Log::info('Interakt User_track Response', ['response' => $response]);
+
+            if ($err) {
+                Log::error('Interakt cURL Error', ['error' => $err]);
+            }
             curl_close($curl);
 
             $result = json_decode($response, true);
@@ -43,19 +52,19 @@
         function event_track($postData){
             $curl = curl_init();
             $arr = $map = [
-                'Self Get Offer'            => env('SELF_INTERAKT_KEY'),
-                'Self Payment Successful'    => env('SELF_INTERAKT_KEY'),
-                'Self Payment Failed'        => env('SELF_INTERAKT_KEY'),
+                'Self Get Offer'            => config('constant.SELF_INTERAKT_KEY'),
+                'Self Payment Successful'    => config('constant.SELF_INTERAKT_KEY'),
+                'Self Payment Failed'        => config('constant.SELF_INTERAKT_KEY'),
                 
-                'Hire Get Offer'            => env('HIRE_INTERAKT_KEY'),
-                'Hire Payment Successful'    => env('HIRE_INTERAKT_KEY'),
-                'Hire Payment Failed'        => env('HIRE_INTERAKT_KEY')
+                'Hire Get Offer'            => config('constant.HIRE_INTERAKT_KEY'),
+                'Hire Payment Successful'    => config('constant.HIRE_INTERAKT_KEY'),
+                'Hire Payment Failed'        => config('constant.HIRE_INTERAKT_KEY')
             ];
             
             $event = $postData['event'] ?? null; // safely get first tag
             $key = $map[$event] ?? null;
             
-            //$key = in_array($postData['event'], $arr) ? env('SELF_INTERAKT_KEY_OLD') : env('HIRE_INTERAKT_KEY_OLD');
+            //$key = in_array($postData['event'], $arr) ? config('constant.SELF_INTERAKT_KEY_OLD') : config('constant.HIRE_INTERAKT_KEY_OLD');
             
             curl_setopt_array($curl, [
                 CURLOPT_URL => "https://api.interakt.ai/v1/public/track/events/",
@@ -74,6 +83,14 @@
 
             $response = curl_exec($curl);
             $err = curl_error($curl);
+
+            Log::info('Interakt Event_track Request', $postData);
+            Log::info('Interakt Event_track Response', ['response' => $response]);
+
+            if ($err) {
+                Log::error('Interakt cURL Error', ['error' => $err]);
+            }
+
             curl_close($curl);
 
             $result = json_decode($response, true);
@@ -88,7 +105,7 @@
             Log::info($key);*/
             
             $curl = curl_init();
-            //$key = ($type == 'self') ? env('SELF_INTERAKT_KEY') : env('HIRE_INTERAKT_KEY');
+            //$key = ($type == 'self') ? config('constant.SELF_INTERAKT_KEY') : config('constant.HIRE_INTERAKT_KEY');
             curl_setopt_array($curl, [
                 CURLOPT_URL => "https://api.interakt.ai/v1/public/message/",
                 CURLOPT_RETURNTRANSFER => true,

@@ -110,7 +110,7 @@ if (!function_exists('nbfcsList')) {
             $data['list'] .= '<div class="col company" data-index="' . $loop . '">
                             <a href="javascript:;" class="in_tool it-1 r-10">
                                 <div class="bg--white-100 block-shadow r-10 mb-20">
-                                    <img class="img-fluid" src="https://manage.wisefinai.com/upload/banks/' . $bank->bank_image . '" alt="' . $bank->bank_name . '" width="auto">
+                                    <img class="img-fluid" src="https://manage.wisefinai.com/public/upload/banks/' . $bank->bank_image . '" alt="' . $bank->bank_name . '" width="auto">
                                 </div>
                                 <h6 class="s-14 w-700">' . $bank->bank_name . '</h6>
                             </a>
@@ -118,7 +118,7 @@ if (!function_exists('nbfcsList')) {
 
             $data['carousel'] .= '<div class="bg--white-100 r-10 mb-20 p-md-2 p-2">
                                     <a href="javascript:;">
-                                        <img class="img-fluid" src="https://manage.wisefinai.com/upload/banks/' . $bank->bank_image . '" alt="' . $bank->bank_name . '" width="100">
+                                        <img class="img-fluid" src="https://manage.wisefinai.com/public/upload/banks/' . $bank->bank_image . '" alt="' . $bank->bank_name . '" width="100">
                                     </a>
                                 </div>';
             $loop++;
@@ -140,36 +140,31 @@ if (!function_exists('raiseRequestFaqs')) {
                     <div class="accordion-panel">
                         <div class="accordion-panel-item">
                             <div class="faqs-2-answer">
-                                <p>
-                               This may happen if your amount is held by the payment gateway and yet to be credited to the company account. Do not worry; once the funds are credited to the company account, your account will be created and you will be notified via email. Otherwise, the payment gateway will refund your funds in accordance with their policies. </p>
+                                <p>This may happen if your amount is held by the payment gateway and yet to be credited to the company’s account. Do not worry; once the funds are credited to the company account, your account will be created and you will be notified via email. Otherwise, the payment gateway will refund your funds in accordance with their policies.</p>
                             </div>
                         </div>
                     </div>
                 </li>
                 <li class="accordion-item mb-0">
                     <div class="accordion-thumb bg--green-100">
-                        <h6 class="s-15 w-500 mb-0">Even after so many days, I have not received my refund. What should I do?</h6>
+                        <h6 class="s-15 w-500 mb-0">Even after so many days, I have not received my refund. What should I do? </h6>
                     </div>
                     <div class="accordion-panel">
                         <div class="accordion-panel-item">
                             <div class="faqs-2-answer">
-                                <p>
-                                   This could happen if your money is held by the bank or payment gateway. It will be refunded as per the bank/payment gateway’s rules and regulations.
-                                </p>
+                                <p>This could happen if your money is held by the bank or payment gateway. It will be refunded as per the bank/payment gateway’s rules and regulations.</p>
                             </div>
                         </div>
                     </div>
                 </li>
                 <li class="accordion-item mb-0">
                     <div class="accordion-thumb bg--green-100">
-                        <h6 class="s-15 w-500 mb-0">I misunderstood the company’s service/made payment by mistake. Can I get a refund?</h6>
+                        <h6 class="s-15 w-500 mb-0">I misunderstood the company’s service/made payment by mistake. Can I get a refund? </h6>
                     </div>
                     <div class="accordion-panel">
                         <div class="accordion-panel-item">
                             <div class="faqs-2-answer">
-                                <p>
-                                    The subscription plan payment is only refundable under the company cancellation and refund policy. Click here to know more. 
-                                </p>
+                                <p>The subscription plan payment is only refundable under the company cancellation and refund policy.</p>
                             </div>
                         </div>
                     </div>
@@ -182,7 +177,7 @@ if (!function_exists('raiseRequestFaqs')) {
                         <div class="accordion-panel-item">
                             <div class="faqs-2-answer">
                                 <p>
-                                    Please read the terms and conditions to get a clear understanding of what a pre-approval loan offer is. Click here
+                                    Please read the terms and conditions to get a clear understanding of what a pre-approval loan offer is.
                                 </p>
                             </div>
                         </div>
@@ -190,7 +185,7 @@ if (!function_exists('raiseRequestFaqs')) {
                 </li>
                 <li class="accordion-item mb-0">
                     <div class="accordion-thumb bg--green-100">
-                        <h6 class="s-15 w-500 mb-0">Who can get a GST return? </h6>
+                        <h6 class="s-15 w-500 mb-0">Who can get a GST return?</h6>
                     </div>
                     <div class="accordion-panel">
                         <div class="accordion-panel-item">
@@ -204,27 +199,13 @@ if (!function_exists('raiseRequestFaqs')) {
                 </li>
                 <li class="accordion-item mb-0">
                     <div class="accordion-thumb bg--green-100">
-                        <h6 class="s-15 w-500 mb-0">I have changed my mind and do not want to use the company services. Can I get the refund? </h6>
+                        <h6 class="s-15 w-500 mb-0">I have changed my mind and do not want to use the company services. Can I get the refund?</h6>
                     </div>
                     <div class="accordion-panel">
                         <div class="accordion-panel-item">
                             <div class="faqs-2-answer">
                                 <p>
-                                    The subscription plan payment is only refundable under the company cancellation and refund policy. 
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="accordion-item mb-0">
-                    <div class="accordion-thumb bg--green-100">
-                        <h6 class="s-15 w-500 mb-0">I am not happy with the company service. What should I do? </h6>
-                    </div>
-                    <div class="accordion-panel">
-                        <div class="accordion-panel-item">
-                            <div class="faqs-2-answer">
-                                <p>
-                                    We request you to kindly call the company on +91-{#VAR#} between 10 AM to 5 PM- Monday to Saturday (only business days). Allow us to discuss your concerns, and we will ensure that you receive the best solutions possible. 
+                                    The subscription plan payment is only refundable under the company cancellation and refund policy.
                                 </p>
                             </div>
                         </div>
@@ -246,13 +227,13 @@ if (!function_exists('raiseRequestFaqs')) {
                 </li>
                 <li class="accordion-item mb-0">
                     <div class="accordion-thumb bg--green-100">
-                        <h6 class="s-15 w-500 mb-0">Can I get a refund if I purchase subscriptions/memberships from multiple companies in your group of companies? </h6>
+                        <h6 class="s-15 w-500 mb-0">Can I get a refund if I purchase subscriptions/memberships from multiple companies in your group of companies?</h6>
                     </div>
                     <div class="accordion-panel">
                         <div class="accordion-panel-item">
                             <div class="faqs-2-answer">
                                 <p>
-                                  If a customer purchased Subscriptions/Memberships from multiple companies in our group of companies, the customer is eligible for a refund. You can request a refund within 48 hours of payment through the Raising A Request section of the website or by calling the company registered contact number.
+                                    If a customer purchased subscriptions/memberships from multiple companies in our group of companies, the customer is eligible for a refund. You can request a refund within 48 hours of payment through the Raising A Request section of the website or by calling the company registered contact number.
                                 </p>
                             </div>
                         </div>
@@ -530,7 +511,7 @@ if (!function_exists('handleFileUpload')) {
 if (!function_exists('sendBrevoHtmlMail')) {
     function sendBrevoHtmlMail($maildata, $subject = '', $message = '', $sendmail = '', $attachmentPath = '')
     {
-        $data['sender']['name'] = env('APP_NAME');
+        $data['sender']['name'] = config('constant.APP_NAME');
         $data["sender"]["email"] = 'info@wisefinai.com';
 
         $user_res["name"] = $maildata["fullname"];
@@ -571,7 +552,7 @@ if (!function_exists('sendBrevoHtmlMail')) {
                 CURLOPT_HTTPHEADER => [
                     "Accept: application/json",
                     "Content-Type: application/json",
-                    "api-key: " . env('BREVO_API_KEY')
+                    "api-key: " . config('constant.BREVO_API_KEY')
                 ],
             )
         );
@@ -590,7 +571,7 @@ if (!function_exists('sendBrevoHtmlMail')) {
 if (!function_exists('sendBrevoHtmlMail2')) {
     function sendBrevoHtmlMail2($maildata, $subject = '', $message = '', $sendmail = '', $attachments = [])
     {
-        $data['sender']['name'] = env('APP_NAME');
+        $data['sender']['name'] = config('constant.APP_NAME');
         $data["sender"]["email"] = 'info@wisefinai.com';
 
         $user_res["name"] = $maildata["fullname"];
@@ -633,7 +614,7 @@ if (!function_exists('sendBrevoHtmlMail2')) {
                 CURLOPT_HTTPHEADER => [
                     "Accept: application/json",
                     "Content-Type: application/json",
-                    "api-key: " . env('BREVO_API_KEY')
+                    "api-key: " . config('constant.BREVO_API_KEY')
                 ],
             )
         );
@@ -812,7 +793,7 @@ if (!function_exists('getFacebookPixelKey')) {
     function getFacebookPixelKey()
     {
         $url = request()->segment(1);
-        $pxKey = (($url == 'loan-agent') ? 'la_facebookpixelkey' : (($url == 'loan-assistant') ? 'lat_facebookpixelkey' : 'sa_facebookpixelkey'));
+        $pxKey = ($url == 'agent') ? 'la_facebookpixelkey' : 'sa_facebookpixelkey';
         return InfoPages::where('slug', $pxKey)->first()->content;
     }
 }
@@ -835,13 +816,6 @@ if (!function_exists('getFBConversionData')) {
                 'fbaccesstoken' => $data['la_facebookaccesstoken'] ?? '',
                 'fbeventname' => $data['la_facebookeventname'] ?? '',
                 'fbeventid' => $data['la_facebookeventid'] ?? ''
-            ];
-        } else if ($type == 'loan-assistant') {
-            $data = InfoPages::whereIn('slug', ['lat_facebookaccesstoken', 'lat_facebookeventname', 'lat_facebookeventid'])->get()->pluck('content', 'slug');
-            $arr_data[] = [
-                'fbaccesstoken' => $data['lat_facebookaccesstoken'] ?? '',
-                'fbeventname' => $data['lat_facebookeventname'] ?? '',
-                'fbeventid' => $data['lat_facebookeventid'] ?? ''
             ];
         } else {
             $arr_data['fbaccesstoken'] = $arr_data['fbeventname'] = $arr_data['fbeventid'] = '';
@@ -901,14 +875,15 @@ if (!function_exists('fbconversioncurl')) {
             $data["user_data"]["fbc"] = $userdata['fbclid'];
         }
         $orderAmount = $userdata['odamount'] / (1 + (18 / 100));
-        if ($ver == 11) {
+        
+        if($ver == 11 || $ver == 16){
             /* v11 code starts here */
-            $contents["id"] = "KB2025";
+            $contents["id"] = "MSF2026";
             $contents["quantity"] = 1;
             $data["contents"][] = $contents;
 
             $data["custom_data"]["currency"] = "INR";
-            $data["custom_data"]["value"] = $orderAmount;
+            $data["custom_data"]["value"] = formatePriceIndia($orderAmount);
             $data["custom_data"]["order_id"] = $userdata['orderid'];
             /* v11 code ends here */
         } else {
@@ -920,7 +895,7 @@ if (!function_exists('fbconversioncurl')) {
             $data["custom_data"]["order_id"] = $userdata['orderid'];
             $data["custom_data"]["status"] = "registered";
 
-            $contents["id"] = "KB2025";
+            $contents["id"] = "MSF2026";
             $contents["quantity"] = 1;
             $contents["item_price"] = formatePriceIndia($orderAmount);
             $data["custom_data"]["contents"] = array($contents);
@@ -935,9 +910,6 @@ if (!function_exists('fbconversioncurl')) {
         } else if ($userdata['type'] == 'hire-agent') {
             $fbpixel = InfoPages::where('slug', 'la_facebookpixelkey')->first()->content;
             $accesstoken = $fbaccesstoken;
-        } else if ($userdata['type'] == 'loan-assistant') {
-            $fbpixel = InfoPages::where('slug', 'lat_facebookpixelkey')->first()->content;
-            $accesstoken = $fbaccesstoken;
         } else {
             $fbpixel = '';
             $accesstoken = $fbaccesstoken;
@@ -949,8 +921,8 @@ if (!function_exists('fbconversioncurl')) {
         $fields['upload_tag'] = "orders"; // You should set a tag here (feel free to adjust)
         $fields['data'] = $data_json;
 
-        $curlUrl = (($ver == 11) ? "https://graph.facebook.com/v11.0/" . $fbpixel . "/events" : "https://graph.facebook.com/v21.0/" . $fbpixel . "/events");
-
+        $curlUrl = "https://graph.facebook.com/v{$ver}.0/{$fbpixel}/events";
+        
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_URL => $curlUrl,
@@ -970,6 +942,15 @@ if (!function_exists('fbconversioncurl')) {
 
         $response = curl_exec($curl);
         $err = curl_error($curl);
+        
+        Log::info('Facebook Conversion API Response', [
+            'response' => $response,
+            'decoded_response' => json_decode($response, true),
+            'curl_error' => $err,
+            'curl_errno' => curl_errno($curl),
+            'http_code' => curl_getinfo($curl, CURLINFO_HTTP_CODE),
+        ]);
+                
         curl_close($curl);
 
         if ($err) {

@@ -21,7 +21,7 @@ class LoanApplyVerify
         $userId = Cookie::get('userid');
 
         if (!$mobile || !$loanAmount || !$userId) {
-            return redirect(route('self.apply.main'));
+            return redirect(route('loan.agent.main'));
         }
 
         return $next($request);

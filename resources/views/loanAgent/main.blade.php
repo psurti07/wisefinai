@@ -68,60 +68,57 @@
         <div class="row d-flex align-items-center">
             <div class="col-md-12 col-lg-6 order-md-2 order-lg-1">
                 <div class="mt-0 mb-2 text-start">
-                    <h1 class="s-40 mb-2">Get Instant <span class="color--green-500">Cash</span></h1>
-                    <h3 class="s-24 mb-2">Up to <span class="color--green-500">₹15 Lakhs</span> in 24 Hours</h3>
-                    <p class="s-16 mb-3">India's fastest digital loan platform with instant pre-approval.</p>
+                    <h2 class="s-35 mb-2">Find Suitable <span class="color--green-500">Financing</span></h2>
+                    <h3 class="s-24 mb-2">Explore Loan Options Up to <span class="color--green-500">₹15 Lakhs</span></h3>
+                    <p class="s-16 mb-3">A Digital Platform to Explore Loan Options From Multiple Lending Partners.</p>
                 </div>
 
                 <div class="d-none d-md-block d-lg-block">
                     <div class="row gx-2 gy-2 row-cols-1 row-cols-md-3 row-cols-lg-3 mb-10">
-                        <div class="col">
-                            <div class="fbox-7 fbox--hover bg--white-100 fb-1 r-12 p-3">
+                        <div class="col d-flex">
+                            <div class="fbox-7 fbox--hover bg--white-100 fb-1 r-12 p-3 h-100 w-100">
                                 <div class="fbox-ico ico-25 mb-2">
                                     <div class="shape-ico color--theme">
-                                        <img src="{{ asset('front/images/Secure-&-Safe.png') }}" alt="wisefinai"
-                        class="img-fluid p-0">
+                                        <img src="{{ asset('front/images/Secure-&-Safe.png') }}" alt="wisefinai" class="img-fluid p-0">
                                     </div>
                                 </div>
                                 <div class="fbox-txt">
                                     <h4 class="s-16 w-700">Secure & Safe</h4>
-                                    <p class="mb-0">256-bit encryption</p>
+                                    <p class="mb-0">Protected Digital Process</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col">
-                            <div class="fbox-7 fbox--hover bg--white-100 fb-1 r-12 p-3">
+                        <div class="col d-flex">
+                            <div class="fbox-7 fbox--hover bg--white-100 fb-1 r-12 p-3 h-100 w-100">
                                 <div class="fbox-ico ico-25 mb-2">
                                     <div class="shape-ico color--theme">
-                                       <img src="{{ asset('front/images/Instant-Approval.png') }}" alt="wisefinai"
-                        class="img-fluid p-0">
+                                       <img src="{{ asset('front/images/Instant-Approval.png') }}" alt="wisefinai" class="img-fluid p-0">
                                     </div>
                                 </div>
                                 <div class="fbox-txt">
-                                    <h4 class="s-16 w-700">Instant Approval</h4>
-                                    <p class="mb-0">Within 5 minutes</p>
+                                    <h4 class="s-16 w-700">Quick Application Process</h4>
+                                    <p class="mb-0">Submit Your Detail</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col">
-                            <div class="fbox-7 fbox--hover bg--white-100 fb-1 r-12 p-3">
+                        <div class="col d-flex">
+                            <div class="fbox-7 fbox--hover bg--white-100 fb-1 r-12 p-3 h-100 w-100">
                                 <div class="fbox-ico ico-25 mb-2">
                                     <div class="shape-ico color--theme">
-                             <img src="{{ asset('front/images/Low-Interest-Rate.png') }}" alt="wisefinai"
-                        class="img-fluid p-0">
+                                        <img src="{{ asset('front/images/Low-Interest-Rate.png') }}" alt="wisefinai" class="img-fluid p-0">
                                     </div>
                                 </div>
                                 <div class="fbox-txt">
-                                    <h4 class="s-16 w-700">Low Interest Rate</h4>
-                                    <p class="mb-0">Starting at 10.5%</p>
+                                    <h4 class="s-16 w-700">Flexible Rate Options</h4>
+                                    <p class="mb-0">Rates Based on Lender Terms</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col-lg-6 col-md-6 col-12">
                             <p class="btn-txt mb-2 mt-2 ico-15"><span class="flaticon-check color--theme me-1"></span> No Collateral Required</p>
                             <p class="btn-txt mb-2 mt-2 ico-15"><span class="flaticon-check color--theme me-1"></span> Flexible Repayment Options</p>
@@ -131,13 +128,13 @@
                             <p class="btn-txt mb-2 mt-2 ico-15"><span class="flaticon-check color--theme me-1"></span> Pre-Approved Offers Available</p>
                             <p class="btn-txt mb-2 mt-2 ico-15"><span class="flaticon-check color--theme me-1"></span> Minimal Documentation</p>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="col-md-12 col-lg-6 align-items-center m-auto order-md-1 order-lg-2">
                 <div id="hero-8-form" class="border border-primary r-06">
-                    <h4 class="s-20 w-700 mb-2">Apply in <span class="color--green-500">5 Minutes</span></h4>
-                    <p class="s-16">Get instant pre-approved offers.</p>
+                    <h4 class="s-20 w-700 mb-2">Loan Guidance Made <span class="color--green-500">Simple</span></h4>
+                    <p class="s-16">Share your details to view available loan options.</p>
 
                     <form method="post" action="{{ route('loan.agent.send.otp') }}" class="request-form save-form-1 needs-validation" novalidate>
                         <div class="row g-2">
@@ -193,13 +190,17 @@
                                 </div>
                                 @component('components.ajax-error',['field'=>'mobile'])@endcomponent
                             </div>
+                            
+                            <div class="col-md-12">
+                                <p class="mb-0 s-14 text-start text-dark"><input type="checkbox" checked="checked" id="accept_tnc" name="accept_tnc"/>&nbsp;<small>By submitting the form and proceeding, you agree to the <a href="{{ route('front.terms.conditions') }}" target="_blank" class="text-dark text-decoration-none">Terms of Use</a> and <a href="{{ route('front.privacy.policy') }}" class="text-dark text-decoration-none" target="_blank">Privacy Policy</a> of <a href="{{ route('front.home') }}" class="text-dark text-decoration-none" target="_blank">wisefinai.com.</a></p>
+                                @component('components.ajax-error',['field'=>'accept_tnc'])@endcomponent
+                            </div>
+
                             <div class="col-md-12 form-btn">
                                 <button type="submit" id="checkmodal" class="btn btn--theme hover--theme submit">Apply Now</button>
                             </div>
                             <div class="col-md-12"><span class="text-danger" id="usererrormsg"></span></div>
                         </div>
-
-                        <p class="mb-0 s-14 text-start text-dark">By submitting the form and proceeding, you agree to the <a href="{{ route('front.terms.conditions') }}" target="_blank" class="text-dark text-decoration-none">Terms of Use</a> and <a href="{{ route('front.privacy.policy') }}" class="text-dark text-decoration-none" target="_blank">Privacy Policy</a> of <a href="{{ route('front.home') }}" class="text-dark text-decoration-none" target="_blank">wisefinai.com.</a></p>
                     </form>
                 </div>
             </div>
@@ -247,7 +248,7 @@
             </div>
         </div>
         <div class="fbox-wrapper text-center mt-40">
-            <div class="row gx-lg-3 gy-lg-2 g-5 row-cols-1 row-cols-md-2 row-cols-lg-4">
+            <div class="row gx-lg-3 gy-lg-2 g-5 row-cols-1 row-cols-md-2 row-cols-lg-3">
                 <div class="col">
                     <div class="fbox-8 feature-image fbox--hover fb-1 r-12 border h-100">
                         <div class="fbox-ico ico-30">
@@ -276,7 +277,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                {{-- <div class="col">
                     <div class="fbox-8 fbox--hover feature-image fb-2 r-12 border h-100">
                         <div class="fbox-ico ico-30">
                             <div class="shape-ico">
@@ -289,7 +290,7 @@
                             <p>Take control of your finances while enjoying the benefits of excellent provisions.</p>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="col">
                     <div class="fbox-8 fbox--hover feature-image fb-3 r-12 border h-100">
                         <div class="fbox-ico ico-30">
@@ -300,7 +301,7 @@
                         </div>
                         <div class="fbox-txt mt-4">
                             <h4 class="s-18 w-700">Hire Loan Agent</h4>
-                            <p>Get guidance from experienced professionals to improve your loan approval possibilities.
+                            <p>Get application assistance from experienced professionals throughout your loan journey.
                             </p>
                         </div>
                     </div>
@@ -310,8 +311,73 @@
     </div>
 </section>
 
+<section id="statistic-1" class=" ct-03 py-0 statistic-section division bg--green-100">
+    <div class="container">
+        <div class="statistic-5-wrapper r-12">
+            <div class="row row-cols-2 row-cols-md-4">
+                <div class="col sec-1 py-60">
+                    <div id="sb-5-1" class="text-center mb-0">
+                        <div class="statistic-block">
+                            <div class="statistic-digit">
+                                <h2 class="s-30 w-700 mb-10 color--green-500">
+                                    <span class="count-element">4000</span>+
+                                </h2>
+                            </div>
+                            <div class="statistic-txt">
+                                <h5 class="s-16 w-500 ">Happy Customer</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col sec-2 py-60">
+                    <div id="sb-5-3" class="text-center mb-0">
+                        <div class="statistic-block">
+                            <div class="statistic-digit">
+                                <h2 class="s-30 w-700 mb-10 color--green-500">
+                                    <span class="count-element">4</span>Cr+
+                                </h2>
+                            </div>
+                            <div class="statistic-txt">
+                                <h5 class="s-16 w-500 ">Disbursal</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col sec-3 py-60">
+                    <div id="sb-5-2" class="text-center mb-0">
+                        <div class="statistic-block">
+                            <div class="statistic-digit">
+                                <h2 class="s-30 w-700 mb-10 color--green-500">
+                                    <span class="count-element">8</span>+
+                                </h2>
+                            </div>
+                            <div class="statistic-txt">
+                                <h5 class="s-16 w-500 ">NBFC Partners</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col sec-4 py-60">
+                    <div id="sb-5-4" class="text-center mb-0">
+                        <div class="statistic-block">
+                            <div class="statistic-digit">
+                                <h2 class="s-30 w-700 mb-10 color--green-500">
+                                    <span class="count-element">100</span>%
+                                </h2>
+                            </div>
+                            <div class="statistic-txt">
+                                <h5 class="s-16 w-500 ">Digital Process</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Testimonioals section starts -->
-<section id="reviews-1" class="pt-0 pb-80 shape--06 reviews-section">
+<section id="reviews-1" class="pt-80 pb-80 shape--06 reviews-section">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-12">
@@ -332,6 +398,146 @@
 </section>
 <!-- Testimonioals section ends -->
 
+<section id="faqs-3" class="py-80 faqs-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-12">
+                <div class="section-title mb-40">
+                    <h2 class="s-28 mb-5">Frequently Asked <span class="color--green-500">Questions</span></h2>
+                    <p class="s-16 color--grey mt-0">Find answers to common questions about personal loans, eligibility, documents, approvals, and more.</p>
+                </div>
+            </div>
+        </div>
+        <div class="faqs-3-questions">
+            <div class="row justify-content-center">
+                <div class="col-lg-12 col-xl-12">
+                    <div class="accordion-wrapper">
+                        <ul class="accordion">
+                            <li class="accordion-item mb-0">
+                                <div class="accordion-thumb">
+                                    <h6 class="s-16 w-400">1. What can you do with a personal loan?</h6>
+                                </div>
+                                <div class="accordion-panel">
+                                    <div class="accordion-panel-item">
+                                        <div class="faqs-2-answer">
+                                            <p>A personal loan can be used to meet almost any personal financial need, including medical expenses, education, home improvements, and debt consolidation.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="accordion-item mb-0">
+                                <div class="accordion-thumb">
+                                    <h6 class="s-16 w-400">2. What are the eligibility criteria for a personal loan?</h6>
+                                </div>
+                                <div class="accordion-panel">
+                                    <div class="accordion-panel-item">
+                                        <div class="faqs-2-answer">
+                                            <p>The eligibility criteria for a personal loan are:</p>
+                                            <p><strong>For Salaried Professionals:</strong></p>
+                                            <div class="ps-2">
+                                                <p>&bull; Minimum Age: 21 Years </p>
+                                                <p>&bull; Minimum Salary: Rs.15,000 Per Month (Should reflect in bank statement)</p>
+                                                <p>&bull; Minimum Job Stability: 1 Year</p>
+                                            </div>
+                                            <p><strong>For Self-Employed Individuals:</strong></p>
+                                            <div class="ps-2">
+                                                <p>&bull; Minimum Age: 21 Years</p>
+                                                <p>&bull; Income Tax Return Of Minimum 1 Year</p>
+                                                <p>&bull; Minimum Business Duration: 1 Year</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="accordion-item mb-0">
+                                <div class="accordion-thumb">
+                                    <h6 class="s-16 w-400">3. What documents do I need to apply for a personal loan?</h6>
+                                </div>
+                                <div class="accordion-panel">
+                                    <div class="accordion-panel-item">
+                                        <div class="faqs-2-answer">
+                                            <p>The following are the general documents needed to apply for a personal loan</p>
+                                            <p><strong>For Salaried:</strong></p>
+                                            <div class="ps-2">
+                                                <p>&bull; Aadhaar Card</p>
+                                                <p>&bull; PAN Card</p>
+                                                <p>&bull; Residence Proof: Rent agreement or Utility bills </p>
+                                                <p>&bull; Bank Statement </p>
+                                                <p>&bull; Income Proof: Salary Slips or Form 16</p>
+                                            </div>
+                                            <p><strong>For Self-Employed:</strong></p>
+                                            <div class="ps-2">
+                                                <p>&bull; Aadhaar Card</p>
+                                                <p>&bull; PAN Card </p>
+                                                <p>&bull; Residence Proof: Rent agreement or Utility bills</p>
+                                                <p>&bull; Bank Statement </p>
+                                                <p>&bull; Balance Sheet</p>
+                                                <p>&bull; Income Computation</p>
+                                                <p>&bull; Service Tax Registration, License, Registration Certificate</p>
+                                                <p>&bull; Income Tax Returns</p>
+                                            </div>
+                                            <p>Based on your profile and the guidelines, the lender may request additional documents.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="accordion-item mb-0">
+                                <div class="accordion-thumb">
+                                    <h6 class="s-16 w-400">4. Does credit score affect personal loan approval?</h6>
+                                </div>
+                                <div class="accordion-panel">
+                                    <div class="accordion-panel-item">
+                                        <div class="faqs-2-answer">
+                                            <p>Yes, your credit score is a critical factor in the loan application process. It is one of the most important factors that lenders use to assess your creditworthiness.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="accordion-item mb-0">
+                                <div class="accordion-thumb">
+                                    <h6 class="s-16 w-400">5. How can I increase my chances of getting a personal loan?</h6>
+                                </div>
+                                <div class="accordion-panel">
+                                    <div class="accordion-panel-item">
+                                        <div class="faqs-2-answer">
+                                            <p>To increase your chances, keep a good credit score, have consistent income, and provide accurate documentation during the application process.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="accordion-item mb-0">
+                                <div class="accordion-thumb">
+                                    <h6 class="s-16 w-400">6. Do personal loans have any tax advantages?</h6>
+                                </div>
+                                <div class="accordion-panel">
+                                    <div class="accordion-panel-item">
+                                        <div class="faqs-2-answer">
+                                            <p>Personal loans do not provide any direct tax advantages. However, if you use a personal loan to invest in your business, renovate your home, or fund your education, you may be able to deduct the interest you pay. For more information, please contact your CA or tax advisor.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="accordion-item mb-0">
+                                <div class="accordion-thumb">
+                                    <h6 class="s-16 w-400">7. Aside from credit scores, what other factors do lenders consider when approving personal loans?</h6>
+                                </div>
+                                <div class="accordion-panel">
+                                    <div class="accordion-panel-item">
+                                        <div class="faqs-2-answer">
+                                            <p>In addition to the credit score, lenders take into account the applicant's age, income, and job stability.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="py-20 shape--06 gr--smoke">
     <div class="container">
         <div class="row justify-content-center">
@@ -339,16 +545,16 @@
                 <div class="form-holder">
                     <div class="contact-form-notice">
                         <p class="s-14">
-                            <strong>Disclosure :</strong> The Loan repayment tenure ranges from minimum of 6 months to maximum of 60 months (5 years), depending on the lender’s policies and applicant eligibility. The maximum APR (Annual Percentage Rate), inclusive of interest rate, processing fees, and applicable charges, may go up to 34% per annum depending on the applicant’s profile and the policies of the respective lending partner. the Processing fees may be charged up to 2% of the approved loan amount. Representative Example: For a loan amount of ₹1,00,000 at an interest rate of 11.5% per annum for a tenure of 60 months (5 years), with a processing fee of 2% (₹2,000): Approximate EMI: ₹2,301, Total Interest Payable: ₹38,059, Total Cost of the Loan: ₹1,38,059, Indicative APR: Approximately 14.41% per annum. *T&C Apply. All figures provided above are illustrative and indicative in nature. Actual loan terms may vary based on the applicant’s profile & lender policies.
+                            <strong>Important Note :</strong> We ask our customers to make payments ONLY on our website wisefinai.com and NOT through any other source, directly or indirectly.
                         </p>
                         <p class="s-14">
-                            <strong>Important Note : </strong> BE AWARE! We ask our customers to make payments ONLY on our website https://wisefinai.com/ and NOT through any other source, directly or indirectly. Thanks!
+                            <strong>Disclaimer : </strong>WiseFinAI Private Limited is not a lender or financial institution. We do not provide loans or make credit decisions. All loan approvals, interest rates, fees, and disbursal are handled by third-party lenders/NBFCs. We do not guarantee loan approval, disbursal, or specific loan terms. The amount paid is only for the service charge. We are not lenders and do not guarantee any loan approval. Loan approval, disbursement/sanction is entirely dependent on NBFC criteria.
                         </p>
                         <p class="s-14">
-                            <strong>Disclaimer:</strong> wisefinai is a loan service aggregator and is authorised to provide services on behalf of its Lending Partners. The amount paid is only for the service charge. We are not lenders and do not guarantee any loan approval.
+                            <strong>Pre-Application Note:</strong> Users are advised to read our terms and conditions and policies before proceeding/applying/registration.
                         </p>
                         <p class="s-14">
-                            <strong>Registered Office Address:</strong> {{ env('COMPANY_ADDRESS') }} <br /> Mobile: {{ env('COMPANY_MOBILE') }} | Email: {{ env('INFO_EMAIL') }}
+                            <strong>Registered Office Address:</strong> {{ config('constant.COMPANY_ADDRESS'); }} <br /> Mobile: {{ config('constant.COMPANY_MOBILE'); }} | Email: {{ config('constant.INFO_EMAIL') }}
                         </p>
                     </div>
                 </div>
@@ -441,9 +647,6 @@
     });
 </script>
 
-<script>
-    const sendOtpUrl = @json(route('self.apply.send.otp'));
-</script>
 <!-- write or link your script file and script tag here -->
 <script src="{{ asset('front/js/loanAgent.js') }}"></script>
 <script>

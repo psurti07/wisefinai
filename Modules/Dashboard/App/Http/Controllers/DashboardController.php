@@ -170,7 +170,7 @@ class DashboardController extends Controller
             $amount = ($productData->inOffer == 1) ? $productData->offeramount : $productData->amount;
             $grandAmount = $amount + ($amount * 0.18);
 
-            $uatNumbers = explode(',', env('UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
+            $uatNumbers = explode(',', config('constant.UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
 
             foreach ($uatNumbers as $uatNum) {
                 if ($uatNum == Auth::user()->mobile) {
@@ -183,7 +183,7 @@ class DashboardController extends Controller
             $returnUrl = route('api.customer.upgradePlan');
             
             /*zaakpay code starts*/
-            if (env('ZAAKPAY_ENV') == "PRODUCTION") {
+            if (config('constant.ZAAKPAY_ENV') == "PRODUCTION") {
                 $curlurl = "https://api.zaakpay.com/api/paymentTransact/V8";
             } else {
                 $curlurl = "https://zaakstaging.zaakpay.com/api/paymentTransact/V8";
@@ -192,7 +192,7 @@ class DashboardController extends Controller
             $firstname = Auth::user()->first_name;
             $lastname = Auth::user()->last_name;
             $zaakpayPostData = array(
-                "merchantIdentifier" => env('ZAAKPAY_MERCHANT_IDENTIFIER'),
+                "merchantIdentifier" => config('constant.ZAAKPAY_MERCHANT_IDENTIFIER'),
                 "orderId" => $orderId,
                 "returnUrl" => $returnUrl,
                 "currency" => 'INR',
@@ -211,7 +211,7 @@ class DashboardController extends Controller
                 $checksumData .= $key . '=' . $value . '&';
             }
 
-            $checksum = hash_hmac('sha256', $checksumData, env('ZAAKPAY_SECRET_KEY'));
+            $checksum = hash_hmac('sha256', $checksumData, config('constant.ZAAKPAY_SECRET_KEY'));
 
             $zaakPayData = array(
                 'rec_date' => date('Y-m-d H:i:s'),
@@ -277,7 +277,7 @@ class DashboardController extends Controller
                 }
             }
 
-            $checksum = hash_hmac('sha256', $checksumData, env('ZAAKPAY_SECRET_KEY'));
+            $checksum = hash_hmac('sha256', $checksumData, config('constant.ZAAKPAY_SECRET_KEY'));
             if ($checksum == $recd_checksum) {
                 $paymentData = ZaakpayEntry::where('orderid', $orderId)->first();
 

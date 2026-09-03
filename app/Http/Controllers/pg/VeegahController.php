@@ -22,9 +22,9 @@ class VeegahController extends Controller
 
             $returnUrl = route('api.veegah.response');
 
-            $terminalId = env('VEEGAH_TERMINAL_ID');
-            $password = env('VEEGAH_TERMINAL_PASSWORD');
-            $mkey = env('VEEGAH_MERCHANT_KEY');
+            $terminalId = config('constant.VEEGAH_TERMINAL_ID');
+            $password = config('constant.VEEGAH_TERMINAL_PASSWORD');
+            $mkey = config('constant.ENC_PASS');
 
             // data sequence is - orderId|terminalId|password|merchantKey|amount|currency
             //$signdata = $orderid."|TER7990817|TER25041201011970543064|f5949cf7946afa557191b8a18504c2a847a6d9ff08c28ec2fd456322889d1451|".$roundamount."|INR";
@@ -105,7 +105,7 @@ class VeegahController extends Controller
 
             $encryptedResponse = base64_decode($decodedData, true);
 
-            $merKey = env('VEEGAH_MERCHANT_KEY');
+            $merKey = config('constant.ENC_PASS');
             $binaryKey = hex2bin($merKey);
 
             $decryptedData = openssl_decrypt($encryptedResponse, 'AES-256-ECB', $binaryKey, OPENSSL_RAW_DATA);

@@ -30,7 +30,7 @@
                         <ul class="accordion">
                             <li class="accordion-item mb-0">
                                 <div class="accordion-thumb">
-                                    <h6 class="s-16 w-400">1. What can I use a personal loan for?</h6>
+                                    <h6 class="s-16 w-400">1. What can you do with a personal loan?</h6>
                                 </div>
                                 <div class="accordion-panel">
                                     <div class="accordion-panel-item">
@@ -42,7 +42,7 @@
                             </li>
                             <li class="accordion-item mb-0">
                                 <div class="accordion-thumb">
-                                    <h6 class="s-16 w-400">2. What are the personal loan eligibility requirements?</h6>
+                                    <h6 class="s-16 w-400">2. What are the eligibility criteria for a personal loan?</h6>
                                 </div>
                                 <div class="accordion-panel">
                                     <div class="accordion-panel-item">
@@ -54,11 +54,11 @@
                                                 <p>&bull; Minimum Salary: Rs.15,000 Per Month (Should reflect in bank statement)</p>
                                                 <p>&bull; Minimum Job Stability: 1 Year</p>
                                             </div>
-                                            <p><strong>For Self-Employed:</strong></p>
+                                            <p><strong>For Self-Employed Individuals:</strong></p>
                                             <div class="ps-2">
                                                 <p>&bull; Minimum Age: 21 Years</p>
                                                 <p>&bull; Income Tax Return Of Minimum 1 Year</p>
-                                                <p>&bull; 1 Year Business Stability</p>
+                                                <p>&bull; Minimum Business Duration: 1 Year</p>
                                             </div>
                                         </div>
                                     </div>
@@ -66,12 +66,12 @@
                             </li>
                             <li class="accordion-item mb-0">
                                 <div class="accordion-thumb">
-                                    <h6 class="s-16 w-400">3. Which documents are required to apply for a personal loan? </h6>
+                                    <h6 class="s-16 w-400">3. What documents do I need to apply for a personal loan?</h6>
                                 </div>
                                 <div class="accordion-panel">
                                     <div class="accordion-panel-item">
                                         <div class="faqs-2-answer">
-                                            <p>The following documents are required to apply for a personal loan.</p>
+                                            <p>The following are the general documents needed to apply for a personal loan</p>
                                             <p><strong>For Salaried:</strong></p>
                                             <div class="ps-2">
                                                 <p>&bull; Aadhaar Card</p>
@@ -91,7 +91,7 @@
                                                 <p>&bull; Service Tax Registration, License, Registration Certificate</p>
                                                 <p>&bull; Income Tax Returns</p>
                                             </div>
-                                            <p>Based on your profile and the guidelines, the lender may request additional documents. </p>
+                                            <p>Based on your profile and the guidelines, the lender may request additional documents.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -103,19 +103,19 @@
                                 <div class="accordion-panel">
                                     <div class="accordion-panel-item">
                                         <div class="faqs-2-answer">
-                                            <p>Yes, your credit score is a critical factor in the loan application process. It is one of the most important factors that lenders use to assess your creditworthiness. </p>
+                                            <p>Yes, your credit score is a critical factor in the loan application process. It is one of the most important factors that lenders use to assess your creditworthiness.</p>
                                         </div>
                                     </div>
                                 </div>
                             </li>
                             <li class="accordion-item mb-0">
                                 <div class="accordion-thumb">
-                                    <h6 class="s-16 w-400">5. How can I improve my chances of getting approved for a personal loan?</h6>
+                                    <h6 class="s-16 w-400">5. How can I increase my chances of getting a personal loan?</h6>
                                 </div>
                                 <div class="accordion-panel">
                                     <div class="accordion-panel-item">
                                         <div class="faqs-2-answer">
-                                            <p>To improve your chances, keep your credit score high, earn a consistent income, and provide accurate documentation during the application process.</p>
+                                            <p>To increase your chances, keep a good credit score, have consistent income, and provide accurate documentation during the application process.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -123,24 +123,24 @@
 
                             <li class="accordion-item mb-0">
                                 <div class="accordion-thumb">
-                                    <h6 class="s-16 w-400">6. Is there any tax benefit to personal loans? </h6>
+                                    <h6 class="s-16 w-400">6. Do personal loans have any tax advantages?</h6>
                                 </div>
                                 <div class="accordion-panel">
                                     <div class="accordion-panel-item">
                                         <div class="faqs-2-answer">
-                                            <p>No, personal loans do not offer any direct tax benefits. However, if you use a personal loan to invest in your business, renovate your home, or fund your education, you may be able to deduct the interest payments. For more information, please contact your CA or tax advisor. </p>
+                                            <p>Personal loans do not provide any direct tax advantages. However, if you use a personal loan to invest in your business, renovate your home, or fund your education, you may be able to deduct the interest you pay. For more information, please contact your CA or tax advisor.</p>
                                         </div>
                                     </div>
                                 </div>
                             </li>
                             <li class="accordion-item mb-0">
                                 <div class="accordion-thumb">
-                                    <h6 class="s-16 w-400">7. In addition to credit scores, what other factors do lenders consider when approving personal loans?</h6>
+                                    <h6 class="s-16 w-400">7. Aside from credit scores, what other factors do lenders consider when approving personal loans?</h6>
                                 </div>
                                 <div class="accordion-panel">
                                     <div class="accordion-panel-item">
                                         <div class="faqs-2-answer">
-                                            <p>In addition to the credit score, lenders take into account the applicant's age, income, and job stability. </p>
+                                            <p>In addition to the credit score, lenders take into account the applicant's age, income, and job stability.</p>
                                         </div>
                                     </div>
                                 </div>

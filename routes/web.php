@@ -27,8 +27,8 @@ Route::group([
     /* Home Controller functions */
     Route::get('/', [HomeController::class, 'home'])->name('home');
     Route::get('/company', [HomeController::class, 'company'])->name('company');
-    Route::get('/self-apply', [HomeController::class, 'selfApply'])->name('self.apply');
-    Route::get('/loan-agent', [HomeController::class, 'loanAgent'])->name('loan.agent');
+    // Route::get('/self-apply', [HomeController::class, 'selfApply'])->name('self.apply');
+    Route::get('/agent', [HomeController::class, 'loanAgent'])->name('loan.agent');
     Route::get('/emi-calculator', [HomeController::class, 'emiCalculator'])->name('emi.calculator');
     Route::get('/career', [HomeController::class, 'career'])->name('career');
     Route::get('/apply-career/{code}', [HomeController::class, 'applycareer'])->name('apply-career');
@@ -41,6 +41,7 @@ Route::group([
     Route::get('/sitemap', [HomeController::class, 'sitemap'])->name('sitemap');
     Route::get('/generate-sitemap', [HomeController::class, 'generateSitemap']);
     Route::get('/testdata', [HomeController::class, 'testdata']);
+    Route::get('/testevent', [HomeController::class, 'testevent']);
     /* Legal controller functions */
     Route::get('/raise-request', [LegalController::class, 'raiseRequest'])->name('raise.request');
     Route::post('/request-raised', [LegalController::class, 'requestRaisedPost'])->name('request.raised.post');
@@ -50,49 +51,70 @@ Route::group([
     Route::get('/terms-and-conditions', [LegalController::class, 'termsConditions'])->name('terms.conditions');
 });
 
+// Route::group([
+//     'prefix' => '/self-apply',
+//     'as' => 'self.apply.'
+// ], function () {
+//     /* SelfApply controller functions */
+//     Route::get('/', [SelfApplyController::class, 'main'])->name('main');
+//     Route::post('/send-otp', [SelfApplyController::class, 'sendOtp'])->name('send.otp');
+//     Route::post('/verify-otp', [SelfApplyController::class, 'verifyOtp'])->name('verify.otp');
+//     Route::get('/loan-details', [SelfApplyController::class, 'loanDetails'])->name('loan.details');
+//     Route::post('/loan-details-store', [SelfApplyController::class, 'loanDetailStore'])->name('loan.details.store');
+//     Route::get('/personal-details', [SelfApplyController::class, 'personalDetails'])->middleware('verifyApplied')->name('personal.details');
+//     Route::post('/postal-details', [SelfApplyController::class, 'postalDetails'])->middleware('verifyApplied')->name('postal.details');
+//     Route::post('/personal-details-store', [SelfApplyController::class, 'personalDetailStore'])->name('personal.details.store');
+//     Route::get('/get-best-offers', [SelfApplyController::class, 'getOffers'])->middleware('verifyApplied')->name('get.offers');
+//     Route::get('/buy-now', [SelfApplyController::class, 'buyNow'])->middleware('verifyApplied')->name('buyNow');
+//     Route::get('/callbackUrl', [SelfApplyController::class, 'callbackUrl'])->middleware('verifyApplied')->name('callbackUrl');
+//     Route::get('/paymentFailed', [SelfApplyController::class, 'paymentFailed'])->middleware('verifyApplied')->name('payment.failed');
+//     Route::get('/paymentSuccess', [SelfApplyController::class, 'paymentSuccess'])/*->middleware('verifyApplied')*/->name('payment.success');
+//     Route::post('/checkout', [SelfApplyController::class, 'checkout'])->name('checkout');
+
+//     Route::get('prime-offer', [SelfApplyController::class, 'offer1'])->name('offer1');
+//     Route::post('prime-offer-request',[SelfApplyController::class, 'getOffer1'])->name('get.offer1');
+
+//     Route::get('mega-offer', [SelfApplyController::class, 'offer2'])->name('offer2');
+//     Route::post('mega-offer-request',[SelfApplyController::class, 'getOffer2'])->name('get.offer2');
+
+//     Route::get('premium-offer', [SelfApplyController::class, 'offer3'])->name('offer3');
+//     Route::post('premium-offer-request',[SelfApplyController::class, 'getOffer3'])->name('get.offer3');
+//     Route::get('/premium-offer-response', [SelfApplyController::class, 'offer3Response'])->name('offer3.response');
+
+//     Route::get('star-offer', [SelfApplyController::class, 'offer4'])->name('offer4');
+//     Route::post('star-offer-request',[SelfApplyController::class, 'getOffer4'])->name('get.offer4');
+//     // Route::get('/star-offer-response', [SelfApplyController::class, 'offer4Response'])->name('offer4.response');
+
+//     Route::get('great-offer', [SelfApplyController::class, 'offer5'])->name('offer5');
+//     Route::post('great-offer-request',[SelfApplyController::class, 'getOffer5'])->name('get.offer5');
+//     Route::get('/great-offer-response', [SelfApplyController::class, 'offer5Response'])->name('offer5.response');
+
+//     Route::get('standard-offer', [SelfApplyController::class, 'offer6'])->name('offer6');
+//     Route::post('standard-offer-request',[SelfApplyController::class, 'getOffer6'])->name('get.offer6');
+
+//     Route::get('offer-7',[SelfApplyController::class, 'offer7'])->name('offer7');
+//     Route::post('offer-7',[SelfApplyController::class, 'getOffer7'])->name('get.offer7');
+// });
+
 Route::group([
-    'prefix' => '/self-apply',
-    'as' => 'self.apply.'
+    'prefix' => '/agent',
+    'as' => 'loan.agent.'
 ], function () {
-    /* SelfApply controller functions */
-    Route::get('/', [SelfApplyController::class, 'main'])->name('main');
-    Route::post('/send-otp', [SelfApplyController::class, 'sendOtp'])->name('send.otp');
-    Route::post('/verify-otp', [SelfApplyController::class, 'verifyOtp'])->name('verify.otp');
-    Route::get('/loan-details', [SelfApplyController::class, 'loanDetails'])->name('loan.details');
-    Route::post('/loan-details-store', [SelfApplyController::class, 'loanDetailStore'])->name('loan.details.store');
-    Route::get('/personal-details', [SelfApplyController::class, 'personalDetails'])->middleware('verifyApplied')->name('personal.details');
-    Route::post('/postal-details', [SelfApplyController::class, 'postalDetails'])->middleware('verifyApplied')->name('postal.details');
-    Route::post('/personal-details-store', [SelfApplyController::class, 'personalDetailStore'])->name('personal.details.store');
-    Route::get('/get-best-offers', [SelfApplyController::class, 'getOffers'])->middleware('verifyApplied')->name('get.offers');
-    Route::get('/buy-now', [SelfApplyController::class, 'buyNow'])->middleware('verifyApplied')->name('buyNow');
-    Route::get('/callbackUrl', [SelfApplyController::class, 'callbackUrl'])->middleware('verifyApplied')->name('callbackUrl');
-    Route::get('/paymentFailed', [SelfApplyController::class, 'paymentFailed'])->middleware('verifyApplied')->name('payment.failed');
-    Route::get('/paymentSuccess', [SelfApplyController::class, 'paymentSuccess'])/*->middleware('verifyApplied')*/->name('payment.success');
-    Route::post('/checkout', [SelfApplyController::class, 'checkout'])->name('checkout');
-
-    Route::get('prime-offer', [SelfApplyController::class, 'offer1'])->name('offer1');
-    Route::post('prime-offer-request',[SelfApplyController::class, 'getOffer1'])->name('get.offer1');
-
-    Route::get('mega-offer', [SelfApplyController::class, 'offer2'])->name('offer2');
-    Route::post('mega-offer-request',[SelfApplyController::class, 'getOffer2'])->name('get.offer2');
-
-    Route::get('premium-offer', [SelfApplyController::class, 'offer3'])->name('offer3');
-    Route::post('premium-offer-request',[SelfApplyController::class, 'getOffer3'])->name('get.offer3');
-    Route::get('/premium-offer-response', [SelfApplyController::class, 'offer3Response'])->name('offer3.response');
-
-    Route::get('star-offer', [SelfApplyController::class, 'offer4'])->name('offer4');
-    Route::post('star-offer-request',[SelfApplyController::class, 'getOffer4'])->name('get.offer4');
-    // Route::get('/star-offer-response', [SelfApplyController::class, 'offer4Response'])->name('offer4.response');
-
-    Route::get('great-offer', [SelfApplyController::class, 'offer5'])->name('offer5');
-    Route::post('great-offer-request',[SelfApplyController::class, 'getOffer5'])->name('get.offer5');
-    Route::get('/great-offer-response', [SelfApplyController::class, 'offer5Response'])->name('offer5.response');
-
-    Route::get('standard-offer', [SelfApplyController::class, 'offer6'])->name('offer6');
-    Route::post('standard-offer-request',[SelfApplyController::class, 'getOffer6'])->name('get.offer6');
-
-    Route::get('offer-7',[SelfApplyController::class, 'offer7'])->name('offer7');
-    Route::post('offer-7',[SelfApplyController::class, 'getOffer7'])->name('get.offer7');
+    /* Hire Loan Agent controller functions */
+    Route::get('/', [LoanAgentController::class, 'main'])->name('main');
+    Route::post('/send-otp', [LoanAgentController::class, 'sendOtp'])->name('send.otp');
+    Route::post('/verify-otp', [LoanAgentController::class, 'verifyOtp'])->name('verify.otp');
+    Route::get('/income-details', [LoanAgentController::class, 'loanDetails'])->name('loan.details');
+    Route::post('/income-details-store', [LoanAgentController::class, 'loanDetailStore'])->name('loan.details.store');
+    Route::get('/personal-details', [LoanAgentController::class, 'personalDetails'])->middleware('verifyApplied')->name('personal.details');
+    Route::post('/postal-details', [LoanAgentController::class, 'postalDetails'])->middleware('verifyApplied')->name('postal.details');
+    Route::post('/personal-details-store', [LoanAgentController::class, 'personalDetailStore'])->name('personal.details.store');
+    Route::get('/get-best-offers', [LoanAgentController::class, 'getOffers'])->middleware('verifyApplied')->name('get.offers');
+    Route::get('/buy-now', [LoanAgentController::class, 'buyNow'])->middleware('verifyApplied')->name('buyNow');
+    Route::get('/callbackUrl', [LoanAgentController::class, 'callbackUrl'])->middleware('verifyApplied')->name('callbackUrl');
+    Route::get('/planFailed', [LoanAgentController::class, 'paymentFailed'])->middleware('verifyApplied')->name('payment.failed');
+    Route::get('/planSuccess', [LoanAgentController::class, 'paymentSuccess'])/*->middleware('verifyApplied')*/->name('payment.success');
+    Route::post('/checkout', [LoanAgentController::class, 'checkout'])->name('checkout');
 });
 
 Route::group([
@@ -100,20 +122,20 @@ Route::group([
     'as' => 'loan.agent.'
 ], function () {
     /* Hire Loan Agent controller functions */
-    Route::get('/', [LoanAgentController::class, 'main'])->name('main');
-    Route::post('/send-otp', [LoanAgentController::class, 'sendOtp'])->name('send.otp');
-    Route::post('/verify-otp', [LoanAgentController::class, 'verifyOtp'])->name('verify.otp');
-    Route::get('/loan-details', [LoanAgentController::class, 'loanDetails'])->name('loan.details');
-    Route::post('/loan-details-store', [LoanAgentController::class, 'loanDetailStore'])->name('loan.details.store');
-    Route::get('/personal-details', [LoanAgentController::class, 'personalDetails'])->middleware('verifyApplied')->name('personal.details');
-    Route::post('/postal-details', [LoanAgentController::class, 'postalDetails'])->middleware('verifyApplied')->name('postal.details');
-    Route::post('/personal-details-store', [LoanAgentController::class, 'personalDetailStore'])->name('personal.details.store');
-    Route::get('/get-best-offers', [LoanAgentController::class, 'getOffers'])->middleware('verifyApplied')->name('get.offers');
-    Route::get('/buy-now', [LoanAgentController::class, 'buyNow'])->middleware('verifyApplied')->name('buyNow');
-    Route::get('/callbackUrl', [LoanAgentController::class, 'callbackUrl'])->middleware('verifyApplied')->name('callbackUrl');
-    Route::get('/paymentFailed', [LoanAgentController::class, 'paymentFailed'])->middleware('verifyApplied')->name('payment.failed');
-    Route::get('/paymentSuccess', [LoanAgentController::class, 'paymentSuccess'])/*->middleware('verifyApplied')*/->name('payment.success');
-    Route::post('/checkout', [LoanAgentController::class, 'checkout'])->name('checkout');
+    // Route::get('/', [LoanAgentController::class, 'main'])->name('main');
+    // Route::post('/send-otp', [LoanAgentController::class, 'sendOtp'])->name('send.otp');
+    // Route::post('/verify-otp', [LoanAgentController::class, 'verifyOtp'])->name('verify.otp');
+    // Route::get('/loan-details', [LoanAgentController::class, 'loanDetails'])->name('loan.details');
+    // Route::post('/loan-details-store', [LoanAgentController::class, 'loanDetailStore'])->name('loan.details.store');
+    // Route::get('/personal-details', [LoanAgentController::class, 'personalDetails'])->middleware('verifyApplied')->name('personal.details');
+    // Route::post('/postal-details', [LoanAgentController::class, 'postalDetails'])->middleware('verifyApplied')->name('postal.details');
+    // Route::post('/personal-details-store', [LoanAgentController::class, 'personalDetailStore'])->name('personal.details.store');
+    // Route::get('/get-best-offers', [LoanAgentController::class, 'getOffers'])->middleware('verifyApplied')->name('get.offers');
+    // Route::get('/buy-now', [LoanAgentController::class, 'buyNow'])->middleware('verifyApplied')->name('buyNow');
+    // Route::get('/callbackUrl', [LoanAgentController::class, 'callbackUrl'])->middleware('verifyApplied')->name('callbackUrl');
+    // Route::get('/planFailed', [LoanAgentController::class, 'paymentFailed'])->middleware('verifyApplied')->name('payment.failed');
+    // Route::get('/planSuccess', [LoanAgentController::class, 'paymentSuccess'])/*->middleware('verifyApplied')*/->name('payment.success');
+    // Route::post('/checkout', [LoanAgentController::class, 'checkout'])->name('checkout');
 
     Route::get('great-deal-offer', [LoanAgentController::class, 'offer1'])->name('offer1');
     Route::post('great-deal-offer-request',[LoanAgentController::class, 'getOffer1'])->name('get.offer1');
@@ -233,3 +255,14 @@ Route::group([
 Route::get('/paytm/checkout', [PaytmController::class, 'checkout'])->name('paytm.checkout');
 Route::post('/paytm/initiate', [PaytmController::class, 'initiate'])->name('paytm.initiate');
 //Route::post('/paytm/callback', [PaytmController::class, 'callback'])->name('paytm.callback');
+
+Route::get('/razorpay-page', function (Illuminate\Http\Request $request) {
+    return view('pg.razorpay', [
+        'order_id' => $request->order_id,
+        'amount'   => $request->amount,
+        'name'     => $request->name,
+        'email'    => $request->email,
+        'mobile'   => $request->mobile,
+        'returnUrl'=> $request->returnUrl
+    ]);
+})->name('razorpay.page');

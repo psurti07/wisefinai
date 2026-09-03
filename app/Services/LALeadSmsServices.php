@@ -79,8 +79,8 @@ class LALeadSmsServices
                                     $personalizedMsg = str_ireplace('{#varamount#}', $eligibilityAmt, $msgTemplate);
     
                                     $dataset .= "<sms>
-                                        <user>" . env('SMS_OBB_LA_USERNAME') . "</user>
-                                        <password>" . env('SMS_OBB_LA_PASSWORD') . "</password>
+                                        <user>" . config('constant.SMS_OBB_LA_USERNAME') . "</user>
+                                        <password>" . config('constant.SMS_OBB_LA_PASSWORD') . "</password>
                                         <mobiles>{$user->mobile}</mobiles>
                                         <message>{$personalizedMsg}</message>
                                         <accusage>1</accusage>
@@ -95,23 +95,9 @@ class LALeadSmsServices
                             $trackingMsg = str_ireplace('{#varamount#}', '500000', $msgTemplate);
                             $dataset .= "
                             <sms>
-                                <user>" . env('SMS_OBB_LA_USERNAME') . "</user>
-                                <password>" . env('SMS_OBB_LA_PASSWORD') . "</password>
-                                <mobiles>7016318366</mobiles>
-                                <message>{$trackingMsg}</message>
-                                <accusage>1</accusage>
-                                <senderid>{$senderId}</senderid>
-                            </sms><sms>
-                                <user>" . env('SMS_OBB_LA_USERNAME') . "</user>
-                                <password>" . env('SMS_OBB_LA_PASSWORD') . "</password>
-                                <mobiles>9998807547</mobiles>
-                                <message>{$trackingMsg}</message>
-                                <accusage>1</accusage>
-                                <senderid>{$senderId}</senderid>
-                            </sms><sms>
-                                <user>" . env('SMS_OBB_LA_USERNAME') . "</user>
-                                <password>" . env('SMS_OBB_LA_PASSWORD') . "</password>
-                                <mobiles>9408881214</mobiles>
+                                <user>" . config('constant.SMS_OBB_LA_USERNAME') . "</user>
+                                <password>" . config('constant.SMS_OBB_LA_PASSWORD') . "</password>
+                                <mobiles>9274436342</mobiles>
                                 <message>{$trackingMsg}</message>
                                 <accusage>1</accusage>
                                 <senderid>{$senderId}</senderid>

@@ -29,7 +29,7 @@ Route::post('/lyra-response', [LyraPgController::class, 'lyraResponse'])->name('
 Route::middleware(['web'])->post('/buyDigitalPlan', [SelfApplyController::class, 'buyDigitalPlan'])->name('api.self.apply.buy.digital.plan');
 Route::middleware(['web'])->post('/buyDigitalAgentPlan', [LoanAgentController::class, 'buyDigitalPlan'])->name('api.loan.agent.buy.digital.agent.plan');
 
-Route::middleware(['web'])->post('/buyDigitalAssistantPlan', [\App\Http\Controllers\LoanAssistantController::class, 'buyDigitalPlan'])->name('api.loan.assistant.buy.digital.assistant.plan');
+// Route::middleware(['web'])->post('/buyDigitalAssistantPlan', [\App\Http\Controllers\LoanAssistantController::class, 'buyDigitalPlan'])->name('api.loan.assistant.buy.digital.assistant.plan');
 
 // Route::post('/paymentSuccess', [SelfApplyController::class, 'paymentSuccess'])->name('payment.success');
 // Route::post('/paymentFailed', [SelfApplyController::class, 'paymentFailed'])->name('payment.failed');
