@@ -1215,17 +1215,27 @@ class LoanAgentController extends Controller
     /* paymentSuccess handle function */
     public function paymentSuccess()
     {
+        Log::info('Payment Success function call');
         $meta = selfApplyMeta();
         try {
             $loanType = Cookie::get('loan_type');
             $applyId = Cookie::get('applyid');
             $orderId = Session::get('orderid');
             $responsecode = Session::get('responsecode');
-
+            
+            Log::info('Payment Success Loan Agent Data', [
+                'loanType' => $loanType,
+                'applyId' => $applyId,
+                'orderId' => $orderId,
+                'responsecode' => $responsecode
+            ]);
+            
             $data = '';
             $orderData = '';
 
-            if (isset($loanType, $applyId, $orderId) && $loanType !== null && $applyId !== null && $orderId !== null) {
+            // if (isset($loanType, $applyId, $orderId) && $loanType !== null && $applyId !== null && $orderId !== null) {
+            if (isset($orderId) && $orderId !== null) {
+                Log::info('All required parameters are present. Proceeding with data retrieval and processing.');
                 $data = array(
                     'loantype' => $loanType,
                     'status' => true
