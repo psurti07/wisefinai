@@ -1246,7 +1246,11 @@ class LoanAgentController extends Controller
                 $state = strtolower(getStateAbbreviation($userData->state));
                 //$orderData = orderdata($orderId,'phonepe_entry');
                 $orderData = orderdata($orderId, 'payu_log_entry');
-
+                Log::info('User Data and Order Data retrieved successfully', [
+                    'userData' => $userData,
+                    'orderData' => $orderData
+                ]);
+                
                 $staff = Administrations::where('id', $userData->staff_id)->first();
 
                     UserRegistration::where('id', $userData->userid)->update(['process_step' => 5]);
