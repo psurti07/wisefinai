@@ -960,7 +960,8 @@ class LoanAgentController extends Controller
 
             $responseCode = $request->status;
             Session::put('responsecode', $responseCode);
-
+            Session::put('orderid', $request->txnid);
+            
             $orderAmount = $request->input('amount') / 100;
             $txnId = $request->txnid;
      
@@ -1233,7 +1234,7 @@ class LoanAgentController extends Controller
             $data = '';
             $orderData = '';
 
-            if (isset($loanType, $applyId) && $loanType !== null && $applyId !== null) {
+            if (isset($loanType, $applyId, $orderId) && $loanType !== null && $applyId !== null && $orderId !== null) {
                 Log::info('All required parameters are present. Proceeding with data retrieval and processing.');
                 $data = array(
                     'loantype' => $loanType,
@@ -1250,7 +1251,7 @@ class LoanAgentController extends Controller
                     'userData' => $userData,
                     'orderData' => $orderData
                 ]);
-                
+
                 $staff = Administrations::where('id', $userData->staff_id)->first();
 
                     UserRegistration::where('id', $userData->userid)->update(['process_step' => 5]);
