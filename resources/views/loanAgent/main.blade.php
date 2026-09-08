@@ -554,7 +554,7 @@
                             <strong>Pre-Application Note:</strong> Users are advised to read our terms and conditions and policies before proceeding/applying/registration.
                         </p>
                         <p class="s-14">
-                            <strong>Registered Office Address:</strong> {{ config('constant.COMPANY_ADDRESS'); }} <br /> Mobile: {{ config('constant.COMPANY_MOBILE'); }} | Email: {{ config('constant.INFO_EMAIL') }}
+                            <strong>Registered Office Address:</strong> {{ config('constant.COMPANY_ADDRESS'); }} </br> <strong>Operational Office Address:</strong> {{ config('constant.COMPANY_OPERATIONAL_ADDRESS'); }} <br /> Mobile: {{ config('constant.COMPANY_MOBILE'); }} | Email: {{ config('constant.INFO_EMAIL') }}
                         </p>
                     </div>
                 </div>

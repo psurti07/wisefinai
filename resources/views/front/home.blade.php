@@ -803,9 +803,9 @@
                                  </div>
                              </div>
                              <div class="address-text ms-3">
-                                 <h6 class="color--green-500 mb-1 s-16">Address:</h6>
+                                 <h6 class="color--green-500 mb-1 s-16">Operational Office Address:</h6>
                                  <p class="address-txt mt-0">
-                                     {{ config('constant.COMPANY_ADDRESS'); }}</p>
+                                     {{ config('constant.COMPANY_OPERATIONAL_ADDRESS'); }}</p>
                              </div>
                          </div>
                      </div>

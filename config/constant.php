@@ -21,6 +21,7 @@ return [
     'WEBSITE'          => env('WEBSITE', 'wisefinai.com'),
     'COMPANY_NAME'     => env('COMPANY_NAME', 'WiseFinAI'),
     'COMPANY_ADDRESS'  => env('COMPANY_ADDRESS'),
+    'COMPANY_OPERATIONAL_ADDRESS'  => env('COMPANY_OPERATIONAL_ADDRESS'),
     'COMPANY_MOBILE'   => env('COMPANY_MOBILE'),
     'COMPANY_INFO_MAIL' => env('COMPANY_INFO_MAIL'),
     'COMPANY_SUPPORT_MAIL' => env('COMPANY_SUPPORT_MAIL'),
