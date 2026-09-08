@@ -1233,8 +1233,7 @@ class LoanAgentController extends Controller
             $data = '';
             $orderData = '';
 
-            // if (isset($loanType, $applyId, $orderId) && $loanType !== null && $applyId !== null && $orderId !== null) {
-            if (isset($orderId) && $orderId !== null) {
+            if (isset($loanType, $applyId) && $loanType !== null && $applyId !== null) {
                 Log::info('All required parameters are present. Proceeding with data retrieval and processing.');
                 $data = array(
                     'loantype' => $loanType,
