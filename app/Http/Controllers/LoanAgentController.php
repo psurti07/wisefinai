@@ -1818,7 +1818,7 @@ class LoanAgentController extends Controller
             $meta = selfApplyMeta();
 
             // Razorpay credentials
-            $api = new Api(config('services.razorpay.key'), config('services.razorpay.secret'));
+            $api = new Api(config('constant.RAZOR_KEY_ID'), config('constant.RAZOR_KEY_SECRET'));
 
             $razorpay_payment_id = $input['razorpay_payment_id'] ?? null;
             $razorpay_order_id   = $input['razorpay_order_id'] ?? null;
