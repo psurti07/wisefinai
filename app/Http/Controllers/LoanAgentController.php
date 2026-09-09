@@ -1790,7 +1790,7 @@ class LoanAgentController extends Controller
             return response()->json([
                 'type' => 'SUCCESS',
                 'message' => 'Redirecting...',
-                'redirect' => route('razorpay.page', [
+                'url' => route('razorpay.page', [
                     'order_id' => $orderId,
                     'amount'   => $razorAmount,
                     'name'     => $buyerFirstName . ' ' . $buyerLastName,
