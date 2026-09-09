@@ -1772,10 +1772,7 @@ class LoanAgentController extends Controller
             Log::info("orderid : " . $orderId);
 
             // Keep SAME route (IMPORTANT)
-            $returnUrl = route('api.loan.agent.offer2Response', [
-                'orderId' => $orderId,
-                'token'   => 'razorpay'
-            ]);
+            $returnUrl = route('api.loan.agent.offer2Response');
 
             // Save DB (same as your logic)
             $offer = DB::table('cardoffer')->updateOrInsert(
