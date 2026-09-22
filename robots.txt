@@ -1,5 +1,4 @@
 User-agent: *
 Disallow: 
-Disallow: /customer/
 Disallow: /dashboard/
 Sitemap: https://wisefinai.com/sitemap.xml
