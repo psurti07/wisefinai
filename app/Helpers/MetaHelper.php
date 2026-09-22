@@ -7,8 +7,8 @@ if(!function_exists('homeMeta')){
     function homeMeta(){
         $meta = [
             'keywords' => 'instant online personal loans in India, low-interest personal loans with fast approval, quick loan application process, minimal documentation loans, personalized loan solutions, WiseFinAI loans',
-            'title' => 'Instant Online Personal Loans With Low Interest Rates And Fast Approvals',
-            'description' => 'Apply for instant online personal loans at low interest rates. Experience quick approvals, minimal documentation, and personalized loan solutions tailored to your financial needs.'
+            'title' => 'Instant Online Personal Loans With Low Interest Rates And Fast Approvals | WiseFinAI',
+            'description' => 'Apply for WiseFinAI instant personal loan at low interest rates online with quick approvals, minimal documentation & personalized loan solutions.'
         ];
         return $meta;
     }
