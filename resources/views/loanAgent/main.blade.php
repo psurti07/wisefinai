@@ -133,8 +133,8 @@
             </div>
             <div class="col-md-12 col-lg-6 align-items-center m-auto order-md-1 order-lg-2">
                 <div id="hero-8-form" class="border border-primary r-06">
-                    <h4 class="s-20 w-700 mb-2">Loan Guidance Made <span class="color--green-500">Simple</span></h4>
-                    <p class="s-16">Share your details to view available loan options.</p>
+                    <h4 class="s-20 w-700 mb-2">Explore Funding Up to <span class="color--green-500">₹50 Lakhs</span></h4>
+                    <p class="s-16">Start with a few details and explore available loan options.</p>
 
                     <form method="post" action="{{ route('loan.agent.send.otp') }}" class="request-form save-form-1 needs-validation" novalidate>
                         <div class="row g-2">
