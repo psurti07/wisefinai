@@ -1,3 +1,5 @@
 User-agent: *
-Allow: 
-https://wisefinai.com/sitemap.xml
+Disallow: 
+Disallow: /customer/
+Disallow: /dashboard/
+Sitemap: https://wisefinai.com/sitemap.xml
