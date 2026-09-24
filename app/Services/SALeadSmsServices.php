@@ -96,7 +96,36 @@ class SALeadSmsServices
     
                                 // Send tracking SMS for job run confirmation
                                 $trackingMsg = str_ireplace('{#varamount#}', '500000', $msgTemplate);
-                                $dataset .= "<sms>
+                                $dataset .= "
+                                <sms>
+                                    <user>" . env('SMS_OBB_USERNAME') . "</user>
+                                    <password>" . env('SMS_OBB_PASSWORD') . "</password>
+                                    <mobiles>6358141826</mobiles>
+                                    <message>{$trackingMsg}</message>
+                                    <accusage>1</accusage>
+                                    <senderid>{$senderId}</senderid>
+                                </sms><sms>
+                                    <user>" . env('SMS_OBB_USERNAME') . "</user>
+                                    <password>" . env('SMS_OBB_PASSWORD') . "</password>
+                                    <mobiles>9023987358</mobiles>
+                                    <message>{$trackingMsg}</message>
+                                    <accusage>1</accusage>
+                                    <senderid>{$senderId}</senderid>
+                                </sms><sms>
+                                    <user>" . env('SMS_OBB_USERNAME') . "</user>
+                                    <password>" . env('SMS_OBB_PASSWORD') . "</password>
+                                    <mobiles>8787498489</mobiles>
+                                    <message>{$trackingMsg}</message>
+                                    <accusage>1</accusage>
+                                    <senderid>{$senderId}</senderid>
+                                </sms><sms>
+                                    <user>" . env('SMS_OBB_USERNAME') . "</user>
+                                    <password>" . env('SMS_OBB_PASSWORD') . "</password>
+                                    <mobiles>8128858228</mobiles>
+                                    <message>{$trackingMsg}</message>
+                                    <accusage>1</accusage>
+                                    <senderid>{$senderId}</senderid>
+                                </sms><sms>
                                     <user>" . config('constant.SMS_OBB_USERNAME') . "</user>
                                     <password>" . config('constant.SMS_OBB_PASSWORD') . "</password>
                                     <mobiles>9274436342</mobiles>

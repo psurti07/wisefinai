@@ -55,7 +55,7 @@ class LALeadWhatsappServices
                         // Log::info('SQL Query: ' . $users->toSql());
                         //Log::info('Bindings: ', $users->getBindings());
                         $users = $users->get();
-                        $adminUsers = ['9274436342'];
+                        $adminUsers = ['9274436342','9408881214','6358141826','9023987358','8787498489','8128858228'];
                         
                         if($users->isNotEmpty()){
                             Log::info('user found in interakt');

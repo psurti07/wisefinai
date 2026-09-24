@@ -1357,13 +1357,24 @@ class LoanAgentController extends Controller
     public function paymentFailed()
     {
         $meta = selfApplyMeta();
+     
+        $data2 = array(
+            'phoneNumber' => Cookie::get('user_mobile'),
+            'countryCode' => '+91',
+            'traits' => array(
+                'name' => Cookie::get('fullname')
+            ),
+            'tags' => array('Hire Payment Failed')
+        );
+        $restrack1 = user_track($data2);
+        Log::info('hire agent paymentFailed event track - ' . json_encode($restrack1));
         $data3 = array(
             'phoneNumber' => Cookie::get('user_mobile'),
             'countryCode' => '+91',
             'event' => 'Hire Payment Failed',
         );
         $restrack2 = event_track($data3);
-        Log::info('hire agent event track - ' . json_encode($restrack2));
+        Log::info('hire agent paymentFailed event track - ' . json_encode($restrack2));
 
         /* send payment failed message starts */
         $msg = DB::table('sms_list')->where('type', 2)->where('slug', 'payment_unsuccessful')->first()->message;
