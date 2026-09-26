@@ -160,55 +160,93 @@
     <!-- End container -->
 </footer>
 
-<section id="advisorBanner" class="position-fixed bottom-0 start-50 translate-middle-x w-100 left-0 right-0">
+<section id="advisorBanner" class="position-fixed bottom-0 start-50 translate-middle-x w-100">
     <div class="bg--blue-400 w-100">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-2 d-none d-lg-block">
+
+                <!-- Image: 3 columns -->
+                <div class="col-5 col-lg-2 col-md-2">
                     <div class="card-image-bottom">
-                        <img src="{{ asset('front/images/wisefinai-popup-animated.webp') }}" class="img-fluid" alt="Advisor">
+                        <img src="{{ asset('front/images/wisefinai-popup-animated.webp') }}" class="img-fluid"
+                            alt="Advisor">
                     </div>
                 </div>
 
-                <div class="col-12 col-lg-7 text-center text-lg-start py-2 py-lg-0">
-                    <p class="banner-title fw-semibold fs-6 text-black mb-0">
-                        Your Simple Way to Explore Loans Up to ₹15 Lakh
-                    </p>
-                    <div class="d-flex align-items-center justify-content-between">
-                        <div class="cbox-1 ico-15 align-content-center">
-                            <div class="ico-wrap text-dark">
-                                <div class="cbox-1-ico"><span class="flaticon-check"></span></div>
+                <!-- Content: 6 columns -->
+                <div class="col-7 col-lg-10 col-md-10 text-center text-lg-start py-2">
+                    <div class="row align-items-center">
+                        <div class="col-lg-9">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                </div>
+
                             </div>
-                            <div class="cbox-1-txt">
-                                <p class="m-0 fs-6-small-custom fw-semibold ">Trusted Advisory</p>
+
+                            <p class="banner-title fw-semibold text-black  text-start mb-2 fa-xs mt-0">
+                                Your Simple Way to Explore Loans Up to ₹15 Lakh
+                            </p>
+
+                            <div class="d-none d-md-flex align-items-center justify-content-between mb-2">
+
+                                <div class="cbox-1 ico-15 align-content-center">
+                                    <div class="ico-wrap text-dark">
+                                        <div class="cbox-1-ico">
+                                            <span class="flaticon-check"></span>
+                                        </div>
+                                    </div>
+                                    <div class="cbox-1-txt">
+                                        <p class="m-0 fs-6-small-custom fw-semibold">
+                                            Trusted Advisory
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="cbox-1 ico-15 align-content-center">
+                                    <div class="ico-wrap text-dark">
+                                        <div class="cbox-1-ico">
+                                            <span class="flaticon-check"></span>
+                                        </div>
+                                    </div>
+                                    <div class="cbox-1-txt">
+                                        <p class="m-0 fs-6-small-custom fw-semibold">
+                                            Transparent Process
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="cbox-1 ico-15 align-content-center">
+                                    <div class="ico-wrap text-dark">
+                                        <div class="cbox-1-ico">
+                                            <span class="flaticon-check"></span>
+                                        </div>
+                                    </div>
+                                    <div class="cbox-1-txt">
+                                        <p class="m-0 fs-6-small-custom fw-semibold">
+                                            Quick Response
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div>
+
+                                <a href="{{ route('loan.agent.main') }}"
+                                    class="btn r-04 btn--custom hover--tra-black w-100">
+                                    Apply Now
+                                </a>
                             </div>
                         </div>
 
-                        <div class="cbox-1 ico-15 align-content-center">
-                            <div class="ico-wrap text-dark">
-                                <div class="cbox-1-ico"><span class="flaticon-check"></span></div>
-                            </div>
-                            <div class="cbox-1-txt">
-                                <p class="m-0 fs-6-small-custom fw-semibold ">Transparent Process</p>
-                            </div>
-                        </div>
-
-                        <div class="cbox-1 ico-15 align-content-center">
-                            <div class="ico-wrap text-dark">
-                                <div class="cbox-1-ico"><span class="flaticon-check"></span></div>
-                            </div>
-                            <div class="cbox-1-txt">
-                                <p class="m-0 fs-6-small-custom fw-semibold ">Quick Response</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
-                <div class="col-12 col-lg-3 text-center pb-3 pb-lg-0 my-md-2 my-0 ">
-                    <a href="{{ route('loan.agent.main') }}" class="btn r-04 btn--custom hover--tra-black">
-                        Apply Now
-                    </a>
-                </div>
+                <!-- Button: 3 columns -->
+                {{-- <div class="col-3 col-lg-3 text-center pb-3 pb-lg-0 my-md-2 my-0">
+                
+                </div> --}}
 
             </div>
         </div>
