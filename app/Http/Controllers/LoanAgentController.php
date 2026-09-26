@@ -1798,6 +1798,15 @@ class LoanAgentController extends Controller
                 ]
             );
 
+            Razorpayentry::create([
+                'rec_date' => now(),
+                'entryfor' => 2,
+                'userid' => Cookie::get('userid'),
+                'orderid' => $$orderId,
+                'orderamount' => $grandAmount,
+                'ordernote' => 'elite-offer',
+            ]);
+
             return response()->json([
                 'type' => 'SUCCESS',
                 'message' => 'Redirecting...',
