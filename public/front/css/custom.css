@@ -365,4 +365,22 @@
 
 }
 
- 
+#advisorBanner {
+  z-index: 999;
+}
+
+.btn--custom {
+    color: #000!important;
+    /*border-color: #ff653f!important;
+  background-color: #ff653f!important;*/
+    border-color: #fff!important;
+    background-color: #fff!important;
+    
+}
+.card-image-bottom{
+        margin-top: -85px;
+}
+
+.fs-6-small-custom{
+      font-size: 0.8rem !important;
+}

@@ -5,34 +5,50 @@
             <!-- FOOTER LOGO -->
             <div class="col-xl-4 mb-sm-20 mb-md-20">
                 <div class="footer-info">
-                    <img class="footer-logo mb-3" src="{{ asset('front/images/logo/logo-w.png') }}" alt="{{ config('constant.APP_NAME') }}"/>
+                    <img class="footer-logo mb-3" src="{{ asset('front/images/logo/logo-w.png') }}"
+                        alt="{{ config('constant.APP_NAME') }}" />
                     <div class="fs-6 mt-3 mb-5 text-light">
-                        <p>WiseFinAI is India's thriving financial consultation and service provider that streamlines the loan process through its NBFC partners, giving you the option to apply on your own using the self-apply feature or hire a loan agent to make better borrowing decisions.</p>
+                        <p>WiseFinAI is India's thriving financial consultation and service provider that streamlines
+                            the loan process through its NBFC partners, giving you the option to apply on your own using
+                            the self-apply feature or hire a loan agent to make better borrowing decisions.</p>
                     </div>
                     <ul class="footer-socials mt-4 ico-25 text-center clearfix">
                         <li>
-                            <a href="{{ config('constant.SM_FACEBOOK'); }}" target="_blank"><span class="flaticon-facebook text-light"></span></a>
+                            <a href="{{ config('constant.SM_FACEBOOK') }}" target="_blank"><span
+                                    class="flaticon-facebook text-light"></span></a>
                         </li>
                         <li>
-                            <a href="{{config('constant.SM_INSTAGRAM')}}" target="_blank"><span class="flaticon-instagram text-light"></span></a>
+                            <a href="{{ config('constant.SM_INSTAGRAM') }}" target="_blank"><span
+                                    class="flaticon-instagram text-light"></span></a>
                         </li>
                         <li>
-                            <a href="{{ config('constant.SM_YOUTUBE'); }}" target="_blank"><span class="flaticon-youtube text-light"></span></a>
+                            <a href="{{ config('constant.SM_YOUTUBE') }}" target="_blank"><span
+                                    class="flaticon-youtube text-light"></span></a>
                         </li>
                         <li>
-                            <a href="{{ config('constant.SM_TWITTER'); }}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" class="flaticon-twitter" x="0px" y="0px" viewBox="0 0 50 50" style="fill:#ffffff;height:1.39rem;top:-5px; position: relative;">
-                                    <path d="M 5.9199219 6 L 20.582031 27.375 L 6.2304688 44 L 9.4101562 44 L 21.986328 29.421875 L 31.986328 44 L 44 44 L 28.681641 21.669922 L 42.199219 6 L 39.029297 6 L 27.275391 19.617188 L 17.933594 6 L 5.9199219 6 z M 9.7167969 8 L 16.880859 8 L 40.203125 42 L 33.039062 42 L 9.7167969 8 z"></path>
+                            <a href="{{ config('constant.SM_TWITTER') }}" target="_blank"><svg
+                                    xmlns="http://www.w3.org/2000/svg" class="flaticon-twitter" x="0px" y="0px"
+                                    viewBox="0 0 50 50"
+                                    style="fill:#ffffff;height:1.39rem;top:-5px; position: relative;">
+                                    <path
+                                        d="M 5.9199219 6 L 20.582031 27.375 L 6.2304688 44 L 9.4101562 44 L 21.986328 29.421875 L 31.986328 44 L 44 44 L 28.681641 21.669922 L 42.199219 6 L 39.029297 6 L 27.275391 19.617188 L 17.933594 6 L 5.9199219 6 z M 9.7167969 8 L 16.880859 8 L 40.203125 42 L 33.039062 42 L 9.7167969 8 z">
+                                    </path>
                                 </svg></a>
                         </li>
                         <li>
-                            <a href="{{ config('constant.SM_PINTEREST'); }}" target="_blank"><span class="flaticon-pinterest-logo text-light"></span></a>
+                            <a href="{{ config('constant.SM_PINTEREST') }}" target="_blank"><span
+                                    class="flaticon-pinterest-logo text-light"></span></a>
                         </li>
                         <li>
-                            <a href="{{ config('constant.SM_LINKEDIN'); }}" target="_blank"><span class="flaticon-linkedin-logo text-light"></span></a>
+                            <a href="{{ config('constant.SM_LINKEDIN') }}" target="_blank"><span
+                                    class="flaticon-linkedin-logo text-light"></span></a>
                         </li>
                         <li>
-                            <a href="{{ config('constant.SM_QUORA'); }}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-quora" viewBox="0 0 16 16" style="fill:#ffffff;height:1.325rem; position: relative;">
-                                    <path d="M8.73 12.476c-.554-1.091-1.204-2.193-2.473-2.193-.242 0-.484.04-.707.142l-.43-.863c.525-.45 1.373-.808 2.464-.808 1.697 0 2.568.818 3.26 1.86.41-.89.605-2.093.605-3.584 0-3.724-1.165-5.636-3.885-5.636-2.68 0-3.839 1.912-3.839 5.636 0 3.704 1.159 5.596 3.84 5.596.425 0 .811-.046 1.166-.15Zm.665 1.3a7 7 0 0 1-1.83.244C3.994 14.02.5 11.172.5 7.03.5 2.849 3.995 0 7.564 0c3.63 0 7.09 2.828 7.09 7.03 0 2.337-1.09 4.236-2.675 5.464.512.767 1.04 1.277 1.773 1.277.802 0 1.125-.62 1.179-1.105h1.043c.061.647-.262 3.334-3.178 3.334-1.767 0-2.7-1.024-3.4-2.224Z"/>
+                            <a href="{{ config('constant.SM_QUORA') }}" target="_blank"><svg
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-quora"
+                                    viewBox="0 0 16 16" style="fill:#ffffff;height:1.325rem; position: relative;">
+                                    <path
+                                        d="M8.73 12.476c-.554-1.091-1.204-2.193-2.473-2.193-.242 0-.484.04-.707.142l-.43-.863c.525-.45 1.373-.808 2.464-.808 1.697 0 2.568.818 3.26 1.86.41-.89.605-2.093.605-3.584 0-3.724-1.165-5.636-3.885-5.636-2.68 0-3.839 1.912-3.839 5.636 0 3.704 1.159 5.596 3.84 5.596.425 0 .811-.046 1.166-.15Zm.665 1.3a7 7 0 0 1-1.83.244C3.994 14.02.5 11.172.5 7.03.5 2.849 3.995 0 7.564 0c3.63 0 7.09 2.828 7.09 7.03 0 2.337-1.09 4.236-2.675 5.464.512.767 1.04 1.277 1.773 1.277.802 0 1.125-.62 1.179-1.105h1.043c.061.647-.262 3.334-3.178 3.334-1.767 0-2.7-1.024-3.4-2.224Z" />
                                 </svg></a>
                         </li>
                         {{-- <li>
@@ -102,32 +118,37 @@
                     <!-- Mail Link -->
                     <h6 class="s-14 w-700 kbz-h6 text-light" style="margin-bottom:5px!important;">Email Us</h6>
                     <p class="footer-mail-link ico-25">
-                        <a href="mailto:{{ config('constant.INFO_EMAIL') }}" class="text-light">{{ config('constant.INFO_EMAIL') }}</a>
+                        <a href="mailto:{{ config('constant.INFO_EMAIL') }}"
+                            class="text-light">{{ config('constant.INFO_EMAIL') }}</a>
                     </p>
                     <h6 class="s-14 w-700 mt-15 kbz-h6 text-light" style="margin-bottom:5px!important;">Call Us</h6>
                     <p class="footer-mail-link ico-25">
-                        <a href="tel:{{str_ireplace(' ','',config('constant.COMPANY_MOBILE'))}}" class="text-light">{{ config('constant.COMPANY_MOBILE'); }}</a>
+                        <a href="tel:{{ str_ireplace(' ', '', config('constant.COMPANY_MOBILE')) }}"
+                            class="text-light">{{ config('constant.COMPANY_MOBILE') }}</a>
                     </p>
-                    <h6 class="s-14 w-700 mt-15 kbz-h6 text-light" style="margin-bottom:5px!important;">Registered Office Address</h6>
+                    <h6 class="s-14 w-700 mt-15 kbz-h6 text-light" style="margin-bottom:5px!important;">Registered
+                        Office Address</h6>
                     <p class="footer-mail-link ico-25">
-                        <p class="text-light">{{ config('constant.COMPANY_ADDRESS'); }}</p>
+                    <p class="text-light">{{ config('constant.COMPANY_ADDRESS') }}</p>
                     </p>
-                    <h6 class="s-14 w-700 mt-15 kbz-h6 text-light" style="margin-bottom:5px!important;">Operational Office Address</h6>
+                    <h6 class="s-14 w-700 mt-15 kbz-h6 text-light" style="margin-bottom:5px!important;">Operational
+                        Office Address</h6>
                     <p class="footer-mail-link ico-25">
-                        <p class="text-light">{{ config('constant.COMPANY_OPERATIONAL_ADDRESS'); }}</p>
+                    <p class="text-light">{{ config('constant.COMPANY_OPERATIONAL_ADDRESS') }}</p>
                     </p>
                 </div>
             </div>
             <!-- END FOOTER LINKS -->
         </div>
         <!-- END FOOTER CONTENT -->
-        <hr class="text-light"/>
+        <hr class="text-light" />
         <!-- BOTTOM FOOTER -->
         <div class="bottom-footer text-center">
             <div class="row">
                 <div class="col-12 text-center">
                     <div class="footer-copyright">
-                        <p><span class="text-light">{{ date('Y') }} &copy; {{ config('constant.COMPANY_NAME'); }}. All Rights Reserved.</span></p>
+                        <p><span class="text-light">{{ date('Y') }} &copy; {{ config('constant.COMPANY_NAME') }}.
+                                All Rights Reserved.</span></p>
                     </div>
                 </div>
                 <!-- FOOTER SECONDARY LINK -->
@@ -138,3 +159,58 @@
     </div>
     <!-- End container -->
 </footer>
+
+<section id="advisorBanner" class="position-fixed bottom-0 start-50 translate-middle-x w-100 left-0 right-0">
+    <div class="bg--blue-400 w-100">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-2 d-none d-lg-block">
+                    <div class="card-image-bottom">
+                        <img src="{{ asset('front/images/wisefinai-popup-animated.webp') }}" class="img-fluid" alt="Advisor">
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-7 text-center text-lg-start py-2 py-lg-0">
+                    <p class="banner-title fw-semibold fs-6 text-black mb-0">
+                        Your Simple Way to Explore Loans Up to ₹15 Lakh
+                    </p>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="cbox-1 ico-15 align-content-center">
+                            <div class="ico-wrap text-dark">
+                                <div class="cbox-1-ico"><span class="flaticon-check"></span></div>
+                            </div>
+                            <div class="cbox-1-txt">
+                                <p class="m-0 fs-6-small-custom fw-semibold ">Trusted Advisory</p>
+                            </div>
+                        </div>
+
+                        <div class="cbox-1 ico-15 align-content-center">
+                            <div class="ico-wrap text-dark">
+                                <div class="cbox-1-ico"><span class="flaticon-check"></span></div>
+                            </div>
+                            <div class="cbox-1-txt">
+                                <p class="m-0 fs-6-small-custom fw-semibold ">Transparent Process</p>
+                            </div>
+                        </div>
+
+                        <div class="cbox-1 ico-15 align-content-center">
+                            <div class="ico-wrap text-dark">
+                                <div class="cbox-1-ico"><span class="flaticon-check"></span></div>
+                            </div>
+                            <div class="cbox-1-txt">
+                                <p class="m-0 fs-6-small-custom fw-semibold ">Quick Response</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-3 text-center pb-3 pb-lg-0 my-md-2 my-0 ">
+                    <a href="{{ route('loan.agent.main') }}" class="btn r-04 btn--custom hover--tra-black">
+                        Apply Now
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
