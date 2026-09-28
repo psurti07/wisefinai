@@ -166,7 +166,7 @@
             <div class="row align-items-center">
 
                 <!-- Image: 3 columns -->
-                <div class="col-5 col-lg-2 col-md-2">
+                <div class="col-4 col-lg-2 col-md-2">
                     <div class="card-image-bottom">
                         <img src="{{ asset('front/images/wisefinai-popup-animated.webp') }}" class="img-fluid"
                             alt="Advisor">
@@ -174,7 +174,7 @@
                 </div>
 
                 <!-- Content: 6 columns -->
-                <div class="col-7 col-lg-10 col-md-10 text-center text-lg-start py-2">
+                <div class="col-8 col-lg-10 col-md-10 text-center text-lg-start py-2 footer-bottom-content">
                     <div class="row align-items-center">
                         <div class="col-lg-9">
                             <div class="d-flex align-items-center justify-content-between">

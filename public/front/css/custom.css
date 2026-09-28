@@ -378,7 +378,8 @@
     
 }
 .card-image-bottom{
-        margin-top: -85px;
+        margin-top: -110px;
+        max-height: 175px;
 }
 
 @media (max-width: 767.98px) {
@@ -393,5 +394,17 @@
 @media screen and (max-width:991px) {
   .card-image-bottom{
     margin-top:0 !important;
+  }
+}
+@media screen and (max-width:991px) {
+ p.banner-title{
+font-size: 9px !important;
+  }
+  .card-image-bottom img{
+width:80px;
+  }
+
+  .footer-bottom-content .btn{
+padding: 10px  !important;
   }
 }
