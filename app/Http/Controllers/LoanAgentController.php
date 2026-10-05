@@ -142,6 +142,7 @@ class LoanAgentController extends Controller
                         'userid' => $user->id,
                         'fbclid' => Cookie::get('sourceId')
                     ]);
+                    log::info('FB Ads Entry for user ID: ' . $user->id . ' with fbclid: ' . Cookie::get('sourceId'));
                 }
 
                 if ($user->process_step >= 3) {
@@ -298,6 +299,7 @@ class LoanAgentController extends Controller
                     'userid' => $userid,
                     'fbclid' => Cookie::get('sourceId')
                 ]);
+                Log::info('FB Ads Entry for user ID: ' . $userid . ' with fbclid: ' . Cookie::get('sourceId'));
                 /* fb ends code */
                 //Cookie::queue('loan_type',$request->input('loan_amount') > 500000 ? 1 : 1,$this->lifetime,'/',null,false,true,false,'lax');
                 // Insert record into the loan_applications table using the userID from the user_registrations table
@@ -1282,7 +1284,7 @@ class LoanAgentController extends Controller
 
                     /* fb conversion code starts here */
                     $fbleads = FbAdsEntry::where('userid', $userData->userid)->orderByDesc('id')->limit(1)->first();
-
+                    Log::info('FB Leads Data', ['fbleads' => $fbleads]);
                     $fbdata = array(
                         'type' => 'hire-agent',
                         'firstname' => $firstname,
@@ -1315,6 +1317,7 @@ class LoanAgentController extends Controller
                         'send_data' => json_encode($fbdata),
                         'received_data' => $fbresponse
                     );
+                    Log::info('Data Leads', ['dataleads' => $dataleads]);
                     if ($fbleads) {
                         $fbid = DB::table('fb_ads_entry')->where('id', $fbleads->id)->update($dataleads);
                     }
