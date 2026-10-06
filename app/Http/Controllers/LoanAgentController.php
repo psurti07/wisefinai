@@ -557,7 +557,7 @@ class LoanAgentController extends Controller
                 }
             }
 
-            Log::info($roundAmount);
+            // Log::info($roundAmount);
             $returnUrl = $inputs['plan'] == 2 ? route('api.loan.agent.buy.digital.agent.plan') : route('api.self.apply.buy.digital.plan');
 
             $api = new Api(config('constant.RAZOR_KEY_ID'), config('constant.RAZOR_KEY_SECRET'));
@@ -631,7 +631,7 @@ class LoanAgentController extends Controller
             $hashData = $this->generateHash($userDetail, $orderId, $roundAmount);
             $postData = $this->generatePostData($userDetail, $orderId, $roundAmount, $hashData['hash'], $returnUrl);
 
-            Log::info('PayU Final Post Data', $postData);
+            // Log::info('PayU Final Post Data', $postData);
 
             $taxNote = strtolower($userDetail->state) === 'gujarat'
                 ? 'CGST 9% + SGST 9% applied'
@@ -665,7 +665,7 @@ class LoanAgentController extends Controller
             $userDetail->id . '||||||||||' .
             config('constant.PAYU_MERCHANT_SALT');
 
-        Log::info('PayU Hash String', ['hash_string' => $hashString]);
+        // Log::info('PayU Hash String', ['hash_string' => $hashString]);
 
         return [
             'hash' => strtolower(hash('sha512', $hashString)),
@@ -952,7 +952,7 @@ class LoanAgentController extends Controller
     /* buyDigitalPlan function handle */
     public function buyDigitalPlan(Request $request)
     {
-        Log::info('PayU buyDigitalPlan Request Data', $request->all());
+        // Log::info('PayU buyDigitalPlan Request Data', $request->all());
         try {
             $grandtotal = $netamount = $cgstamount = $sgstamount = $igstamount = 0;
             $meta = selfApplyMeta();
@@ -1218,7 +1218,7 @@ class LoanAgentController extends Controller
     /* paymentSuccess handle function */
     public function paymentSuccess()
     {
-        Log::info('Payment Success function call');
+        // Log::info('Payment Success function call');
         $meta = selfApplyMeta();
         try {
             $loanType = Cookie::get('loan_type');
@@ -1226,18 +1226,18 @@ class LoanAgentController extends Controller
             $orderId = Session::get('orderid');
             $responsecode = Session::get('responsecode');
             
-            Log::info('Payment Success Loan Agent Data', [
-                'loanType' => $loanType,
-                'applyId' => $applyId,
-                'orderId' => $orderId,
-                'responsecode' => $responsecode
-            ]);
+            // Log::info('Payment Success Loan Agent Data', [
+            //     'loanType' => $loanType,
+            //     'applyId' => $applyId,
+            //     'orderId' => $orderId,
+            //     'responsecode' => $responsecode
+            // ]);
             
             $data = '';
             $orderData = '';
 
             if (isset($loanType, $applyId, $orderId) && $loanType !== null && $applyId !== null && $orderId !== null) {
-                Log::info('All required parameters are present. Proceeding with data retrieval and processing.');
+                // Log::info('All required parameters are present. Proceeding with data retrieval and processing.');
                 $data = array(
                     'loantype' => $loanType,
                     'status' => true
@@ -1249,10 +1249,10 @@ class LoanAgentController extends Controller
                 $state = strtolower(getStateAbbreviation($userData->state));
                 //$orderData = orderdata($orderId,'phonepe_entry');
                 $orderData = orderdata($orderId, 'payu_log_entry');
-                Log::info('User Data and Order Data retrieved successfully', [
-                    'userData' => $userData,
-                    'orderData' => $orderData
-                ]);
+                // Log::info('User Data and Order Data retrieved successfully', [
+                //     'userData' => $userData,
+                //     'orderData' => $orderData
+                // ]);
 
                 $staff = Administrations::where('id', $userData->staff_id)->first();
 
