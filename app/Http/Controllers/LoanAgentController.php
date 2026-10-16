@@ -84,9 +84,11 @@ class LoanAgentController extends Controller
             $request->validate([
                 'mobile' => ['required', 'numeric', 'regex:/^[6-9]\d{9}$/'],
                 'accept_tnc' => 'required',
+                'allow_sms' => 'required'
             ], [
                 'mobile.regex' => 'Enter valid mobile number',
                 'accept_tnc.required' => 'Click checkbox to accept our terms conditions and privacy policy',
+                'allow_sms.required' => 'Click checkbox to allow the sms and emails our best offers.'
             ]);
 
             // Store mobile in cookie

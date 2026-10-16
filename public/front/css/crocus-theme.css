@@ -279,8 +279,8 @@ section,
 
 .bg--blue-500 { background-color: #185abd; }
 .bg--blue-400 { background-color: #ff653f; }
-.bg--blue-300 { background-color: #3eb1ff; }
-.bg--blue-200 { background-color: #ddedff; }
+.bg--blue-300 { background-color: #FF8364; }
+.bg--blue-200 { background-color: #FFA28A; }
 .bg--blue-100 { background-color: #f4f9fc; }
 
 .bg--green-500 { background-color: #ff653f; }
@@ -3926,10 +3926,22 @@ span.sm-info {
 }
 
 #hero-202 {
-    background: #fff;
-    /* background-image: url(../images/site-img-4.jpg); */
+    position: relative;
+    isolation: isolate;
     padding-top: 100px;
     padding-bottom: 100px;
+}
+
+#hero-202::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('../images/selfapply-bg.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.05;
+    z-index: -1;
 }
 
 #hero-20:after,#hero-201,#hero-202:after:after {
@@ -4483,7 +4495,7 @@ span.sm-info {
 .row-cols-md-3 .fbox-4 { padding: 50px 35px; }
 .row-cols-md-2 .fbox-4 { padding: 35px 20px; }
 
-.fbox-5 { padding: 50px; }
+.fbox-5 { padding: 30px; }
 .fbox-5.fbox--hover:hover {
     transform: translateY(-10px);
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
@@ -7755,9 +7767,20 @@ span.release-date span {
     font-weight: 300;
     content: "\f11a";
     position: absolute;
-    font-size: 0.6rem;
-    top: 25px;
+    top: 20px;
     right: 25px;
+    width: 20px;
+    height: 20px;
+    background-color: #ff6347;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+    padding: 12px;
 }
 
 #faqs-2.faqs-section .accordion-item .accordion-thumb:after,
