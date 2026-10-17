@@ -84,9 +84,11 @@ class LoanAgentController extends Controller
             $request->validate([
                 'mobile' => ['required', 'numeric', 'regex:/^[6-9]\d{9}$/'],
                 'accept_tnc' => 'required',
+                'allow_sms' => 'required'
             ], [
                 'mobile.regex' => 'Enter valid mobile number',
                 'accept_tnc.required' => 'Click checkbox to accept our terms conditions and privacy policy',
+                'allow_sms.required' => 'Click checkbox to allow the sms and emails our best offers.'
             ]);
 
             // Store mobile in cookie
@@ -256,6 +258,7 @@ class LoanAgentController extends Controller
     public function loanDetailStore(Request $request)
     {
         $inputs = $request->all();
+        Log::info('loanDetailStore start',$inputs);
 
         $request->validate([
             'monthly_income' => 'required',
@@ -335,6 +338,7 @@ class LoanAgentController extends Controller
     /* Personal details form step 2 */
     public function personalDetails()
     {
+        Log::info('personalDetails start');
         $meta = selfApplyMeta();
         if (Cookie::get('isVerified') === null && Cookie::get('isUser') === null) {
             return redirect()->route('loan.agent.main');
@@ -365,6 +369,7 @@ class LoanAgentController extends Controller
         try {
             /* requested fields store in inputs variable */
             $inputs = $request->all();
+            Log::info('personalDetailStore start',$inputs);
             /* validate the requested fields */
             $request->validate([
                 'firstname' => 'required',
@@ -445,6 +450,7 @@ class LoanAgentController extends Controller
     /* buy now */
     public function buyNow()
     {
+        Log::info('buyNow start');
         $meta = selfApplyMeta();
         $eligibilityAmt = calEligiblity(Cookie::get('monthly_income'), Cookie::get('current_emi'), ((Cookie::get('loan_type') == 2) ? 11.5 : 12.5), Cookie::get('loan_amount'));
         $encUserId = customEncrypt(Cookie::get('userid'));
@@ -469,7 +475,7 @@ class LoanAgentController extends Controller
         );
         //Log::info('hire agent user track - '. json_encode($data2));
         $restrack1 = user_track($data2);
-        //Log::info('hire agent user track - '. json_encode($restrack1));
+        Log::info('hire agent buynow user track - '. json_encode($restrack1));
 
         $data3 = array(
             'phoneNumber' => Cookie::get('user_mobile'),
@@ -481,46 +487,46 @@ class LoanAgentController extends Controller
         );
         //Log::info('hire agent event track - '. json_encode($data3));
         $restrack2 = event_track($data3);
-        //Log::info('hire agent event track - '. json_encode($restrack2));
+        Log::info('hire agent buynow event track - '. json_encode($restrack2));
 
-        $configs = DB::table('interakt_settings')->where('product', 'LA')->where('type', 'getoffer')->first();
-        $data4 = array(
-            "fullPhoneNumber" => '+91' . Cookie::get('user_mobile'),
-            "callbackData" => "some text here",
-            "type" => "Template",
-            "template" => array(
-                "name" => $configs->template_name,
-                "languageCode" => "en",
-                "headerValues" => array(
-                    $configs->img_url
-                ),
-                "bodyValues" => array(
-                    Cookie::get('fullname'),
-                    $eligibilityAmt
-                ),
-            )
-        );
-        $restrack3 = interakt_message('hire', $data4, $configs->api_key);
+        // $configs = DB::table('interakt_settings')->where('product', 'LA')->where('type', 'getoffer')->first();
+        // $data4 = array(
+        //     "fullPhoneNumber" => '+91' . Cookie::get('user_mobile'),
+        //     "callbackData" => "some text here",
+        //     "type" => "Template",
+        //     "template" => array(
+        //         "name" => $configs->template_name,
+        //         "languageCode" => "en",
+        //         "headerValues" => array(
+        //             $configs->img_url
+        //         ),
+        //         "bodyValues" => array(
+        //             Cookie::get('fullname'),
+        //             $eligibilityAmt
+        //         ),
+        //     )
+        // );
+        // $restrack3 = interakt_message('hire', $data4, $configs->api_key);
         /* interakt code ends here */
         /* aisensy code starts */
-        $aisensy = DB::table('aisensy_settings')->where('type', 'getoffer')->where('product', 'LA')->first();
+        // $aisensy = DB::table('aisensy_settings')->where('type', 'getoffer')->where('product', 'LA')->first();
 
-        $data1 = array(
-            "apiKey" => $aisensy->api_key,
-            "campaignName" => $aisensy->campaign_name,
-            "destination" => "+91" . Cookie::get('user_mobile'),
-            "media" => array(
-                "url" => $aisensy->media_url,
-                "filename" => $aisensy->media_filename
-            ),
-            "userName" => Cookie::get('fullname'),
-            "tags" => array("Hire_RM"),
-            "attributes" => array(
-                "EligibleAmount" => strval($eligibilityAmt)
-            ),
-            "templateParams" => array('$Name', '$EligibleAmount'),
-        );
-        $response = aisensy_track($data1);
+        // $data1 = array(
+        //     "apiKey" => $aisensy->api_key,
+        //     "campaignName" => $aisensy->campaign_name,
+        //     "destination" => "+91" . Cookie::get('user_mobile'),
+        //     "media" => array(
+        //         "url" => $aisensy->media_url,
+        //         "filename" => $aisensy->media_filename
+        //     ),
+        //     "userName" => Cookie::get('fullname'),
+        //     "tags" => array("Hire_RM"),
+        //     "attributes" => array(
+        //         "EligibleAmount" => strval($eligibilityAmt)
+        //     ),
+        //     "templateParams" => array('$Name', '$EligibleAmount'),
+        // );
+        // $response = aisensy_track($data1);
         /* aisensy code ends */
         $record = DB::table('user_offers')->where('userid', Cookie::get('userid'))->first();
         $offersData = $record ? $record->offerdata : null;
@@ -598,6 +604,8 @@ class LoanAgentController extends Controller
     {
         try {
             $inputs = $request->all();
+            Log::info('checkout start',$inputs);
+
             $loanAppUpdates = array(
                 'rec_date' => date('Y-m-d H:i:s'),
                 'status' => 1,
@@ -705,254 +713,10 @@ class LoanAgentController extends Controller
         dd('Callback function call.Go Back and make further process');
     }
 
-    public function buyDigitalPlan_phonepe(Request $request)
-    {
-        try {
-            $grandtotal = $netamount = $cgstamount = $sgstamount = $igstamount = 0;
-            $meta = selfApplyMeta();
-
-            Session::put('orderid', $request->input('transactionId'));
-
-            $password = trim(random_code(6));
-            Session::put('user_password', $password);
-            if (!$request->has(['code', 'transactionId', 'providerReferenceId'])) {
-                return redirect("loan-agent");
-            }
-            $paymentData = PhonrPeEntry::where('orderid', $request->input('transactionId'))->first();
-
-            $txStatus = $request->input('code');
-            Session::put('responsecode', $txStatus);
-
-            $transactionId = $request->input('transactionId');
-            $referenceId = $request->input('providerReferenceId');
-
-            $phonepedata = array(
-                'rec_date' => now(),
-                'referenceid' => $referenceId,
-                'txstatus' => $txStatus
-            );
-
-            $response1 = PhonrPeEntry::where('id', $paymentData->id)->update($phonepedata);
-            $userData = $query = LoanApplications::select(
-                'user_registrations.id as userid',
-                'user_registrations.first_name',
-                'user_registrations.last_name',
-                'user_registrations.mobile',
-                'user_registrations.email',
-                'user_registrations.city',
-                'user_registrations.state',
-                'user_registrations.isUser',
-                'user_registrations.acc_type',
-                'user_registrations.process_step',
-                'loan_applications.id',
-                'loan_applications.loan_type',
-                'loan_applications.loan_amount',
-                'loan_applications.monthly_income',
-                'loan_applications.currentemi'
-            )
-                ->join('user_registrations', 'user_registrations.id', '=', 'loan_applications.userid')
-                ->where('user_registrations.id', $paymentData->userid)
-                ->where('user_registrations.isDelete', 0)
-                ->first();
-            if ($txStatus == "PAYMENT_SUCCESS") {
-                $isEntry = MembershipOrder::where('paymentid', $referenceId)
-                    ->where('isDelete', 0)
-                    ->count();
-                if ($isEntry == 0) {
-                    Cookie::queue('applyid', $userData->id, $this->lifetime, '/', null, false, true, false, 'lax');
-                    $cardno = random_code_num(16);
-                    $productslug = "hire-loan-agent";
-                    $invprefix = "LA_";
-                    $productData = Product::where('productslug', $productslug)->first();
-                    $netamount = ($productData->inOffer == 1) ? $productData->offeramount : $productData->amount;
-
-                    if ($userData->state == 'Gujarat') {
-                        $cgstamount = $netamount * 0.09;
-                        $sgstamount = $netamount * 0.09;
-                    } else {
-                        $igstamount = $netamount * 0.18;
-                    }
-                    $grandtotal = $netamount + $cgstamount + $sgstamount + $igstamount;
-
-                    $membershipData = array(
-                        'rec_date' => now(),
-                        'userid' => $userData->userid,
-                        'registration_date' => now()->format('Y-m-d'),
-                        'expiry_date' => date('Y-m-d', strtotime('+9 months')),
-                        'card_number' => $cardno,
-                        'amount' => $grandtotal,
-                        'paymentid' => $transactionId,
-                        'isActive' => 1,
-                        'isDelete' => 0
-                    );
-                    $existingMembership = MembershipOrder::where('userid', $userData->userid)
-                        ->where('paymentid', $transactionId)
-                        ->first();
-                    $membershipId = $existingMembership ? $existingMembership->id : 0;
-
-                    if (!$existingMembership) {
-                        $membershipId = MembershipOrder::create($membershipData)->id;
-                    }
-
-                    $passwordkey = Hash::make($password);
-                    $refcode = strtolower(substr(str_replace(" ", "", $userData->fullname), 0, 3));
-                    $refcode .= substr($userData->mobile, -4);
-
-                    $regData = array(
-                        'rec_date' => now(),
-                        'update_date' => now(),
-                        'password' => $passwordkey,
-                        'refcode' => $refcode,
-                        'process_step' => 5,
-                        'isUser' => 2,
-                        'acc_type' => 2
-                    );
-                    $response2 =  UserRegistration::where('id', $userData->userid)->update($regData);
-
-                    $invoiceNo = SiteOption::where('option_key', 'newinvoiceno')
-                        ->select('option_value')
-                        ->first();
-
-                    $existingInvoice = Invoice::where('userid', $userData->userid)
-                        ->where('cardid', $membershipId)
-                        ->first();
-
-                    $invData3 = array(
-                        'rec_date' => $membershipData['rec_date'],
-                        'userid' => $userData->userid,
-                        'cardid' => $membershipId,
-                        'inv_prefix' => $invprefix,
-                        'inv_number' => $invoiceNo->option_value,
-                        'inv_date' => $membershipData['registration_date'],
-                        'inv_price' => $netamount,
-                        'inv_cgst' => $cgstamount,
-                        'inv_sgst' => $sgstamount,
-                        'inv_igst' => $igstamount,
-                        'inv_grandtotal' => $grandtotal,
-                        'isdelete' => 0
-                    );
-
-                    if (!$existingInvoice) {
-                        DB::beginTransaction();
-                        try {
-                            $responseinvoice = Invoice::create($invData3)->id;
-                            $invNoData = array(
-                                'rec_date' => now(),
-                                'option_value' => $invoiceNo->option_value + 1
-                            );
-                            $updateInvoiceNo = SiteOption::where('option_key', 'newinvoiceno')->update($invNoData);
-                            DB::commit();
-                        } catch (\Exception $e) {
-                            DB::rollBack();
-                            Log::error('Invoice creation failed', ['error' => $e->getMessage()]);
-                        }
-                    }
-
-                    $staffID = assignAgent();
-                    UserRegistration::where('id', $userData->userid)->update(['staff_id' => $staffID->id, 'process_step' => 5]);
-
-                    $mailData = array(
-                        'fullname' => $userData->first_name . ' ' . $userData->last_name,
-                        'mobile' => $userData->mobile,
-                        'email' => $userData->email,
-                        'password' => $password,
-                        'order_number' => $transactionId,
-                        'order_date' => date('d-m-Y'),
-                        'order_amount' => $grandtotal,
-                        'transactionId' => $referenceId,
-                        'agentName' => $staffID->fullname,
-                        'agentMobile' => $staffID->mobile
-                    );
-                    $sendGreetings = view('mail.welcomeGreetingsla', $mailData)->render();
-                    $invAttach = array_merge(
-                        $invData3,
-                        [
-                            'fullname' => $userData->first_name . ' ' . $userData->last_name,
-                            'city' => $userData->city,
-                            'mobile' => $userData->mobile,
-                            'email' => $userData->email,
-                            'acc_type' => $userData->acc_type,
-                            'state' => $userData->state,
-                            'isCustomer' => 0
-                        ],
-                        [
-                            'card_number' => $membershipData['card_number'],
-                            'registration_date' => $membershipData['registration_date'],
-                            'expiry_date' => $membershipData['expiry_date'],
-                            'paymentid' => $membershipData['paymentid'],
-                        ]
-                    );
-                    $invoiceData = view('mail.invoice', $invAttach)->render();
-                    $pdf = Pdf::loadHTML($invoiceData)->setPaper('A4', 'portrait')->output();
-                    $base64Pdf = base64_encode($pdf);
-
-                    /* creating attachments array */
-                    $attachments = [
-                        [
-                            'content' => $base64Pdf,
-                            'name' => 'Invoice.pdf'
-                        ]
-                    ];
-
-                    /* send email in brevo */
-                    sendBrevoHtmlMail2($mailData, 'Congratulations! Payment for WiseFinAI Hire Agent plan has been successful.', $sendGreetings, 3, $attachments);
-
-                    DB::table('application_remarks')->updateOrInsert([
-                        'service' => 5,
-                        'subject' => 9,
-                        'application_id' => $userData->id,
-                    ], [
-                        'rec_date' => now(),
-                        'entry_at' => now(),
-                        'notes' => '',
-                        'staff_id' => $staffID->id
-                    ]);
-
-                    if ($response2 > 0) {
-                        $remote_data = array(
-                            'company_code' => config('constant.COMPANY_CODE'),
-                            'company_local_ip' => '190.92.174.183',
-                            'product_code' => 'HIRELOAN',
-                            'customer_name' => $userData->first_name . ' ' . $userData->last_name,
-                            'customer_email' => $userData->email,
-                            'customer_mobile' => $userData->mobile,
-                            'userid' => $userData->userid,
-                            'card_number' => $cardno,
-                            'rec_date' => now()->setTimezone(config('app.timezone'))->format('Y-m-d H:i:s'),
-                            'inv_prefix' => $invprefix,
-                            'inv_number' => $invoiceNo->option_value,
-                            'inv_date' => now()->setTimezone(config('app.timezone'))->format('Y-m-d'),
-                            'inv_price' => $netamount,
-                            'inv_cgst' => $cgstamount,
-                            'inv_sgst' => $sgstamount,
-                            'inv_igst' => $igstamount,
-                            'inv_grandtotal' => $grandtotal,
-                        );
-                        $api_response = sendOrderData(json_encode($remote_data));
-
-                        $redRoute = 'agent/planSuccess'; // Row was updated
-                    } else {
-                        $redRoute = 'agent/planFailed'; // No rows were updated
-                    }
-                    return redirect($redRoute);
-                } else {
-                    return redirect("agent/planSuccess");
-                }
-            } else if ($txStatus == "PAYMENT_FAILURE") {
-                return redirect("agent/planFailed");
-            } else {
-                return redirect("agent/planFailed");
-            }
-        } catch (\Exception $e) {
-            Log::info($e->getMessage());
-            return redirect("agent/planFailed");
-        }
-    }
-
     /* buyDigitalPlan function handle */
     public function buyDigitalPlan(Request $request)
     {
-        // Log::info('PayU buyDigitalPlan Request Data', $request->all());
+        Log::info('PayU buyDigitalPlan Request Data', $request->all());
         try {
             $grandtotal = $netamount = $cgstamount = $sgstamount = $igstamount = 0;
             $meta = selfApplyMeta();
@@ -1333,6 +1097,7 @@ class LoanAgentController extends Controller
                         'tags' => array('Hire Payment Successful')
                     );
                     $restrack1 = user_track($data2);
+                    Log::info('hire agent payment success user track - '. json_encode($restrack1));
 
                     $data3 = array(
                         'phoneNumber' => Cookie::get('user_mobile'),
@@ -1345,6 +1110,7 @@ class LoanAgentController extends Controller
                     );
                     //Log::info('Hire Payment Success '. json_encode($data3));
                     $restrack2 = event_track($data3);
+                    Log::info('hire agent payment success event track - '. json_encode($restrack2));
 
                     /* interakt code ends here */
             }
