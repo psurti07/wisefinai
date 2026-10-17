@@ -417,18 +417,10 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-2 col-md-12 col-12 mb-20 mb-lg-0">
-                    <div
-                        class="testimonial-rating-card text-center block-shadow r-20
-                            d-flex flex-column align-items-center justify-content-center bg--green-500 h-100 ">
-                        <h2 class="s-56 w-800 color--white mb-0">4.9</h2>
-                        <div class="testimonial-rating-stars mb-10">
-                            ★★★★★
-                        </div>
-                        <p class="color--white w-600 mb-0">
-                            Customer Reviews
-                        </p>
-                    </div>
+                <div class="col-md-12">
+                    <!-- Testimonials carousel start  -->
+                    @include('partials.front.testimonials')
+                    <!-- Testimonials carousel end  -->
                 </div>
                 <div class="col-lg-10 col-md-12 col-12">
                     <!-- Testimonials carousel start  -->
@@ -453,10 +445,8 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-12">
                             <div class="section-title text-start mb-40">
-                                <h2 class="s-28 mb-5">Get an instant personal loan from <span
-                                        class="color--green-500">WiseFinAI</span></h2>
-                                <p class="s-16 color--grey mt-0">Fast, simple and secure personal loans at your fingertips
-                                </p>
+                                <h2 class="s-28 mb-5">Get an instant personal loan from <span class="color--green-500">WiseFinAI</span></h2>
+                                <p class="s-16 color--grey mt-0">Fast, simple and secure personal loans at your fingertips</p>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 text-center">
