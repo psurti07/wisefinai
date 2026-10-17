@@ -422,11 +422,6 @@
                     @include('partials.front.testimonials')
                     <!-- Testimonials carousel end  -->
                 </div>
-                <div class="col-lg-10 col-md-12 col-12">
-                    <!-- Testimonials carousel start  -->
-                    @include('partials.front.testimonials')
-                    <!-- Testimonials carousel end  -->
-                </div>
             </div>
         </div>
     </section>
