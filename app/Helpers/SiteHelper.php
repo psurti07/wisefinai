@@ -116,7 +116,7 @@ if (!function_exists('nbfcsList')) {
                             </a>
                         </div>';
 
-            $data['carousel'] .= '<div class="bg--white-100 border border-primary r-10 mb-20 p-md-2 p-2">
+            $data['carousel'] .= '<div class="bg--white-100 border border-primary r-10 mb-0 p-md-2 p-2">
                                     <a href="javascript:;">
                                         <img class="img-fluid" src="https://manage.wisefinai.com/public/upload/banks/' . $bank->bank_image . '" alt="' . $bank->bank_name . '" width="100">
                                     </a>

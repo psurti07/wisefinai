@@ -450,7 +450,7 @@ accent-color: #FF5722;
 .box-fancy .fancy-card {
     flex: 1 1 0;
     width: auto;
-    padding: 30px 55px !important;
+    padding: 25px !important;
     border-radius: 14px;
 }
 
@@ -492,6 +492,24 @@ accent-color: #FF5722;
     position: relative;
 }
 
-.card-main-warpper {
-    border-radius: 20px;
+ 
+.fancy-card:hover{
+  background-color: #FF653F;
+}
+.card-main-warpper-block{
+    border-radius: 22px;
+    background: linear-gradient(180deg, #FFC0B1 0%, #FFE0D8 100%);
+
+}
+.stitistic-wrapper-block{
+  background: linear-gradient(180deg, #FF653F 0%, #96361E 100%);
+border-radius: 28px;
+}
+
+@media screen and (max-width:767px) {
+  .box-fancy .fancy-card {
+    flex: 0 0 100%;
+    width: 100% !important;
+    max-width: 100%;
+}
 }
