@@ -408,7 +408,7 @@
                             <div class="feature-image feature-image-01 fb-2">
                                 <div class="ico-20 position-relative">
                                     <div class="color--green-500">
-                                        <span class="flaticon-email"></span>
+                                        <span class="flaticon-home"></span>
                                     </div>
                                 </div>
                             </div>
