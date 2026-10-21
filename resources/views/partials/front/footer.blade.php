@@ -107,6 +107,9 @@
                         <li>
                             <p><a href="{{ route('front.terms.conditions') }}">Terms &amp; Conditions</a></p>
                         </li>
+                        <li>
+                            <p><a href="{{ route('front.grievance.policy') }}">Grievance Redressal Policy</a></p>
+                        </li>
                     </ul>
                 </div>
             </div>

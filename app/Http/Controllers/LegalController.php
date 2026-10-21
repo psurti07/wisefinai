@@ -45,6 +45,14 @@ class LegalController extends Controller
         return view('front.legalPages', compact('meta', 'description', 'mainTitle', 'subTitle'));
     }
 
+    public function grievancePolicy()
+    {
+        $meta = grievancePolicyMeta();
+        $mainTitle = 'Grievance Redressal Policy';
+        $subTitle = 'WiseFin AI | Version 1.1 | Effective from 20 October 2026';
+        return view('front.grievancePolicy', compact('meta', 'mainTitle', 'subTitle'));
+    }
+
     public function raiseRequest()
     {
         $meta = raiseRequestMeta();

@@ -49,6 +49,7 @@ Route::group([
     Route::get('/disclaimer', [LegalController::class, 'disclaimer'])->name('disclaimer');
     Route::get('/cancellation-and-refund-policy', [LegalController::class, 'refundPolicy'])->name('refund.policy');
     Route::get('/terms-and-conditions', [LegalController::class, 'termsConditions'])->name('terms.conditions');
+    Route::get('/grievance-redressal-policy', [LegalController::class, 'grievancePolicy'])->name('grievance.policy');
 });
 
 // Route::group([

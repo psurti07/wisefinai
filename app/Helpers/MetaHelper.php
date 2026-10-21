@@ -26,6 +26,18 @@ if(!function_exists('privacyPolicyMeta')){
     }
 }
 
+/* Grievance Redressal Policy meta tags */
+if(!function_exists('grievancePolicyMeta')){
+    function grievancePolicyMeta(){
+        $meta = [
+            'keywords' => 'Grievance Redressal Policy, data protection, personal information security, WiseFinAI, data privacy, information security',
+            'title' => 'Grievance Redressal Policy - How We Protect Your Data | WiseFinAI',
+            'description' => 'Review WiseFinAI`s Grievance Redressal Policy to understand how we protect your personal information. Your data security and privacy are our top priorities.'
+        ];
+        return $meta;
+    }
+}
+
 /* Terms & Conditions meta tags */
 if(!function_exists('termsConditionsMeta')){
     function termsConditionsMeta(){

@@ -1549,7 +1549,6 @@ class LoanAgentController extends Controller
 
             $razor = generateRazorpayOrder($orderData);
             $orderId = $razor->id;
-            Log::info("orderid : " . $orderId);
 
             // Keep SAME route (IMPORTANT)
             $returnUrl = route('api.loan.agent.offer2Response');
@@ -1571,7 +1570,7 @@ class LoanAgentController extends Controller
                 'rec_date' => now(),
                 'entryfor' => 2,
                 'userid' => Cookie::get('userid'),
-                'orderid' => $$orderId,
+                'orderid' => $orderId,
                 'orderamount' => $grandAmount,
                 'ordernote' => 'elite-offer',
             ]);
