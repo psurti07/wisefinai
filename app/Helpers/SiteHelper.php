@@ -622,8 +622,6 @@ if (!function_exists('sendBrevoHtmlMail2')) {
 
         $err = curl_error($curl);
 
-        Log::info(config('constant.BREVO_API_KEY'));
-        Log::info('request : ' . $data_json);
         Log::info("response : " . $response);
         Log::info("err : " . $err);
         curl_close(handle: $curl);
