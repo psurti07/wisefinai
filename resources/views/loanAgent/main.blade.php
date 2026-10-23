@@ -656,6 +656,10 @@
                             and policies before proceeding/applying/registration.
                         </p>
                         <p class="s-14">
+                            <strong>Disclosure:</strong> Loan tenure minimum 6 months & maximum 60 months; Maximum APR: 34% p.a.; processing fee: up to 2%. Representative example: ₹1,00,000 at 13.53% p.a. for 60 months with ₹2,000 processing fee — EMI ₹2,301, total interest ₹38,059, total repayment ₹1,38,059, indicative APR 14.41%.
+                        </p>
+                        
+                        <p class="s-14">
                             <strong>Operational Office Address:</strong>
                             {{ config('constant.COMPANY_OPERATIONAL_ADDRESS') }} <br /> Mobile:
                             {{ config('constant.COMPANY_MOBILE') }} | Email: {{ config('constant.INFO_EMAIL') }}
