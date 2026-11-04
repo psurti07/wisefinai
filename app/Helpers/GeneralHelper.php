@@ -27,27 +27,34 @@ if(!function_exists('generateOtp')) {
     function generateOtp( $data, $acctype) {
         try{
             $mobile = $data;
+            $staticNumbers = array_map(
+            'trim',
+            explode(',', config('constant.STATIC_NO', ''))
+            );
+
+            $isStaticNumber = in_array((string) $mobile, $staticNumbers, true);
+        
             $otpCode = rand(1000,9999);
             $otpDetails = [
                 'rec_date' => date('Y-m-d H:i:s'),
                 'mobile' => $mobile,
                 'email' => '',
-                'otp' => ($mobile == config('constant.STATIC_NO', '')) ? 1111 : $otpCode,
+                'otp' => $isStaticNumber ? 1234 : $otpCode,
                 'acc_type' => (int)$acctype
             ];
             $result = OtpVerification::create($otpDetails);
-            if($result){
-                if($mobile == config('constant.STATIC_NO', '')){
-                    return TRUE;
-                } else {
+            if ($result) {
+                if (!$isStaticNumber) {
                     event(new SendOtpOBB([
-                    'phone' => $mobile,
-                    'otp' => $otpCode,
-                    'panel' => (($acctype == 3) ? 'assistant' : (($acctype == 2) ? 'hire' : 'self'))
-                ]));
-                return TRUE;
+                        'phone' => $mobile,
+                        'otp'   => $otpCode,
+                        'panel' => (($acctype == 3)
+                            ? 'assistant'
+                            : (($acctype == 2) ? 'hire' : 'self')),
+                    ]));
                 }
 
+                return true;
             }
         } catch(\Exception $e){
             Log::info($e->getMessage());
