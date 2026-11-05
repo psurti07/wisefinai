@@ -21,7 +21,9 @@
                 <div id="hero-8-form" class="r-06">
                     <h4 class="s-22 text-dark mb-1"> Get Loan up to <span class="color--green-500">&#8377;10 LAKHS</span> from Affiliate NBFCs!</h4>
                     <p class="s-14">Unlock Your Personalized Pre-Approved Loan Offers</p>
-                    <form method="post" class="request-form save-form-1" action="{{ route('loan.agent.get.offer4') }}">
+                    {{-- <form method="post" class="request-form save-form-1" action="{{ route('loan.agent.get.offer4') }}"> --}}
+                    {{-- stop paymentgetway 05/11/2026 --}}
+                    <form method="post" class="request-form save-form-1" action="#">
                         <div class="row g-2">
                             <div class="col-md-12">
                                 <div class="form-check ps-0">
