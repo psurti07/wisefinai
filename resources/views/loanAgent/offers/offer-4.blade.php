@@ -23,7 +23,7 @@
                     <p class="s-14">Unlock Your Personalized Pre-Approved Loan Offers</p>
                     {{-- <form method="post" class="request-form save-form-1" action="{{ route('loan.agent.get.offer4') }}"> --}}
                     {{-- stop paymentgetway 05/11/2026 --}}
-                    <form method="post" class="request-form save-form-1" action="#">
+                    <form method="get" class="request-form save-form-1" action="{{ route('loan.agent.offer4') }}">
                         <div class="row g-2">
                             <div class="col-md-12">
                                 <div class="form-check ps-0">

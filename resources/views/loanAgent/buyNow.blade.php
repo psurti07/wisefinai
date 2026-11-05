@@ -124,7 +124,7 @@ a#failed-btn:hover {
                             proceed. <span class="text-danger">- Offer Valid till 12 am only!</span></p>
                         {{-- <form method="post" class="buyNowForm" action="{{ route('loan.agent.checkout') }}"> --}}
                         {{-- stop paymentgetway 05/11/2026 --}}
-                        <form method="post" class="buyNowForm" action="#"> 
+                        <form method="get" class="buyNowForm" action="{{ route('loan.agent.buyNow') }}"> 
                             @csrf
                             <input type="hidden" class="form-control" name="order_amount" id="order_amount" value="">
                             <div class="row gx-3 gy-3">
