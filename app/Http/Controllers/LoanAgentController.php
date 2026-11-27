@@ -2348,10 +2348,12 @@ class LoanAgentController extends Controller
                 ]
             );
 
+            $record = DB::table('cardoffer')->where('mobile', $buyerPhone)->first();
+
             $subpaisaData = array(
                 'rec_date' => date('Y-m-d H:i:s'),
                 'entryfor' => 2,
-                'userid' => Cookie::get('userid'),
+                'userid' => $record->id,
                 'orderid' => $merchantTxnId,
                 'orderamount' => $grandAmount,
                 'ordernote' => 'elite-offer'
