@@ -2348,11 +2348,8 @@ class LoanAgentController extends Controller
                 ]
             );
 
-            Log::info("offer" . $offer);
-            
             $record = DB::table('cardoffer')->where('mobile', $buyerPhone)->first();
 
-            Log::info('record : ' . $record);
             $subpaisaData = array(
                 'rec_date' => date('Y-m-d H:i:s'),
                 'entryfor' => 2,
