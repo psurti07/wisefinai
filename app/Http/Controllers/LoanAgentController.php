@@ -2317,6 +2317,179 @@ class LoanAgentController extends Controller
                 }
             }
 
+            $merchantId = config('constant.SABPAISA_CLIENT_CODE');
+            $apiKey     = config('constant.SABPAISA_AUTH_KEY');
+            $secretKey  = config('constant.SABPAISA_AUTH_IV');
+            $url = "https://merchant-api.sabpaisa.in/api/v2/payments";
+            $merchantTxnId = "TXN" . time() . rand(1000, 9999);
+            $amountInPaise = ($grandAmount * 100);
+            $currency      = "INR";
+            $timestamp     = time();
+
+            $input = $merchantId . "|" . $merchantTxnId . "|" . $amountInPaise . "|" . $currency . "|" . $timestamp;
+
+            $message = "{$merchantId}|{$merchantTxnId}|{$amountInPaise}|{$currency}|{$timestamp}";
+            $checksum = hash_hmac('sha256', $message, $secretKey);
+
+
+            // Keep SAME route (IMPORTANT)
+            $returnUrl = route('api.loan.agent.offer2Response');
+
+            // Save DB (same as your logic)
+            $offer = DB::table('cardoffer')->updateOrInsert(
+                ['mobile' => $buyerPhone],
+                [
+                    'rec_date'   => now(),
+                    'offerpage'  => 2,
+                    'first_name' => $buyerFirstName,
+                    'last_name'  => $buyerLastName,
+                    'emailid'    => $buyerEmail,
+                    'amount'     => $grandAmount,
+                ]
+            );
+
+            $subpaisaData = array(
+                'rec_date' => date('Y-m-d H:i:s'),
+                'entryfor' => 2,
+                'userid' => Cookie::get('userid'),
+                'orderid' => $merchantTxnId,
+                'orderamount' => $grandAmount,
+                'ordernote' => 'elite-offer'
+            );
+
+            $response1 = SubpaisaEntry::insert($subpaisaData);
+
+            $postData = [
+                "merchantId"    => $merchantId,
+                "merchantTxnId" => $merchantTxnId,
+                "amount"        => $amountInPaise,  // Amount in PAISE
+                "currency"      => $currency,
+                "returnUrl"     => $returnUrl,
+                "timestamp"     => $timestamp,
+                "checksum"      => $checksum,
+                "customerName"  => Cookie::get('fullname'),
+                "customerEmail" => Cookie::get('email'),
+                "customerPhone" => Cookie::get('user_mobile'),
+            ];
+
+            $headers = [
+                "Content-Type" => "application/json",
+                'X-Api-Key' =>  $apiKey,
+            ];
+            $response = commanCurlCall($url, 'POST', $postData, $headers);
+
+            Log::info('Payment Gateway Response:', [
+                'response' => $response
+            ]);
+
+            return response()->json([
+                'type' => 'SUCCESS',
+                'message' => 'Redirecting...',
+                'url' => $response['response']['checkoutUrl'] . '?clientSecret=' . $response['response']['clientSecret']
+            ]);
+        } catch (ValidationException $e) {
+            return response()->json(array('type' => 'ERROR', 'errors' => $e->errors()), 422);
+        } catch (\Exception $e) {
+            Log::info($e->getMessage());
+            return response()->json(['type' => 'ERROR', 'message' => 'Oops! Something went wrong.']);
+        }
+    }
+
+    public function offer2Response(Request $request)
+    {
+        try {
+
+            $input = $request->all();
+            $meta = selfApplyMeta();
+
+            $txnId = $request->merchant_txn_id;
+            $paymentMode = 'subpaisa';
+
+            if (!$txnId) {
+                return view('cardoffer-response', [
+                    'meta' => $meta,
+                    'response' => FALSE,
+                ]);
+            }
+
+            $paymentData = SubpaisaEntry::where('orderid', $request->merchant_txn_id)->first();
+
+            $subpaisaData = array(
+                'rec_date' => date('Y-m-d H:i:s'),
+                'referenceid' => $request->transaction_id,
+                'txstatus' => $request->status,
+                'paymentmode' => $request->payment_mode
+            );
+            $response1 = SubpaisaEntry::where('id', $paymentData->id)->update($subpaisaData);
+
+            if ($request->status == 'SUCCESS') {
+                $userData = Cardoffer::where('id', $paymentData->userid)->first();
+                $cardno = random_code_num(16);
+
+                $data = array(
+                    'rec_date' => date('Y-m-d H:i:s'),
+                    'card_number' => $cardno,
+                    'registration_date' => date('Y-m-d'),
+                    'expiry_date' => date('Y-m-d', strtotime('+9 months')),
+                    'paymentid' => $request->transaction_id,
+                    'isActive' => 1
+                );
+
+                $response = Cardoffer::where('id', $paymentData->userid)->update($data);
+
+                $sent = sendPaymentGreetings($userData->first_name . ' ' . $userData->last_name, $userData->mobile, $userData->emailid);
+
+                return view('cardoffer-response', [
+                    'meta' => $meta,
+                    'response' => TRUE,
+                ]);
+            } else {
+                return view('cardoffer-response', [
+                    'meta' => $meta,
+                    'response' => FALSE,
+                ]);
+            }
+        } catch (\Exception $e) {
+            Log::info($e->getMessage());
+            dd('Ops! Something went wrong.');
+        }
+    }
+
+    public function getOffer2_razorpay(Request $request)
+    {
+        try {
+            $inputs = $request->all();
+            $request->validate([
+                'first_name' => 'required',
+                'last_name'  => 'required',
+                'email'      => 'required|email',
+                'mobile'     => ['required', 'numeric', 'regex:/^[6-9]\d{9}$/']
+            ]);
+
+            $profile = $this->checkUserProcess($inputs);
+            if ($profile) {
+                return response()->json($profile);
+            } else {
+                $buyerFirstName = $inputs['first_name'];
+                $buyerLastName  = $inputs['last_name'];
+                $buyerPhone     = $inputs['mobile'];
+                $buyerEmail     = $inputs['email'];
+            }
+
+            $products = Product::where('productslug', config('constant.LA_OFFER_2'))->first();
+
+            $amount = ($products->inOffer == 1) ? $products->offeramount : $products->amount;
+            $grandAmount = $amount + ($amount * 0.18);
+
+            $uatNumbers = explode(',', config('constant.UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
+
+            foreach ($uatNumbers as $uatNum) {
+                if ($uatNum == $buyerPhone) {
+                    $grandAmount = 1;
+                    break; // Exit the loop once a match is found
+                }
+            }
+
             // Razorpay works in paise
             $razorAmount = (int) round($grandAmount * 100);
 
@@ -2375,7 +2548,7 @@ class LoanAgentController extends Controller
         }
     }
 
-    public function offer2Response(Request $request)
+    public function offer2Response_razorpay(Request $request)
     {
         try {
 
