@@ -2369,9 +2369,9 @@ class LoanAgentController extends Controller
                 "returnUrl"     => $returnUrl,
                 "timestamp"     => $timestamp,
                 "checksum"      => $checksum,
-                "customerName"  => Cookie::get('fullname'),
-                "customerEmail" => Cookie::get('email'),
-                "customerPhone" => Cookie::get('user_mobile'),
+                "customerName"  => $buyerFirstName,
+                "customerEmail" => $buyerEmail,
+                "customerPhone" => $buyerPhone,
             ];
 
             $headers = [
