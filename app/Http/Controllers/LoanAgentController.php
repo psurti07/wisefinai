@@ -2380,9 +2380,9 @@ class LoanAgentController extends Controller
             ];
             $response = commanCurlCall($url, 'POST', $postData, $headers);
 
-            // Log::info('Payment Gateway Response:', [
-            //     'response' => $response
-            // ]);
+            Log::info('Payment Gateway Response:', [
+                'response' => $response
+            ]);
 
             return response()->json([
                 'type' => 'SUCCESS',
