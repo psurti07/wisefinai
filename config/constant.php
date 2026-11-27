@@ -117,10 +117,10 @@ return [
     'PAYU_MERCHANT_SALT' => env('PAYU_MERCHANT_SALT', ''),
     'PAYU_SALT' => env('PAYU_SALT', ''),
 
-    'VEEGAH_TERMINAL_ID' => env('VEEGAH_TERMINAL_ID', ''),
-    'VEEGAH_TERMINAL_PASSWORD' => env('VEEGAH_TERMINAL_PASSWORD', ''),
-    'VEEGAH_MERCHANT_KEY' => env('VEEGAH_MERCHANT_KEY', ''),
-    'VEEGAH_PROD' => env('VEEGAH_PROD', ''),
+    'VEGAAH_TERMINAL_ID' => env('VEGAAH_TERMINAL_ID', ''),
+    'VEGAAH_TERMINAL_PASSWORD' => env('VEGAAH_TERMINAL_PASSWORD', ''),
+    'VEGAAH_MERCHANT_KEY' => env('VEGAAH_MERCHANT_KEY', ''),
+    'VEGAAH_MODE' => env('VEGAAH_MODE', ''),
 
     'ENC_PASS' => env('ENC_PASS', ''),
     'KEY_ID' => env('KEY_ID', ''),
