@@ -2327,11 +2327,12 @@ class LoanAgentController extends Controller
             $timestamp     = time();
 
             $input = $merchantId . "|" . $merchantTxnId . "|" . $amountInPaise . "|" . $currency . "|" . $timestamp;
+            Log::info('input : ' , $input);
 
             $message = "{$merchantId}|{$merchantTxnId}|{$amountInPaise}|{$currency}|{$timestamp}";
             $checksum = hash_hmac('sha256', $message, $secretKey);
 
-
+            Log::info("checksum : " , $checksum);
             // Keep SAME route (IMPORTANT)
             $returnUrl = route('api.loan.agent.offer2Response');
 
@@ -2374,6 +2375,7 @@ class LoanAgentController extends Controller
                 "customerPhone" => $buyerPhone,
             ];
 
+            Log::info('postData : ' , $postData);
             $headers = [
                 "Content-Type" => "application/json",
                 'X-Api-Key' =>  $apiKey,
