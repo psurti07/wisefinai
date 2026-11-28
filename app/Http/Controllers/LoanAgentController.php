@@ -717,7 +717,7 @@ class LoanAgentController extends Controller
             $responseCode = $txStatus;
             Session::put('responsecode', $responseCode);
 
-            $orderAmount = $request->amount / 100;
+            $orderAmount = (float) ($resultdata['amountDetails']['amount'] ?? 0);
             $txnId = $referenceId;
             $paymentMode = 'subpaisa';
 
