@@ -1792,7 +1792,8 @@ class LoanAgentController extends Controller
                 $city = strtolower(preg_replace("/[^a-zA-Z]+/", "", $userData->city));
                 $state = strtolower(getStateAbbreviation($userData->state));
                 //$orderData = orderdata($orderId,'phonepe_entry');
-                $orderData = orderdata($orderId, 'subpaisa_entry');
+                // $orderData = orderdata($orderId, 'subpaisa_entry');
+                $orderData = orderdata($orderId, 'vegaah_entry');
                 // Log::info('User Data and Order Data retrieved successfully', [
                 //     'userData' => $userData,
                 //     'orderData' => $orderData
