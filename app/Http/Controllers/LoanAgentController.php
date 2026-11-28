@@ -2306,7 +2306,7 @@ class LoanAgentController extends Controller
             $products = Product::where('productslug', config('constant.LA_OFFER_2'))->first();
 
             $amount = ($products->inOffer == 1) ? $products->offeramount : $products->amount;
-            $grandAmount = $amount + ($amount * 0.18);
+            $grandAmount =  round($amount + ($amount * 0.18), 2);
 
             $uatNumbers = explode(',', config('constant.UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
 
@@ -2322,7 +2322,7 @@ class LoanAgentController extends Controller
             $secretKey  = config('constant.SABPAISA_AUTH_IV');
             $url = "https://merchant-api.sabpaisa.in/api/v2/payments";
             $merchantTxnId = "TXN" . time() . rand(1000, 9999);
-            $amountInPaise = ($grandAmount * 100);
+            $amountInPaise = (int) round($grandAmount * 100);
             $currency      = "INR";
             $timestamp     = time();
 
